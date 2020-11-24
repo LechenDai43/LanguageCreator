@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CreateLanguageScreenManager : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class CreateLanguageScreenManager : MonoBehaviour
         
     }
 
+    // Go back to the inital page
+    public void backInitialPage()
+    {
+        SceneManager.LoadScene("InitialScreen");
+    }
+
     // Go to the previous page
     public void backPage()
     {
@@ -74,6 +81,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
         changePage();
     }
 
+    // Change the display of pages
     private void changePage()
     {
         // Show or hide pages correspondingly
