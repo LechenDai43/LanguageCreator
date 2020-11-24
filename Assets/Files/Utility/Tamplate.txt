@@ -1,0 +1,8 @@
+	{
+            "IPA": "",
+            "POA": "",
+            "MOA": "",
+            "FCB": "",
+            "Aspiration": "",
+            "Voiceness": ""
+        }
