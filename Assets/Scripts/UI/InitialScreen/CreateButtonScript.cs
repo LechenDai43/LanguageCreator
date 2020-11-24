@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class NewButtonText : MonoBehaviour
+public class CreateButtonScript : MonoBehaviour
 {
     public Text text;
     private Manager manager;
@@ -31,5 +32,10 @@ public class NewButtonText : MonoBehaviour
     {
         string textContent = manager.localeManager.getInitialScreenLocale().NewButton;
         text.text = textContent;
+    }
+
+    public void redirectToCreatingLanguageScreen()
+    {
+        SceneManager.LoadScene("CreatingLanguageScreen");
     }
 }

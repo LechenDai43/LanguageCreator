@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class OldButtonText : MonoBehaviour
+public class LoadButtonScript : MonoBehaviour
 {
     public Text text;
     private Manager manager;
@@ -31,5 +32,10 @@ public class OldButtonText : MonoBehaviour
     {
         string textContent = manager.localeManager.getInitialScreenLocale().OldButton;
         text.text = textContent;
+    }
+
+    public void redirectToLoadingLanguageScreen()
+    {
+        SceneManager.LoadScene("LoadingLanguageScreen");
     }
 }
