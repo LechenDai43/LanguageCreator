@@ -17,7 +17,6 @@ public class Manager : MonoBehaviour
             Instance = this;
             localeManager = new LocaleManager();
             localeManager.initialize();
-            Debug.Log("Manager has been set.");
         }
     }
 
