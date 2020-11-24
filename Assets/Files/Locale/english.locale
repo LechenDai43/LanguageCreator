@@ -1,0 +1,8 @@
+{
+    "Tag": "English",
+    "InitialScreenLocale": {
+        "LogoText": "Create Language",
+        "NewButton": "Create",
+        "OldButton": "Load"
+    }
+}
