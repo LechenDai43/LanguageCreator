@@ -10,11 +10,13 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     public GameObject generatedObject;
     public GameObject instanceOfObject;
     public RectTransform rectTransform;
+    public string letter;
 
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        letter = this.transform.GetChild(0).GetComponent<Text>().text;
     }
 
     // Update is called once per frame
@@ -46,6 +48,18 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         
     }
 
+    public void handleInputValueChange()
+    {
+        if (this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text.Equals(""))
+        {
+            letter = this.transform.GetChild(0).GetComponent<Text>().text;
+        }
+        else
+        {
+            letter = this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
+        }
+    }
+
     private IEnumerator waitToGetContent()
     {
         yield return new WaitForSeconds(Time.deltaTime);
@@ -53,14 +67,8 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         // The IPA
         instanceOfObject.transform.GetChild(0).GetComponent<Text>().text = this.transform.GetChild(0).GetComponent<Text>().text;
         // The letter
-        if (this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text.Equals(""))
-        {
-            instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = this.transform.GetChild(0).GetComponent<Text>().text;
-        }
-        else
-        {
-            instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
-        }
+        instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = letter;
+        
         // The frequency
         instanceOfObject.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "1";
     }
