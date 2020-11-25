@@ -23,9 +23,15 @@ public class LowerHalfSubCanvas : MonoBehaviour, IDropHandler
 
     public void OnDrop (PointerEventData eventData)
     {
-        Debug.Log("Lalala");
+        // Debug.Log("Lalala");
         if (eventData.pointerDrag != null)
         {
+            PhoneElementItem draggedObject = eventData.pointerDrag.GetComponent<PhoneElementItem>();
+            GameObject overSizeObject = draggedObject.instanceOfObject;
+            overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
+            overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            OverSizeItemScript overSizeItemScript = overSizeObject.GetComponent<OverSizeItemScript>();
+            overSizeItemScript.addedToParent = true;
             Debug.Log(eventData.pointerDrag);
         }
     }

@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PhoneElementItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    public ProtoPhone phone;
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
-    private Vector2 delta;
+    public ProtoPhone phone; 
     public GameObject generatedObject;
+    public GameObject instanceOfObject;
+    public RectTransform rectTransform;
 
     // Start is called before the first frame update
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
-        delta = new Vector2(0.0f, 0.0f);
-
     }
 
     // Update is called once per frame
@@ -29,28 +25,34 @@ public class PhoneElementItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-
-    }
-
     public void OnDrag(PointerEventData eventData)
     {
-        // rectTransform.anchoredPosition += eventData.delta;
-        generatedObject.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
-        // delta += eventData.delta;
+        instanceOfObject.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        delta = new Vector2(0.0f, 0.0f);
-        generatedObject = (GameObject)Instantiate(generatedObject, transform.parent.parent.parent.parent);
-        generatedObject.GetComponent<RectTransform>().anchoredPosition = rectTransform.anchoredPosition;
-        canvasGroup.blocksRaycasts = false;
+        // Create an instantiation of the oversize item
+        instanceOfObject = (GameObject)Instantiate(generatedObject, transform.parent.parent.parent.parent);
+        instanceOfObject.GetComponent<RectTransform>().anchoredPosition = rectTransform.anchoredPosition;
+
+        // Add informations to the oversize item
+
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        // rectTransform.anchoredPosition -= delta;
-        canvasGroup.blocksRaycasts = true;
+        StartCoroutine(waitToDestroy());
+        
+    }
+
+    private IEnumerator waitToDestroy()
+    {
+        yield return new WaitForSeconds(0.1f);
+        OverSizeItemScript overSizeItemScript = instanceOfObject.GetComponent<OverSizeItemScript>();
+        if (!overSizeItemScript.addedToParent)
+        {
+            Destroy(instanceOfObject);
+        }
+        
     }
 }

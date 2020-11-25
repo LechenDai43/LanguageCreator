@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class OverSizeItemScript : MonoBehaviour
 {
+
+    public bool addedToParent = false;
+
     // Start is called before the first frame update
     void Start()
     {
