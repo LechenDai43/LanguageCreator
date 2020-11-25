@@ -67,7 +67,7 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
 
     private IEnumerator waitToDestroy()
     {
-        yield return new WaitForSeconds(Time.deltaTime * 2);
+        yield return new WaitForSeconds(0.1f);
         if (instanceOfObject != null)
         {
             OverSizeItemScript overSizeItemScript = instanceOfObject.GetComponent<OverSizeItemScript>();
