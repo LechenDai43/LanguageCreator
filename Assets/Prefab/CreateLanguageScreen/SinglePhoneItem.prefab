@@ -467,6 +467,8 @@ MonoBehaviour:
   phone:
     IPA: 
     FCB: 
+  generatedObject: {fileID: 7763707816641210276, guid: 68976c9450e2ed445a3aae54e0290b5f,
+    type: 3}
 --- !u!225 &-6251309328951363656
 CanvasGroup:
   m_ObjectHideFlags: 0

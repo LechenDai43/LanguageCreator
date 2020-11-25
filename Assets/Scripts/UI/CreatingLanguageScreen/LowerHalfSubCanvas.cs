@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class LowerHalfSubCanvas : MonoBehaviour
+public class LowerHalfSubCanvas : MonoBehaviour, IDropHandler
 {
     public int index;
     // Start is called before the first frame update
@@ -10,10 +11,6 @@ public class LowerHalfSubCanvas : MonoBehaviour
     {
         float height = this.transform.parent.GetComponent<RectTransform>().rect.height;
         float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
-        float x = this.transform.parent.GetComponent<RectTransform>().rect.x;
-        float y = this.transform.parent.GetComponent<RectTransform>().rect.y;
-        // this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, y / 2);
-        // this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x);
         this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * index / 4, width / 4);
 
     }
@@ -22,5 +19,14 @@ public class LowerHalfSubCanvas : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnDrop (PointerEventData eventData)
+    {
+        Debug.Log("Lalala");
+        if (eventData.pointerDrag != null)
+        {
+            Debug.Log(eventData.pointerDrag);
+        }
     }
 }

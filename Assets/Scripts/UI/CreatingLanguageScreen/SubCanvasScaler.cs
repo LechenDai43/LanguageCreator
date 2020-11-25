@@ -10,10 +10,6 @@ public class SubCanvasScaler : MonoBehaviour
     {
         float height = this.transform.parent.GetComponent<RectTransform>().rect.height;
         float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
-        float x = this.transform.parent.GetComponent<RectTransform>().rect.x;
-        float y = this.transform.parent.GetComponent<RectTransform>().rect.y;
-        // this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, y / 2);
-        // this.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, x);
 
         if (index == 0)
         {

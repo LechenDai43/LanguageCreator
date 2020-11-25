@@ -7,6 +7,7 @@ public class PhoneElementItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 {
     public ProtoPhone phone;
     private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
     private Vector2 delta;
     public GameObject generatedObject;
 
@@ -14,6 +15,7 @@ public class PhoneElementItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
         delta = new Vector2(0.0f, 0.0f);
 
     }
@@ -34,16 +36,21 @@ public class PhoneElementItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
-        delta += eventData.delta;
+        // rectTransform.anchoredPosition += eventData.delta;
+        generatedObject.GetComponent<RectTransform>().anchoredPosition += eventData.delta;
+        // delta += eventData.delta;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         delta = new Vector2(0.0f, 0.0f);
+        generatedObject = (GameObject)Instantiate(generatedObject, transform.parent.parent.parent.parent);
+        generatedObject.GetComponent<RectTransform>().anchoredPosition = rectTransform.anchoredPosition;
+        canvasGroup.blocksRaycasts = false;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition -= delta;
+        // rectTransform.anchoredPosition -= delta;
+        canvasGroup.blocksRaycasts = true;
     }
 }
