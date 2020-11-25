@@ -8,6 +8,7 @@ public class PhoneElementItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     public ProtoPhone phone;
     private RectTransform rectTransform;
     private Vector2 delta;
+    public GameObject generatedObject;
 
     // Start is called before the first frame update
     void Start()
