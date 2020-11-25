@@ -18,7 +18,9 @@ public class LowerHalfSubCanvas : MonoBehaviour, IDropHandler
     // Update is called once per frame
     void Update()
     {
-        
+        float height = this.transform.parent.GetComponent<RectTransform>().rect.height;
+        float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
+        this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * index / 4, width / 4);
     }
 
     public void OnDrop (PointerEventData eventData)

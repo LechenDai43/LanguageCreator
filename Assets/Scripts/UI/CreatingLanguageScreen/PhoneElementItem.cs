@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -33,10 +34,10 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Create an instantiation of the oversize item
+        Debug.Log(instanceOfObject == null);
         instanceOfObject = (GameObject)Instantiate(generatedObject, transform.parent.parent.parent.parent);
         instanceOfObject.GetComponent<RectTransform>().anchoredPosition = rectTransform.anchoredPosition;
-
-        // Add informations to the oversize item
+        StartCoroutine(waitToGetContent());
 
     }
     public void OnEndDrag(PointerEventData eventData)
@@ -45,13 +46,35 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         
     }
 
+    private IEnumerator waitToGetContent()
+    {
+        yield return new WaitForSeconds(Time.deltaTime);
+        // Add informations to the oversize item
+        // The IPA
+        instanceOfObject.transform.GetChild(0).GetComponent<Text>().text = this.transform.GetChild(0).GetComponent<Text>().text;
+        // The letter
+        if (this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text.Equals(""))
+        {
+            instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = this.transform.GetChild(0).GetComponent<Text>().text;
+        }
+        else
+        {
+            instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
+        }
+        // The frequency
+        instanceOfObject.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "1";
+    }
+
     private IEnumerator waitToDestroy()
     {
-        yield return new WaitForSeconds(0.1f);
-        OverSizeItemScript overSizeItemScript = instanceOfObject.GetComponent<OverSizeItemScript>();
-        if (!overSizeItemScript.addedToParent)
+        yield return new WaitForSeconds(Time.deltaTime * 2);
+        if (instanceOfObject != null)
         {
-            Destroy(instanceOfObject);
+            OverSizeItemScript overSizeItemScript = instanceOfObject.GetComponent<OverSizeItemScript>();
+            if (!overSizeItemScript.addedToParent)
+            {
+                Destroy(instanceOfObject);
+            }
         }
         
     }

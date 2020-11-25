@@ -25,6 +25,16 @@ public class SubCanvasScaler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float height = this.transform.parent.GetComponent<RectTransform>().rect.height;
+        float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
+
+        if (index == 0)
+        {
+            this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, height / 2, height / 2);
+        }
+        else if (index == 1)
+        {
+            this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, height / 2, height / 2);
+        }
     }
 }
