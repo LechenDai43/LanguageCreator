@@ -18,6 +18,11 @@
             "IPA": "",
             "FCB": "",
             "Sonority": "",
-            "POA": "",
-            "Roundness": ""	
+            "POA": ""
         }
+
+	{
+            "IPA": "",
+            "Contour": "",
+            "Level": ""
+	}

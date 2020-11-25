@@ -1,0 +1,19 @@
+{
+    "SimpleAccents": [
+        {
+            "IPA": "³³",
+            "Contour": "flat",
+            "Level": "middle"
+	    },
+        {
+            "IPA": "³⁵",
+            "Contour": "rise",
+            "Level": "middle"
+	    },
+        {
+            "IPA": "³¹",
+            "Contour": "fall",
+            "Level": "middle"
+	    }
+    ]
+}

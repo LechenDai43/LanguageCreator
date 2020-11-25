@@ -1,0 +1,28 @@
+{
+    "SimpleSemivowels": [
+        {
+            "IPA": "w",
+            "FCB": "front",
+            "Sonority": "glide",
+            "POA": "bilabial"
+        },
+        {
+            "IPA": "j",
+            "FCB": "central",
+            "Sonority": "glide",
+            "POA": "palatal"	
+        },
+        {
+            "IPA": "ɹ",
+            "FCB": "central",
+            "Sonority": "liquid",
+            "POA": "alveolar"	
+        },
+        {
+            "IPA": "h̃",
+            "FCB": "back",
+            "Sonority": "liquid",
+            "POA": "velar"	
+        }
+    ]
+}

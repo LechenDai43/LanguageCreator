@@ -5,9 +5,10 @@ using System;
 using System.IO;
 using System.Runtime.Serialization;
 
+
 [Serializable]
-public class VowelPhone : ProtoPhone
+public class SemivowelPhone : ProtoPhone
 {
-    public string Openness;
-    public string Roundness;
+    public string Sornority;
+    public string POA;
 }

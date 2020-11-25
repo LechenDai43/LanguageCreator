@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour
 
     // Variabls loaded from file system
     public LocaleManager localeManager;
+    public PhoneManager phoneManager;
 
     void Awake()
     {
@@ -17,6 +18,8 @@ public class Manager : MonoBehaviour
             Instance = this;
             localeManager = new LocaleManager();
             localeManager.initialize();
+            phoneManager = new PhoneManager();
+            phoneManager.loadIn(false);
         }
     }
 
