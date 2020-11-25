@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
 {
 
     public bool addedToParent = false;
+    public Phoneme phoneme;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,22 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
 
     public void handleDeleteButtonPressed()
     {
+        Destroy(this.transform.gameObject);
+    }
 
+    public void handleEnterLetters()
+    {
+        phoneme.letters = transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
+        Debug.Log(phoneme.letters);
+    }
+
+    public void handleEnterNumbers()
+    {
+        string inputNum = transform.GetChild(2).GetChild(2).GetComponent<Text>().text;
+        if (!inputNum.Equals(""))
+        {
+            phoneme.frequency = Double.Parse(inputNum);
+        }
+        Debug.Log(phoneme.frequency);
     }
 }

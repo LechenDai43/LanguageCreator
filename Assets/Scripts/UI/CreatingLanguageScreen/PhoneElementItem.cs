@@ -67,10 +67,16 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         // The IPA
         instanceOfObject.transform.GetChild(0).GetComponent<Text>().text = this.transform.GetChild(0).GetComponent<Text>().text;
         // The letter
-        instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = letter;
-        
+        instanceOfObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = letter;        
         // The frequency
         instanceOfObject.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "1";
+
+        Phoneme aPhoneme = new Phoneme();
+        aPhoneme.phones = new ProtoPhone[1];
+        aPhoneme.phones[0] = phone;
+        aPhoneme.letters = letter;
+        aPhoneme.frequency = 1;
+        instanceOfObject.GetComponent<OverSizeItemScript>().phoneme = aPhoneme;
     }
 
     private IEnumerator waitToDestroy()
