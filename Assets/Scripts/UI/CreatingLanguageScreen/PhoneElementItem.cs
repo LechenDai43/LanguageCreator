@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PhoneElementItem : MonoBehaviour
 {
+    public ProtoPhone phone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,9 @@ public class PhoneElementItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (phone != null)
+        {
+            
+        }
     }
 }

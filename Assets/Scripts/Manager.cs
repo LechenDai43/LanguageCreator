@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class Manager : MonoBehaviour//, //Singleton<Manager>
 {
     // Make this object unique and global
     public static Manager Instance { get; private set; }
@@ -13,14 +13,20 @@ public class Manager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else if (Instance == null)
         {
             Instance = this;
             localeManager = new LocaleManager();
             localeManager.initialize();
             phoneManager = new PhoneManager();
             phoneManager.loadIn(false);
+            DontDestroyOnLoad(this.gameObject);
         }
+        
     }
 
     public void changeLocale(int key)
