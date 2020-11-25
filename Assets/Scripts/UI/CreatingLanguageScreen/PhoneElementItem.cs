@@ -36,7 +36,7 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         // Create an instantiation of the oversize item
         Debug.Log(instanceOfObject == null);
         instanceOfObject = (GameObject)Instantiate(generatedObject, transform.parent.parent.parent.parent);
-        instanceOfObject.GetComponent<RectTransform>().anchoredPosition = rectTransform.anchoredPosition;
+        instanceOfObject.transform.position = transform.position;
         StartCoroutine(waitToGetContent());
 
     }
