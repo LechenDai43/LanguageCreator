@@ -6,6 +6,7 @@ public class Phoneme
 {
     public ProtoPhone[] phones;
     public string letters;
+    public string preceding = "", successing = "";
     public double frequency;
 
     public void addPhone(ProtoPhone newPhone, string newLetter)
