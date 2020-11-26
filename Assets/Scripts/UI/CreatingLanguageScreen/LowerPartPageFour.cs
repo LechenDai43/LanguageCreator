@@ -45,10 +45,6 @@ public class LowerPartPageFour : MonoBehaviour, IDropHandler
                     OverSizePageFourScript overSizeItemScript = overSizeObject.GetComponent<OverSizePageFourScript>();
                     overSizeItemScript.addedToParent = true;
                 }
-                // overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
-                // overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
-                // OverSizeItemScript overSizeItemScript = overSizeObject.GetComponent<OverSizeItemScript>();
-                // overSizeItemScript.addedToParent = true;
             }
         }
     }

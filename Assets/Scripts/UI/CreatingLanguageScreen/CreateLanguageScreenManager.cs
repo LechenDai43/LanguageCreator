@@ -99,6 +99,9 @@ public class CreateLanguageScreenManager : MonoBehaviour
             case 2:
                 outOfPageThree();
                 break;
+            case 3:
+                outOfPageFour();
+                break;
         }
     }
 
@@ -189,8 +192,10 @@ public class CreateLanguageScreenManager : MonoBehaviour
             }
         }
     }
-    private void intoPageTwo()
+    private IEnumerator intoPageTwo()
     {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+
         Manager manager = Object.FindObjectOfType<Manager>();
         LanguageManager languageManager = manager.languageManager;
 
@@ -257,8 +262,10 @@ public class CreateLanguageScreenManager : MonoBehaviour
             }
         }
     }
-    private void intoPageThree()
+    private IEnumerator intoPageThree()
     {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+
         Manager manager = Object.FindObjectOfType<Manager>();
         LanguageManager languageManager = manager.languageManager;
 
@@ -270,6 +277,85 @@ public class CreateLanguageScreenManager : MonoBehaviour
     public GameObject pageFourOverSizeItem;
     private void outOfPageFour()
     {
+        // Force to stay on this page
+        int a = pageFourBow.transform.childCount, b = pageFourBos.transform.childCount, c = pageFourAs.transform.childCount, d = pageFourUs.transform.childCount;
+        if (a + b +c + d < 8)
+        {
+            purelyChangePage(3);
+            return;
+        }
+
+        // Get the manager
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+
+        List<GameObject> listToDestroy = new List<GameObject>();
+
+        List<Phoneme> bowList = new List<Phoneme>();
+        for (int i = 1; i < pageFourBow.transform.childCount; i++)
+        {
+            bowList.Add(pageFourBow.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
+            listToDestroy.Add(pageFourBow.transform.GetChild(i).gameObject);
+        }
+        languageManager.setBoW(bowList.ToArray());
+
+        List<Phoneme> bosList = new List<Phoneme>();
+        for (int i = 1; i < pageFourBos.transform.childCount; i++)
+        {
+            bosList.Add(pageFourBos.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
+            listToDestroy.Add(pageFourBos.transform.GetChild(i).gameObject);
+        }
+        languageManager.setBoS(bosList.ToArray());
+
+        List<Phoneme> eowList = new List<Phoneme>();
+        for (int i = 1; i < pageFourEow.transform.childCount; i++)
+        {
+            eowList.Add(pageFourEow.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
+            listToDestroy.Add(pageFourEow.transform.GetChild(i).gameObject);
+        }
+        languageManager.setEoW(eowList.ToArray());
+
+        List<Phoneme> eosList = new List<Phoneme>();
+        for (int i = 1; i < pageFourEos.transform.childCount; i++)
+        {
+            eosList.Add(pageFourEos.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
+            listToDestroy.Add(pageFourEos.transform.GetChild(i).gameObject);
+        }
+        languageManager.setEoS(eosList.ToArray());
+
+        List<Phoneme> asList = new List<Phoneme>();
+        for (int i = 1; i < pageFourAs.transform.childCount; i++)
+        {
+            asList.Add(pageFourAs.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
+            listToDestroy.Add(pageFourAs.transform.GetChild(i).gameObject);
+        }
+        Debug.Log(asList.Count);
+        languageManager.setAS(asList.ToArray());
+
+        List<Phoneme> usList = new List<Phoneme>();
+        for (int i = 1; i < pageFourUs.transform.childCount; i++)
+        {
+            usList.Add(pageFourUs.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
+            listToDestroy.Add(pageFourUs.transform.GetChild(i).gameObject);
+        }
+        Debug.Log(usList.Count);
+        languageManager.setUS(usList.ToArray());
+
+
+        // Destroy all the over size items
+        foreach (GameObject tf in listToDestroy)
+        {
+            Destroy(tf);
+        }
+        // List<Phoneme> phonemeListForBoW = new List<Phoneme>();
+        // for (int i = 1; i < numOfBoWConsonent; i++)
+        // {
+        //     phonemeListForBoW.Add(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+        //     Debug.Log(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme.letters);
+        //     listToDestroy.Add(pageTwoBoW.transform.GetChild(i));
+        // }
+        // languageManager.setBoW(phonemeListForBoW.ToArray());
+
 
     }
     private IEnumerator intoPageFour()
@@ -314,11 +400,11 @@ public class CreateLanguageScreenManager : MonoBehaviour
 
         if (num == 1)
         {
-            intoPageTwo();
+            StartCoroutine(intoPageTwo());
         }
         else if (num == 2)
         {
-            intoPageThree();
+            StartCoroutine(intoPageThree());
         }
         else if (num == 3)
         {
