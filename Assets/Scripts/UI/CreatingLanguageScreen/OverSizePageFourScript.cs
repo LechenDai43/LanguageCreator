@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OverSizePageFourScript : MonoBehaviour
 {
+    public bool addedToParent;
     // Start is called before the first frame update
     void Start()
     {

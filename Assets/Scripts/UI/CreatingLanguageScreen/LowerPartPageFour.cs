@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class LowerPartPageFour : MonoBehaviour
+public class LowerPartPageFour : MonoBehaviour, IDropHandler
 {
     public int row, column;
     // Start is called before the first frame update
@@ -18,5 +19,21 @@ public class LowerPartPageFour : MonoBehaviour
         float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
         this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * column / 3, width / 3);
         this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, height * row / 2, height / 2);
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag != null)
+        {
+            PhoneElementItem draggedObject = eventData.pointerDrag.GetComponent<PhoneElementItem>();
+            GameObject overSizeObject = draggedObject.instanceOfObject;
+            if (overSizeObject != null)
+            {
+                // overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
+                // overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                // OverSizeItemScript overSizeItemScript = overSizeObject.GetComponent<OverSizeItemScript>();
+                // overSizeItemScript.addedToParent = true;
+            }
+        }
     }
 }
