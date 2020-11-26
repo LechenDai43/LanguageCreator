@@ -94,6 +94,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
                 outOfPageOne();
                 break;
             case 1:
+                outOfPageTwo();
                 break;
         }
     }
@@ -111,7 +112,64 @@ public class CreateLanguageScreenManager : MonoBehaviour
         {
             Manager manager = Object.FindObjectOfType<Manager>();
             manager.languageManager.languageName = inputStr;
-            Debug.Log(manager.languageManager.languageName);
+            // Debug.Log(manager.languageManager.languageName);
+        }
+    }
+
+    public GameObject pageTwoBoW, pageTwoBoS, pageTwoEoW, pageTwoEoS;
+    private void outOfPageTwo()
+    {
+        // Check if there any defined consonant(s clusters) for the begin of word and syllable
+        int numOfBoWConsonent, numOfBoSConsonent;
+        numOfBoWConsonent = pageTwoBoW.transform.childCount;
+        numOfBoSConsonent = pageTwoBoS.transform.childCount;
+
+        // If there is no such consonant(s clusters) then force to stay on page 2
+        if (numOfBoSConsonent <= 1 || numOfBoWConsonent <= 1)
+        {
+            purelyChangePage(1);
+        }
+        // Otherwise, add all the consonant(s clusters) to the manager
+        else
+        {
+            // Get the manager
+            Manager manager = Object.FindObjectOfType<Manager>();
+            LanguageManager languageManager = manager.languageManager;
+
+            // Get the consonants for begin of word
+            List<Phoneme> phonemeListForBoW = new List<Phoneme>();
+            for (int i = 1; i < numOfBoWConsonent; i++)
+            {
+                phonemeListForBoW.Add(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+            }
+            languageManager.setBoW(phonemeListForBoW.ToArray());
+
+            // Get the consonants for begin of syllable
+            List<Phoneme> phonemeListForBoS = new List<Phoneme>();
+            for (int i = 1; i < numOfBoSConsonent; i++)
+            {
+                phonemeListForBoS.Add(pageTwoBoS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+            }
+            languageManager.setBoS(phonemeListForBoS.ToArray());
+
+            // Get the consonants for end of word
+            int numOfEoWConsonent, numOfEoSConsonent;
+            numOfEoWConsonent = pageTwoEoW.transform.childCount;
+            List<Phoneme> phonemeListForEoW = new List<Phoneme>();
+            for (int i = 1; i < numOfEoWConsonent; i++)
+            {
+                phonemeListForEoW.Add(pageTwoEoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+            }
+            languageManager.setEoW(phonemeListForEoW.ToArray());
+
+            // Get the consonants for end of syllable
+            numOfEoSConsonent = pageTwoEoS.transform.childCount;
+            List<Phoneme> phonemeListForEoS = new List<Phoneme>();
+            for (int i = 1; i < numOfEoSConsonent; i++)
+            {
+                phonemeListForEoS.Add(pageTwoEoS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+            }
+            languageManager.setEoS(phonemeListForEoS.ToArray());
         }
     }
 
