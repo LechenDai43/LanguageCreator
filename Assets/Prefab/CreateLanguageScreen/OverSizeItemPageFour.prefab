@@ -426,6 +426,7 @@ MonoBehaviour:
   IPAText: {fileID: 2701421199086065919}
   letterText: {fileID: 991826698221730891}
   frequencyText: {fileID: 1132680879285776018}
+  anotherItem: {fileID: 2701421200095995468}
 --- !u!1 &2701421200363267488
 GameObject:
   m_ObjectHideFlags: 0

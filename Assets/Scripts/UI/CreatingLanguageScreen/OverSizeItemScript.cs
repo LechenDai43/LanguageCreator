@@ -26,7 +26,7 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null && !this.transform.GetChild(0).GetComponent<Text>().text.Equals("'"))
         {
             PhoneElementItem draggedObject = eventData.pointerDrag.GetComponent<PhoneElementItem>();
             GameObject overSizeObject = draggedObject.instanceOfObject;

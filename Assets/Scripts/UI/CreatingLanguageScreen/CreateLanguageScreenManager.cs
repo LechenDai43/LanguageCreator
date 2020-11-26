@@ -279,12 +279,12 @@ public class CreateLanguageScreenManager : MonoBehaviour
         Manager manager = Object.FindObjectOfType<Manager>();
         LanguageManager languageManager = manager.languageManager;
 
-        populateLowerPanelWithOversizeItemFour(pageFourBow, languageManager.consonantBoW, pageFourOverSizeItem);
-        populateLowerPanelWithOversizeItemFour(pageFourBos, languageManager.consonantBoS, pageFourOverSizeItem);
-        populateLowerPanelWithOversizeItemFour(pageFourEow, languageManager.consonantEoW, pageFourOverSizeItem);
-        populateLowerPanelWithOversizeItemFour(pageFourEos, languageManager.consonantEoS, pageFourOverSizeItem);
-        populateLowerPanelWithOversizeItemFour(pageFourAs, languageManager.vowelAS, pageFourOverSizeItem);
-        populateLowerPanelWithOversizeItemFour(pageFourUs, languageManager.vowelUS, pageFourOverSizeItem);
+        populateLowerPanelWithOversizeItemFour(pageFourBow, languageManager.consonantBoW, pageFourOverSizeItem, 0);
+        populateLowerPanelWithOversizeItemFour(pageFourBos, languageManager.consonantBoS, pageFourOverSizeItem, 1);
+        populateLowerPanelWithOversizeItemFour(pageFourEow, languageManager.consonantEoW, pageFourOverSizeItem, 2);
+        populateLowerPanelWithOversizeItemFour(pageFourEos, languageManager.consonantEoS, pageFourOverSizeItem, 3);
+        populateLowerPanelWithOversizeItemFour(pageFourAs, languageManager.vowelAS, pageFourOverSizeItem, 4);
+        populateLowerPanelWithOversizeItemFour(pageFourUs, languageManager.vowelUS, pageFourOverSizeItem, 5);
 
     }
 
@@ -374,11 +374,12 @@ public class CreateLanguageScreenManager : MonoBehaviour
     }
 
     // Populate lower panel for page two and three
-    private void populateLowerPanelWithOversizeItemFour(GameObject panel, Phoneme[] phonemes, GameObject item)
+    private void populateLowerPanelWithOversizeItemFour(GameObject panel, Phoneme[] phonemes, GameObject item, int index)
     {
         foreach (Phoneme phoneInList in phonemes)
         {
             GameObject generatedItmObject = (GameObject)Instantiate(item, panel.transform);
+            generatedItmObject.GetComponent<OverSizePageFourScript>().parentIndex = index;
             convertPhonemeToOversizeItemFour(phoneInList, generatedItmObject);
             generatedItmObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }

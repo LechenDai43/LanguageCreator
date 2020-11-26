@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System;
 
-public class OverSizePageFourScript : MonoBehaviour
+public class OverSizePageFourScript : MonoBehaviour, IDropHandler
 {
     public bool addedToParent = false;
     public Phoneme phoneme;
     public Text IPAText, letterText, frequencyText;
+    public GameObject anotherItem;
+    public int parentIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,20 @@ public class OverSizePageFourScript : MonoBehaviour
         if (!inputNum.Equals(""))
         {
             phoneme.frequency = Double.Parse(inputNum);
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag != null && !this.transform.GetChild(0).GetComponent<Text>().text.Equals("'"))
+        {
+            SemivowelItemScript draggedObject = eventData.pointerDrag.GetComponent<SemivowelItemScript>();
+            GameObject overSizeObject = draggedObject.instanceOfObject;
+            if (overSizeObject != null)
+            {
+                
+                Destroy(overSizeObject);
+            }
         }
     }
 }
