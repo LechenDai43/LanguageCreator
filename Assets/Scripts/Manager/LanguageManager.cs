@@ -6,7 +6,6 @@ public class LanguageManager
 {
     public Phoneme[] consonantBoW, consonantBoS, consonantEoS, consonantEoW;
     public Phoneme[] vowelAS, vowelUS;
-    public SemivowelRule[] semivowelRules;
     public AccentRule[] accentRules;
     private double sumBow, sumBos, sumEoS, sumEow, sumAS, sumUS;
     public string languageName;

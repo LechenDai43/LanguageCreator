@@ -96,6 +96,9 @@ public class CreateLanguageScreenManager : MonoBehaviour
             case 1:
                 outOfPageTwo();
                 break;
+            case 2:
+                outOfPageThree();
+                break;
         }
     }
 
@@ -170,6 +173,53 @@ public class CreateLanguageScreenManager : MonoBehaviour
                 phonemeListForEoS.Add(pageTwoEoS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
             }
             languageManager.setEoS(phonemeListForEoS.ToArray());
+        }
+    }
+
+    public GameObject pageThreeAS, pageThreeUS;
+    private void outOfPageThree()
+    {
+        // Check if there are any vowels for unaccent syllable
+        int numOfUSVowel = pageThreeUS.transform.childCount;
+
+        // If there is no vowel for unaccent syallble, then force to stay on page three
+        if (numOfUSVowel <= 1)
+        {
+            purelyChangePage(2);
+        }
+        // Otherwise, add the vowels to the manager
+        else
+        {
+            // Get the manager
+            Manager manager = Object.FindObjectOfType<Manager>();
+            LanguageManager languageManager = manager.languageManager;
+
+            // Add the unaccent syllable vowels to the manager
+            List<Phoneme> phonemeListForUS = new List<Phoneme>();
+            for (int i = 1; i < numOfUSVowel; i++)
+            {
+                phonemeListForUS.Add(pageThreeUS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+            }
+            languageManager.setUS(phonemeListForUS.ToArray());
+
+            // Check if there any special accent vowel
+            int numOfASVowel = pageThreeAS.transform.childCount;
+            
+            // If there is no accent vowel, then use the unaccent vowel for the accent vowel
+            if (numOfASVowel <= 1)
+            {
+                languageManager.setAS(phonemeListForUS.ToArray());
+            }
+            // Otherwise, get the accent vowels and add them to the manager
+            else
+            {
+                List<Phoneme> phonemeListForAS = new List<Phoneme>();
+                for (int i = 1; i < numOfASVowel; i++)
+                {
+                    phonemeListForAS.Add(pageThreeAS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                }
+                languageManager.setAS(phonemeListForAS.ToArray());
+            }
         }
     }
 
