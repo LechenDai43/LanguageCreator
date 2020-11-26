@@ -414,7 +414,7 @@ MonoBehaviour:
   SasVToggle: {fileID: 46168856296979493}
   SasCToggle: {fileID: 46168857442839094}
   LallVToggle: {fileID: 46168857746260382}
-  FallCToogle: {fileID: 46168857482078210}
+  FallCToggle: {fileID: 46168857482078210}
   generatedObject: {fileID: 2701421200095995468, guid: 3996182cb1009c9469bbd015a2d473da,
     type: 3}
   instanceOfObject: {fileID: 0}

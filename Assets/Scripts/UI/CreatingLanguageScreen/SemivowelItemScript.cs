@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class SemivowelItemScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Text IPAtext, letterText;
-    public Toggle SasVToggle, SasCToggle, LallVToggle, FallCToogle;
+    public Toggle SasVToggle, SasCToggle, LallVToggle, FallCToggle;
     public GameObject generatedObject;
     public GameObject instanceOfObject;
     public ProtoPhone phone;
@@ -79,6 +79,6 @@ public class SemivowelItemScript : MonoBehaviour, IBeginDragHandler, IEndDragHan
         aPhoneme.phones[0] = phone;
         aPhoneme.letters = letter;
         aPhoneme.frequency = 1;
-        instanceOfObject.GetComponent<OverSizeItemScript>().phoneme = aPhoneme;
+        instanceOfObject.GetComponent<OverSizePageFourScript>().phoneme = aPhoneme;
     }
 }

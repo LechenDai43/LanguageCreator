@@ -25,9 +25,26 @@ public class LowerPartPageFour : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            
-            if (true)
+            SemivowelItemScript draggedObject = eventData.pointerDrag.GetComponent<SemivowelItemScript>();
+            GameObject overSizeObject = draggedObject.instanceOfObject;
+            if (overSizeObject != null)
             {
+                // SasVToggle, SasCToggle
+                int index = row * 3 + column;
+                if (index < 4 && draggedObject.SasCToggle.isOn)
+                {
+                    overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
+                    overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                    OverSizePageFourScript overSizeItemScript = overSizeObject.GetComponent<OverSizePageFourScript>();
+                    overSizeItemScript.addedToParent = true;
+                }
+                else if (index > 3 && draggedObject.SasVToggle.isOn)
+                {
+                    overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
+                    overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                    OverSizePageFourScript overSizeItemScript = overSizeObject.GetComponent<OverSizePageFourScript>();
+                    overSizeItemScript.addedToParent = true;
+                }
                 // overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
                 // overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 // OverSizeItemScript overSizeItemScript = overSizeObject.GetComponent<OverSizeItemScript>();
