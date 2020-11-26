@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1141655497}
   m_HandleRect: {fileID: 1141655496}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2544,7 +2544,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2062253795}
   m_HandleRect: {fileID: 2062253794}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5667,6 +5667,14 @@ MonoBehaviour:
     type: 3}
   pageThreeAS: {fileID: 274891154}
   pageThreeUS: {fileID: 1376537508}
+  pageFourBow: {fileID: 303530223}
+  pageFourBos: {fileID: 594964104}
+  pageFourEow: {fileID: 1073421211}
+  pageFourEos: {fileID: 1715093617}
+  pageFourAs: {fileID: 1383206927}
+  pageFourUs: {fileID: 1396333092}
+  pageFourOverSizeItem: {fileID: 2701421200095995468, guid: 3996182cb1009c9469bbd015a2d473da,
+    type: 3}
 --- !u!1 &873048454
 GameObject:
   m_ObjectHideFlags: 0
@@ -11453,7 +11461,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1040518549}
   m_HandleRect: {fileID: 1040518548}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -12774,7 +12782,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 82456075}
   m_HandleRect: {fileID: 82456074}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13647,7 +13655,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1975183209}
   m_HandleRect: {fileID: 1975183208}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14738,7 +14746,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 177696318}
   m_HandleRect: {fileID: 177696317}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
