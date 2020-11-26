@@ -31,6 +31,14 @@ public class Manager : MonoBehaviour//, //Singleton<Manager>
         
     }
 
+    void Update()
+    {
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+    }
+
     public void changeLocale(int key)
     {
         localeManager.changeLocale(key);

@@ -37,12 +37,14 @@ public class CreateLanguageScreenManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Manager manager = Object.FindObjectOfType<Manager>();
+        manager.languageManager = new LanguageManager();
     }
 
     // Go back to the inital page
     public void backInitialPage()
     {
+
         SceneManager.LoadScene("InitialScreen");
     }
 
