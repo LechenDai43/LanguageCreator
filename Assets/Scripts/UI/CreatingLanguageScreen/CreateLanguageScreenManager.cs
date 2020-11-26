@@ -147,6 +147,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
             for (int i = 1; i < numOfBoWConsonent; i++)
             {
                 phonemeListForBoW.Add(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                    Debug.Log(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme.letters);
                 listToDestroy.Add(pageTwoBoW.transform.GetChild(i));
             }
             languageManager.setBoW(phonemeListForBoW.ToArray());
@@ -217,11 +218,14 @@ public class CreateLanguageScreenManager : MonoBehaviour
             Manager manager = Object.FindObjectOfType<Manager>();
             LanguageManager languageManager = manager.languageManager;
 
+            List<Transform> listToDestroy = new List<Transform>();
+
             // Add the unaccent syllable vowels to the manager
             List<Phoneme> phonemeListForUS = new List<Phoneme>();
             for (int i = 1; i < numOfUSVowel; i++)
             {
                 phonemeListForUS.Add(pageThreeUS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                listToDestroy.Add(pageThreeUS.transform.GetChild(i));
             }
             languageManager.setUS(phonemeListForUS.ToArray());
 
@@ -240,10 +244,25 @@ public class CreateLanguageScreenManager : MonoBehaviour
                 for (int i = 1; i < numOfASVowel; i++)
                 {
                     phonemeListForAS.Add(pageThreeAS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                    listToDestroy.Add(pageThreeAS.transform.GetChild(i));
                 }
                 languageManager.setAS(phonemeListForAS.ToArray());
             }
+
+            // Destroy all the over size items
+            foreach (Transform tf in listToDestroy)
+            {
+                Destroy(tf.gameObject);
+            }
         }
+    }
+    private void intoPageThree()
+    {
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+
+        populateLowerPanelWithOversizeItem(pageThreeAS, languageManager.vowelAS, pageTwoOverSizeItem);
+        populateLowerPanelWithOversizeItem(pageThreeUS, languageManager.vowelUS, pageTwoOverSizeItem);
     }
 
     // Purely change page
@@ -274,6 +293,10 @@ public class CreateLanguageScreenManager : MonoBehaviour
         {
             intoPageTwo();
         }
+        else if (num == 2)
+        {
+            intoPageThree();
+        }
     }
 
     // Convert phoneme to oversize item
@@ -301,6 +324,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
         {
             GameObject generatedItmObject = (GameObject)Instantiate(item, panel.transform);
             convertPhonemeToOversizeItem(phoneInList, generatedItmObject);
+            generatedItmObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }
 }

@@ -32,24 +32,27 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
             GameObject overSizeObject = draggedObject.instanceOfObject;
             if (overSizeObject != null)
             {
-
                 string nextIPA = overSizeObject.transform.GetChild(0).GetComponent<Text>().text;
                 string nextLetter = overSizeObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text;
-                Debug.Log(nextIPA);
                 if (!overSizeObject.transform.GetChild(1).GetChild(2).GetComponent<Text>().text.Equals(""))
                 {
                     nextLetter = overSizeObject.transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
                 }
 
                 this.transform.GetChild(0).GetComponent<Text>().text += nextIPA;
+                string overallLetter = "";
                 if (this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text.Equals(""))
                 {
                     this.transform.GetChild(1).GetChild(1).GetComponent<Text>().text += nextLetter;
+                    overallLetter = this.transform.GetChild(1).GetChild(1).GetComponent<Text>().text;
                 }
                 else
                 {
                     this.transform.GetChild(1).GetChild(2).GetComponent<Text>().text += nextLetter;
+                    overallLetter = this.transform.GetChild(1).GetChild(1).GetComponent<Text>().text;
                 }
+
+                phoneme.addPhone(overSizeObject.GetComponent<OverSizeItemScript>().phoneme);
                 Destroy(overSizeObject);
             }
         }
