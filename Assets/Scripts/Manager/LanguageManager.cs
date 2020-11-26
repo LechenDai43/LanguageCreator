@@ -10,6 +10,16 @@ public class LanguageManager
     private double sumBow, sumBos, sumEoS, sumEow, sumAS, sumUS;
     public string languageName;
 
+    public LanguageManager()
+    {
+        consonantBoW = new Phoneme[0];
+        consonantBoS = new Phoneme[0];
+        consonantEoS = new Phoneme[0];
+        consonantEoW = new Phoneme[0];
+        vowelAS = new Phoneme[0]; 
+        vowelUS = new Phoneme[0];
+    }
+
     public void setBoW(Phoneme[] arr)
     {
         consonantBoW = arr;

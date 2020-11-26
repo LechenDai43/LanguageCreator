@@ -10,6 +10,7 @@ public class SemivowelItemScript : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public Toggle SasVToggle, SasCToggle, LallVToggle, FallCToogle;
     public GameObject generatedObject;
     public GameObject instanceOfObject;
+    public ProtoPhone phone;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,7 @@ public class SemivowelItemScript : MonoBehaviour, IBeginDragHandler, IEndDragHan
         yield return new WaitForSeconds(0.1f);
         if (instanceOfObject != null)
         {
-            OverSizeItemScript overSizeItemScript = instanceOfObject.GetComponent<OverSizeItemScript>();
+            OverSizePageFourScript overSizeItemScript = instanceOfObject.GetComponent<OverSizePageFourScript>();
             if (!overSizeItemScript.addedToParent)
             {
                 Destroy(instanceOfObject);

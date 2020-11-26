@@ -13,6 +13,12 @@
             "POA": "palatal"	
         },
         {
+            "IPA": "ɥ",
+            "FCB": "front",
+            "Sonority": "glide",
+            "POA": "palatal"	
+        },
+        {
             "IPA": "ɹ",
             "FCB": "central",
             "Sonority": "liquid",

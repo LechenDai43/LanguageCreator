@@ -25,9 +25,8 @@ public class LowerPartPageFour : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            PhoneElementItem draggedObject = eventData.pointerDrag.GetComponent<PhoneElementItem>();
-            GameObject overSizeObject = draggedObject.instanceOfObject;
-            if (overSizeObject != null)
+            
+            if (true)
             {
                 // overSizeObject.transform.parent = this.transform.GetChild(0).transform.GetChild(0).transform;
                 // overSizeObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
