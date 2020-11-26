@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour//, //Singleton<Manager>
     // Variabls loaded from file system
     public LocaleManager localeManager;
     public PhoneManager phoneManager;
+    public LanguageManager languageManager;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class Manager : MonoBehaviour//, //Singleton<Manager>
             localeManager.initialize();
             phoneManager = new PhoneManager();
             phoneManager.loadIn(false);
+            languageManager = new LanguageManager();
             DontDestroyOnLoad(this.gameObject);
         }
         
@@ -33,4 +35,6 @@ public class Manager : MonoBehaviour//, //Singleton<Manager>
     {
         localeManager.changeLocale(key);
     }
+
+
 }
