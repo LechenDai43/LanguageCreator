@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 public class LowerHalfSubCanvas : MonoBehaviour, IDropHandler
 {
     public int index;
+    public int divisor;
     // Start is called before the first frame update
     void Start()
     {
         float height = this.transform.parent.GetComponent<RectTransform>().rect.height;
         float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
-        this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * index / 4, width / 4);
+        this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * index / divisor, width / divisor);
 
     }
 
@@ -20,7 +21,7 @@ public class LowerHalfSubCanvas : MonoBehaviour, IDropHandler
     {
         float height = this.transform.parent.GetComponent<RectTransform>().rect.height;
         float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
-        this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * index / 4, width / 4);
+        this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * index / divisor, width / divisor);
     }
 
     public void OnDrop (PointerEventData eventData)
