@@ -22,10 +22,6 @@ public class PhoneElementItem : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     // Update is called once per frame
     void Update()
     {
-        if (phone != null)
-        {
-            
-        }
     }
 
     public void OnDrag(PointerEventData eventData)

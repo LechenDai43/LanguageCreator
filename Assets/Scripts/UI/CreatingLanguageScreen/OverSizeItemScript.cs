@@ -10,6 +10,7 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
 
     public bool addedToParent = false;
     public Phoneme phoneme;
+    public Text IPAText, letterText, frequencyText;
 
     // Start is called before the first frame update
     void Start()

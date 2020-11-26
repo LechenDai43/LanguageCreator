@@ -120,6 +120,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
     }
 
     public GameObject pageTwoBoW, pageTwoBoS, pageTwoEoW, pageTwoEoS;
+    public GameObject pageTwoOverSizeItem;
     private void outOfPageTwo()
     {
         // Check if there any defined consonant(s clusters) for the begin of word and syllable
@@ -139,11 +140,14 @@ public class CreateLanguageScreenManager : MonoBehaviour
             Manager manager = Object.FindObjectOfType<Manager>();
             LanguageManager languageManager = manager.languageManager;
 
+            List<Transform> listToDestroy = new List<Transform>();
+
             // Get the consonants for begin of word
             List<Phoneme> phonemeListForBoW = new List<Phoneme>();
             for (int i = 1; i < numOfBoWConsonent; i++)
             {
                 phonemeListForBoW.Add(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                listToDestroy.Add(pageTwoBoW.transform.GetChild(i));
             }
             languageManager.setBoW(phonemeListForBoW.ToArray());
 
@@ -152,6 +156,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
             for (int i = 1; i < numOfBoSConsonent; i++)
             {
                 phonemeListForBoS.Add(pageTwoBoS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                listToDestroy.Add(pageTwoBoS.transform.GetChild(i));
             }
             languageManager.setBoS(phonemeListForBoS.ToArray());
 
@@ -162,6 +167,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
             for (int i = 1; i < numOfEoWConsonent; i++)
             {
                 phonemeListForEoW.Add(pageTwoEoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                listToDestroy.Add(pageTwoEoW.transform.GetChild(i));
             }
             languageManager.setEoW(phonemeListForEoW.ToArray());
 
@@ -171,9 +177,26 @@ public class CreateLanguageScreenManager : MonoBehaviour
             for (int i = 1; i < numOfEoSConsonent; i++)
             {
                 phonemeListForEoS.Add(pageTwoEoS.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
+                listToDestroy.Add(pageTwoEoS.transform.GetChild(i));
             }
             languageManager.setEoS(phonemeListForEoS.ToArray());
+
+            // Destroy all the over size items
+            foreach (Transform tf in listToDestroy)
+            {
+                Destroy(tf.gameObject);
+            }
         }
+    }
+    private void intoPageTwo()
+    {
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+
+        populateLowerPanelWithOversizeItem(pageTwoBoW, languageManager.consonantBoW, pageTwoOverSizeItem);
+        populateLowerPanelWithOversizeItem(pageTwoBoS, languageManager.consonantBoS, pageTwoOverSizeItem);
+        populateLowerPanelWithOversizeItem(pageTwoEoW, languageManager.consonantEoW, pageTwoOverSizeItem);
+        populateLowerPanelWithOversizeItem(pageTwoEoS, languageManager.consonantEoS, pageTwoOverSizeItem);
     }
 
     public GameObject pageThreeAS, pageThreeUS;
@@ -245,6 +268,39 @@ public class CreateLanguageScreenManager : MonoBehaviour
         else
         {
             backButton.SetActive(true);
+        }
+
+        if (num == 1)
+        {
+            intoPageTwo();
+        }
+    }
+
+    // Convert phoneme to oversize item
+    private void convertPhonemeToOversizeItem(Phoneme toItem, GameObject fromPhoneme)
+    {
+        OverSizeItemScript attachedScript = fromPhoneme.GetComponent<OverSizeItemScript>();
+        attachedScript.addedToParent = true;
+        attachedScript.phoneme = toItem;
+
+        string conIPA = "";
+        for (int i = 0; i < toItem.phones.Length; i++)
+        {
+            conIPA += toItem.phones[i].IPA;
+        }
+        attachedScript.IPAText.text = conIPA;
+
+        attachedScript.letterText.text = toItem.letters;
+        attachedScript.frequencyText.text = toItem.frequency.ToString();
+    }
+
+    // Populate lower panel for page two and three
+    private void populateLowerPanelWithOversizeItem(GameObject panel, Phoneme[] phonemes, GameObject item)
+    {
+        foreach (Phoneme phoneInList in phonemes)
+        {
+            GameObject generatedItmObject = (GameObject)Instantiate(item, panel.transform);
+            convertPhonemeToOversizeItem(phoneInList, generatedItmObject);
         }
     }
 }

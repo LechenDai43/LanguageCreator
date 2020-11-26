@@ -5663,6 +5663,8 @@ MonoBehaviour:
   pageTwoBoS: {fileID: 1323128507}
   pageTwoEoW: {fileID: 940530313}
   pageTwoEoS: {fileID: 857059872}
+  pageTwoOverSizeItem: {fileID: 7763707816641210276, guid: 68976c9450e2ed445a3aae54e0290b5f,
+    type: 3}
   pageThreeAS: {fileID: 274891154}
   pageThreeUS: {fileID: 1376537508}
 --- !u!1 &873048454
@@ -12900,6 +12902,7 @@ GameObject:
   - component: {fileID: 1864268741}
   - component: {fileID: 1864268744}
   - component: {fileID: 1864268743}
+  - component: {fileID: 1864268742}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -12926,6 +12929,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.000091552734}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1864268742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864268740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d2da114433dcf42bc0bd8f95fe82d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabedItem: {fileID: 46168856942582066, guid: ce4e51bf22116c8498e517eb22b63fab,
+    type: 3}
 --- !u!114 &1864268743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12953,9 +12970,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 5
-    m_Right: 5
-    m_Top: 5
+    m_Left: 50
+    m_Right: 50
+    m_Top: 25
     m_Bottom: 5
   m_ChildAlignment: 0
   m_StartCorner: 0
@@ -12963,7 +12980,7 @@ MonoBehaviour:
   m_CellSize: {x: 250, y: 50}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 1
-  m_ConstraintCount: 20
+  m_ConstraintCount: 5
 --- !u!1 &1874197251
 GameObject:
   m_ObjectHideFlags: 0
@@ -14268,7 +14285,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 312831750}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.13947111
+  m_Size: 0.51970804
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

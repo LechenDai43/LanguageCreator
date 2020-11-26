@@ -781,6 +781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addedToParent: 0
+  IPAText: {fileID: 7763707817508264215}
+  letterText: {fileID: 4828129573818203555}
+  frequencyText: {fileID: 4718448764837719930}
 --- !u!225 &-6941658333620913416
 CanvasGroup:
   m_ObjectHideFlags: 0
