@@ -249,6 +249,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
                 languageManager.setAS(phonemeListForAS.ToArray());
             }
 
+
             // Destroy all the over size items
             foreach (Transform tf in listToDestroy)
             {
@@ -263,6 +264,28 @@ public class CreateLanguageScreenManager : MonoBehaviour
 
         populateLowerPanelWithOversizeItem(pageThreeAS, languageManager.vowelAS, pageTwoOverSizeItem);
         populateLowerPanelWithOversizeItem(pageThreeUS, languageManager.vowelUS, pageTwoOverSizeItem);
+    }
+
+    public GameObject pageFourBow, pageFourBos, pageFourEow, pageFourEos, pageFourAs, pageFourUs;
+    public GameObject pageFourOverSizeItem;
+    private void outOfPageFour()
+    {
+
+    }
+    private IEnumerator intoPageFour()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+
+        populateLowerPanelWithOversizeItemFour(pageFourBow, languageManager.consonantBoW, pageFourOverSizeItem);
+        populateLowerPanelWithOversizeItemFour(pageFourBos, languageManager.consonantBoS, pageFourOverSizeItem);
+        populateLowerPanelWithOversizeItemFour(pageFourEow, languageManager.consonantEoW, pageFourOverSizeItem);
+        populateLowerPanelWithOversizeItemFour(pageFourEos, languageManager.consonantEoS, pageFourOverSizeItem);
+        populateLowerPanelWithOversizeItemFour(pageFourAs, languageManager.vowelAS, pageFourOverSizeItem);
+        populateLowerPanelWithOversizeItemFour(pageFourUs, languageManager.vowelUS, pageFourOverSizeItem);
+
     }
 
     // Purely change page
@@ -297,6 +320,10 @@ public class CreateLanguageScreenManager : MonoBehaviour
         {
             intoPageThree();
         }
+        else if (num == 3)
+        {
+            StartCoroutine(intoPageFour());
+        }
     }
 
     // Convert phoneme to oversize item
@@ -324,6 +351,35 @@ public class CreateLanguageScreenManager : MonoBehaviour
         {
             GameObject generatedItmObject = (GameObject)Instantiate(item, panel.transform);
             convertPhonemeToOversizeItem(phoneInList, generatedItmObject);
+            generatedItmObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+    }
+
+    // Convert phoneme to oversize item
+    private void convertPhonemeToOversizeItemFour(Phoneme toItem, GameObject fromPhoneme)
+    {
+        OverSizePageFourScript attachedScript = fromPhoneme.GetComponent<OverSizePageFourScript>();
+        attachedScript.addedToParent = true;
+        attachedScript.phoneme = toItem;
+
+        string conIPA = "";
+        for (int i = 0; i < toItem.phones.Length; i++)
+        {
+            conIPA += toItem.phones[i].IPA;
+        }
+        attachedScript.IPAText.text = conIPA;
+
+        attachedScript.letterText.text = toItem.letters;
+        attachedScript.frequencyText.text = toItem.frequency.ToString();
+    }
+
+    // Populate lower panel for page two and three
+    private void populateLowerPanelWithOversizeItemFour(GameObject panel, Phoneme[] phonemes, GameObject item)
+    {
+        foreach (Phoneme phoneInList in phonemes)
+        {
+            GameObject generatedItmObject = (GameObject)Instantiate(item, panel.transform);
+            convertPhonemeToOversizeItemFour(phoneInList, generatedItmObject);
             generatedItmObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }

@@ -66,7 +66,6 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
     public void handleEnterLetters()
     {
         phoneme.letters = transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
-        Debug.Log(phoneme.letters);
     }
 
     public void handleEnterNumbers()
@@ -76,6 +75,5 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
         {
             phoneme.frequency = Double.Parse(inputNum);
         }
-        Debug.Log(phoneme.frequency);
     }
 }

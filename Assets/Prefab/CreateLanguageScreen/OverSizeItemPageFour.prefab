@@ -208,7 +208,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4189478417947198335}
         m_MethodName: handleEnterNumbers
         m_Mode: 1
         m_Arguments:
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4189478417947198335}
         m_MethodName: handleEnterNumbers
         m_Mode: 1
         m_Arguments:
@@ -422,6 +422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14098f1dc7b924a418951f99216ffa78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedToParent: 0
+  IPAText: {fileID: 2701421199086065919}
+  letterText: {fileID: 991826698221730891}
+  frequencyText: {fileID: 1132680879285776018}
 --- !u!1 &2701421200363267488
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +545,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4189478417947198335}
         m_MethodName: handleDeleteButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -994,7 +998,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4189478417947198335}
         m_MethodName: handleEnterLetters
         m_Mode: 1
         m_Arguments:
@@ -1008,7 +1012,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4189478417947198335}
         m_MethodName: handleEnterLetters
         m_Mode: 1
         m_Arguments:
