@@ -60,7 +60,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
         }
 
         // If the first page is not already shown, then hide the current page and display the previous page
-        changePage();
+        changePage(panelPointer + 1);
 
     }
 
@@ -78,12 +78,47 @@ public class CreateLanguageScreenManager : MonoBehaviour
         }
 
         // If the last page is not already shown, then hide the current page and display the next page
-        changePage();
+        changePage(panelPointer - 1);
     }
 
     // Change the display of pages
-    private void changePage()
+    private void changePage(int oldNum)
     {
+        // Change the page first
+        purelyChangePage(panelPointer);
+
+        // Call the corresponding function for page changing
+        switch(oldNum)
+        {
+            case 0:
+                outOfPageOne();
+                break;
+            case 1:
+                break;
+        }
+    }
+
+    // Functions when page changes
+    public GameObject pageOneNameInput;
+    private void outOfPageOne()
+    {        
+        string inputStr = pageOneNameInput.transform.GetComponent<Text>().text;
+        if (inputStr.Equals(""))
+        {
+            purelyChangePage(0);
+        }
+        else
+        {
+            Manager manager = Object.FindObjectOfType<Manager>();
+            manager.languageManager.languageName = inputStr;
+            Debug.Log(manager.languageManager.languageName);
+        }
+    }
+
+    // Purely change page
+    private void purelyChangePage(int num)
+    {
+        panelPointer = num;
         // Show or hide pages correspondingly
         for (int i = 0; i < panels.Length; i++)
         {
@@ -102,16 +137,6 @@ public class CreateLanguageScreenManager : MonoBehaviour
         else
         {
             backButton.SetActive(true);
-        }
-
-        // Show or hide next button correspondingly
-        if (panelPointer == panels.Length - 1)
-        {
-            nextButton.SetActive(false);
-        }
-        else
-        {
-            nextButton.SetActive(true);
         }
     }
 }

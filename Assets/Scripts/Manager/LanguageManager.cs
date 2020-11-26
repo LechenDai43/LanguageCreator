@@ -9,6 +9,7 @@ public class LanguageManager
     public SemivowelRule[] semivowelRules;
     public AccentRule[] accentRules;
     private double sumBow, sumBos, sumEoS, sumEow, sumAS, sumUS;
+    public string languageName;
 
     public void setBoW(Phoneme[] arr)
     {
