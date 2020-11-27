@@ -9,6 +9,12 @@ public class Phoneme
     public string preceding = null, successing = null;
     public double frequency;
 
+    public Phoneme()
+    {
+        phones = new ProtoPhone[0];
+        letters = "";
+    }
+
     public void addPhone(ProtoPhone newPhone, string newLetter)
     {
         ProtoPhone[] newArr = new ProtoPhone[phones.Length + 1];

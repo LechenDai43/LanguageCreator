@@ -44,22 +44,51 @@ public class PartOfSpeechPageSix : MonoBehaviour
             return;
         }
 
-        // Todo...
-        // Copy the items from the other part of speech to this panel
         GameObject template = otherPartOfSpeech[buttonIndex];
         for (int i = 0; i < template.transform.childCount; i++)
         {
             RuleBannerPageSix bannerScriptOld = template.transform.GetChild(i).GetComponent<RuleBannerPageSix>();
             GameObject instanceBanner = (GameObject)Instantiate(prefabedBanner, thisPanel.transform);
             RuleBannerPageSix bannerScriptNew = instanceBanner.transform.GetChild(i).GetComponent<RuleBannerPageSix>();
-            bannerScriptNew.text.text = bannerScriptOld.text.text;
+            bannerScriptNew.description.text = bannerScriptOld.description.text;
 
             WordFormat newWordFormat = new WordFormat();
+            // Copy the fields that is primary type or need not deep copy
             newWordFormat.numOfSyllable = bannerScriptOld.format.numOfSyllable;
             newWordFormat.arabicStyle = bannerScriptOld.format.arabicStyle;
             newWordFormat.consonantWithSemivowel = bannerScriptOld.format.consonantWithSemivowel;
             newWordFormat.specialVowel = bannerScriptOld.format.specialVowel;
             newWordFormat.specialConsonant = bannerScriptOld.format.specialConsonant;
+            newWordFormat.vowelHolders = bannerScriptOld.format.vowelHolders;
+
+            // Deep copy other field
+            Phoneme newLeading = new Phoneme();
+            newLeading.addPhone(bannerScriptOld.format.specialLeading);
+            Phoneme newEnding = new Phoneme();
+            newEnding.addPhone(bannerScriptOld.format.specialEnding);
+            newWordFormat.specialLeading = newLeading;
+            newWordFormat.specialEnding = newEnding;
+
+            // Deep copy accent rules
+            WordFormat.AccentRule[] newAccentRuleList = new WordFormat.AccentRule[bannerScriptOld.format.accentRules.Length];
+            for (int j = 0; j < newAccentRuleList.Length; j++)
+            {
+                WordFormat.AccentRule newAccentRule = new WordFormat.AccentRule();
+                WordFormat.AccentRule oldAccentRule = bannerScriptOld.format.accentRules[j] ;
+                newAccentRule.backword = oldAccentRule.backword;
+                newAccentRule.position = oldAccentRule.position;
+                newAccentRule.accents = new AccentPhone[oldAccentRule.accents.Length];
+
+                for (int k = 0; k < newAccentRule.accents.Length; k++)
+                {
+                    newAccentRule.accents[k] = oldAccentRule.accents[k];
+                }
+
+                newAccentRuleList[j] = newAccentRule;
+            }
+            newWordFormat.accentRules = newAccentRuleList;
+
+            bannerScriptNew.format = newWordFormat;
         }
     }
 }
