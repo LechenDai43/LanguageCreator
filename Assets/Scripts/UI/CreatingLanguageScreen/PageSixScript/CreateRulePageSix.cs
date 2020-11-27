@@ -125,11 +125,9 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of OneAccent
     private void changeNumberOfOneAccent()
     {
-        Debug.Log("changeNumberOfOneAccent()");
         int currentNumOfAccent = accentPanel.transform.childCount;
         if (currentNumOfAccent < accentNum)
         {
-            Debug.Log("bigger");
             while (accentPanel.transform.childCount < accentNum)
             {
                 GameObject newAccentRuleItem = (GameObject)Instantiate(prefabedOneAccent, accentPanel.transform);
@@ -141,11 +139,9 @@ public class CreateRulePageSix : MonoBehaviour
             
             while (accentPanel.transform.childCount > accentNum)
             {
-                Debug.Log(accentPanel.transform.childCount);
                 GameObject toDelete = accentPanel.transform.GetChild(accentPanel.transform.childCount - 1).gameObject;
                 toDelete.transform.parent = null;
                 Destroy(toDelete);
-                Debug.Log(accentPanel.transform.childCount);
             }
         } 
     }
@@ -178,7 +174,6 @@ public class CreateRulePageSix : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log(e);
         }
     }
 
@@ -203,7 +198,6 @@ public class CreateRulePageSix : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log(e);
         }
     }
 
