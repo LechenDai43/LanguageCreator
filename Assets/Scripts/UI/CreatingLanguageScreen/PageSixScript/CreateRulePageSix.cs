@@ -127,16 +127,27 @@ public class CreateRulePageSix : MonoBehaviour
     {
         Debug.Log("changeNumberOfOneAccent()");
         int currentNumOfAccent = accentPanel.transform.childCount;
-        if (currentNumOfAccent > accentNum)
+        if (currentNumOfAccent < accentNum)
         {
-            GameObject newAccentRuleItem = (GameObject)Instantiate(prefabedOneAccent, accentPanel.transform);
+            Debug.Log("bigger");
+            while (accentPanel.transform.childCount < accentNum)
+            {
+                GameObject newAccentRuleItem = (GameObject)Instantiate(prefabedOneAccent, accentPanel.transform);
+            }
+            
         }
-        else if (currentNumOfAccent < accentNum)
+        else if (currentNumOfAccent > accentNum)
         {
+            Debug.Log("smaller");
             while (accentPanel.transform.childCount > accentNum)
             {
                 Destroy(accentPanel.transform.GetChild(accentPanel.transform.childCount - 1));
             }
+        } 
+        else
+        {
+            Debug.Log(currentNumOfAccent);
+            Debug.Log(accentNum);
         }
     }
 
@@ -184,8 +195,9 @@ public class CreateRulePageSix : MonoBehaviour
                 if (accentNum > syllableNum)
                 {
                     accentNum = syllableNum;
-                    changeNumberOfOneAccent();
+                    
                 }
+                changeNumberOfOneAccent();
 
             }
 
