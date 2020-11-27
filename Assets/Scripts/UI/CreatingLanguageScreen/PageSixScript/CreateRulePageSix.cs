@@ -20,7 +20,7 @@ public class CreateRulePageSix : MonoBehaviour
     public Text specialPrefixIPA, specialSuffixIPA, specialPrefixLetters, specialSuffixLetter;
     public Toggle specialVowelToggle, specialConsonantToggle;
     public Text specialVowelIPA, specialConsonantIPA, specialVowelLetters, specialConsonantLetter;
-    public Toggle useSemivoweledConsonant;
+    public Toggle useSemivoweledConsonant, useClusteredConsonant;
     public GameObject arabicFormatContent;
 
     // Prefabed GameObject
@@ -49,7 +49,7 @@ public class CreateRulePageSix : MonoBehaviour
     // Do not save this rule and exit the rule edit panel
     public void onDeleteButtonPressed()
     {
-
+        Destroy(this.transform.gameObject);
     }
 
     // Display the corresponding panel as the toggle in formatter changed
@@ -70,17 +70,32 @@ public class CreateRulePageSix : MonoBehaviour
 
     }
 
+    // Open the editor to change the affix
     public void onEditeAffixButtonPressed(int toggleIndex)
     {
 
     }
 
+    // Open the editor to add or delete vowel
     public void onAddSpecialVowelButtonPressed()
     {
 
     }
 
+    // Open the editor to add or delete consonant
     public void onAddSpecialConsonantButtonPressed()
+    {
+
+    }
+
+    // Change the number of OneAccent
+    private void changeNumberOfOneAccent()
+    {
+        
+    }
+
+    // Change the number of OneVewol
+    private void changeNumberOfOneVewol()
     {
 
     }
