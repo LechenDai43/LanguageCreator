@@ -104,6 +104,9 @@ public class CreateLanguageScreenManager : MonoBehaviour
             case 3:
                 outOfPageFour();
                 break;
+            case 4:
+                outOfPageFive();
+                break;
         }
     }
 
@@ -376,6 +379,50 @@ public class CreateLanguageScreenManager : MonoBehaviour
 
     }
 
+    public GameObject pageFivePanel;
+    private void outOfPageFive()
+    {
+        List<AccentPhone> accentPhones = new List<AccentPhone>();
+        for (int i = 0; i < pageFivePanel.transform.childCount; i++)
+        {
+            AccentItem accentItem = pageFivePanel.transform.GetChild(i).GetComponent<AccentItem>();
+            if (accentItem.toggle.isOn)
+            {
+                accentPhones.Add(accentItem.phone);
+            }
+        }
+
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+        languageManager.accents = accentPhones.ToArray();
+    }
+    private void intoPageFive()
+    {
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+        // languageManager.accents = accentPhones.ToArray();
+        for (int i = 0; i < pageFivePanel.transform.childCount; i++)
+        {
+            AccentItem accentItem = pageFivePanel.transform.GetChild(i).GetComponent<AccentItem>();
+            AccentPhone onPage = accentItem.phone;
+            bool notFound = true;
+            for (int j = 0; j < languageManager.accents.Length; j++)
+            {
+                AccentPhone inManager = languageManager.accents[i];
+                if (inManager.IPA.Equals(onPage.IPA))
+                {
+                    accentItem.toggle.isOn = true;
+                    notFound = false;
+                    break;
+                }
+            }
+            if (notFound)
+            {
+                accentItem.toggle.isOn = false;
+            }
+        }
+    }
+
     // Purely change page
     private void purelyChangePage(int num)
     {
@@ -411,6 +458,10 @@ public class CreateLanguageScreenManager : MonoBehaviour
         else if (num == 3)
         {
             StartCoroutine(intoPageFour());
+        }
+        else if (num == 4)
+        {
+            intoPageFive();
         }
     }
 
