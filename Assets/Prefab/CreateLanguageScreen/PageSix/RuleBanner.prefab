@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f89255e26f4b9b4aa0b3e525abd8cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: {fileID: 0}
 --- !u!1 &3800234930093470183
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +209,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596438154747587277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5645461615142084801}
+        m_MethodName: handleDeleteButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6091419956195196979
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,4 +573,15 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5453053287544677529}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5645461615142084801}
+        m_MethodName: handleEditButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

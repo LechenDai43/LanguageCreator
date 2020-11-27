@@ -5,7 +5,7 @@ using UnityEngine;
 public class PartOfSpeechPageSix : MonoBehaviour
 {
     public int index;
-    public GameObject prefabedPanel;
+    public GameObject thisPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,22 @@ public class PartOfSpeechPageSix : MonoBehaviour
     }
 
     // Add new rule button function
+    public GameObject prefabedPanel;
     public void addNewRuleButtonPressed()
     {
         GameObject instancePanel = (GameObject)Instantiate(prefabedPanel, transform.parent);
+    }
+
+    // Handle the button pressed to import rules
+    public GameObject[] otherPartOfSpeech; // This is the immediate parent of the rule items
+    public void importRuleButtonPressed(int buttonIndex)
+    {
+        if (buttonIndex >= otherPartOfSpeech.Length)
+        {
+            return;
+        }
+
+        // Todo...
+        // Copy the items from the other part of speech to this panel
     }
 }
