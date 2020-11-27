@@ -5,6 +5,7 @@ using UnityEngine;
 public class PartOfSpeechPageSix : MonoBehaviour
 {
     public int index;
+    public GameObject prefabedPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +23,11 @@ public class PartOfSpeechPageSix : MonoBehaviour
         float width = this.transform.parent.GetComponent<RectTransform>().rect.width;
         this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, width * (index % 2) / 2, width / 2);
         this.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, height * (index / 2) / 2, height / 2);
+    }
+
+    // Add new rule button function
+    public void addNewRuleButtonPressed()
+    {
+        GameObject instancePanel = (GameObject)Instantiate(prefabedPanel, transform.parent);
     }
 }
