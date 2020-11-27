@@ -123,7 +123,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
         {
             Manager manager = Object.FindObjectOfType<Manager>();
             manager.languageManager.languageName = inputStr;
-            // Debug.Log(manager.languageManager.languageName);
+
         }
     }
 
@@ -155,7 +155,6 @@ public class CreateLanguageScreenManager : MonoBehaviour
             for (int i = 1; i < numOfBoWConsonent; i++)
             {
                 phonemeListForBoW.Add(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme);
-                    Debug.Log(pageTwoBoW.transform.GetChild(i).GetComponent<OverSizeItemScript>().phoneme.letters);
                 listToDestroy.Add(pageTwoBoW.transform.GetChild(i));
             }
             languageManager.setBoW(phonemeListForBoW.ToArray());
@@ -334,7 +333,6 @@ public class CreateLanguageScreenManager : MonoBehaviour
             asList.Add(pageFourAs.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
             listToDestroy.Add(pageFourAs.transform.GetChild(i).gameObject);
         }
-        Debug.Log(asList.Count);
         languageManager.setAS(asList.ToArray());
 
         List<Phoneme> usList = new List<Phoneme>();
@@ -343,7 +341,6 @@ public class CreateLanguageScreenManager : MonoBehaviour
             usList.Add(pageFourUs.transform.GetChild(i).GetComponent<OverSizePageFourScript>().phoneme);
             listToDestroy.Add(pageFourUs.transform.GetChild(i).gameObject);
         }
-        Debug.Log(usList.Count);
         languageManager.setUS(usList.ToArray());
 
 

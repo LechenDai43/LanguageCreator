@@ -65,15 +65,39 @@ public class OverSizeItemScript : MonoBehaviour, IDropHandler
 
     public void handleEnterLetters()
     {
-        phoneme.letters = transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
+        StartCoroutine(enterLetterHelper());
     }
 
     public void handleEnterNumbers()
     {
+        StartCoroutine(enterNumberHelper());
+    }
+
+    private IEnumerator enterNumberHelper()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
         string inputNum = transform.GetChild(2).GetChild(2).GetComponent<Text>().text;
+        Debug.Log(phoneme.frequency);
         if (!inputNum.Equals(""))
         {
-            phoneme.frequency = Double.Parse(inputNum);
+            try
+            {
+                phoneme.frequency = Double.Parse(inputNum);
+            }
+            catch (Exception)
+            {
+
+            }
         }
+        else
+        {
+            phoneme.frequency = 1;
+        }
+    }
+
+    private IEnumerator enterLetterHelper()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+        phoneme.letters = transform.GetChild(1).GetChild(2).GetComponent<Text>().text;
     }
 }

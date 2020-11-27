@@ -94,52 +94,14 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of valid vowel holder and accent as the number of syllable chagned
     public void onNumberOfSyllableChanged()
     {
-        try
-        {
-            int newNum = int.Parse(numOfSylInput.text);
-            if (newNum < 1)
-            {
-                return;
-            }
-            syllableNum = newNum;
-            if (arabicFormatToggle.isOn)
-            {
-                changeNumberOfOneVewol();
-            }
-            if (accentNum > syllableNum)
-            {
-                changeNumberOfOneAccent();
-            }
-            
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-        }
+        StartCoroutine(enterSylNumberHelper());
     }
 
     // Change the number of accent rule as the number of accent chagned
     public void onNumberOfAccentChanged()
     {
-        try
-        {
-            int newNum = int.Parse(numOfAccInput.text);
-            if (newNum < 0)
-            {
-                return;
-            }
-            accentNum = newNum;
-            if (accentNum > syllableNum)
-            {
-                accentNum = syllableNum;
-                changeNumberOfOneAccent();
-            }
-
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-        }
+        StartCoroutine(enterAccNumberHelper());
+        
     }
 
     // Open the editor to change the affix
@@ -163,7 +125,19 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of OneAccent
     private void changeNumberOfOneAccent()
     {
-        
+        Debug.Log("changeNumberOfOneAccent()");
+        int currentNumOfAccent = accentPanel.transform.childCount;
+        if (currentNumOfAccent > accentNum)
+        {
+            GameObject newAccentRuleItem = (GameObject)Instantiate(prefabedOneAccent, accentPanel.transform);
+        }
+        else if (currentNumOfAccent < accentNum)
+        {
+            while (accentPanel.transform.childCount > accentNum)
+            {
+                Destroy(accentPanel.transform.GetChild(accentPanel.transform.childCount - 1));
+            }
+        }
     }
 
     // Change the number of OneVewol
@@ -171,4 +145,56 @@ public class CreateRulePageSix : MonoBehaviour
     {
 
     }
+
+    private IEnumerator enterSylNumberHelper()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+        try
+        {
+            int newNum = int.Parse(numOfSylInput.text);
+            if (newNum >= 1)
+            {
+                syllableNum = newNum;
+                if (arabicFormatToggle.isOn)
+                {
+                    changeNumberOfOneVewol();
+                }
+                if (accentNum > syllableNum)
+                {
+                    changeNumberOfOneAccent();
+                }
+            }   
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    private IEnumerator enterAccNumberHelper()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+        try
+        {
+            int newNum = int.Parse(numOfAccInput.text);
+            if (newNum >= 0)
+            {
+                accentNum = newNum;
+                if (accentNum > syllableNum)
+                {
+                    accentNum = syllableNum;
+                    changeNumberOfOneAccent();
+                }
+
+            }
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+
 }
