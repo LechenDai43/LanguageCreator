@@ -96,7 +96,12 @@ public class CreateRulePageSix : MonoBehaviour
     {
         try
         {
-            syllableNum = int.Parse(numOfSylInput.text);
+            int newNum = int.Parse(numOfSylInput.text);
+            if (newNum < 1)
+            {
+                return;
+            }
+            syllableNum = newNum;
             if (arabicFormatToggle.isOn)
             {
                 changeNumberOfOneVewol();
@@ -116,7 +121,25 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of accent rule as the number of accent chagned
     public void onNumberOfAccentChanged()
     {
+        try
+        {
+            int newNum = int.Parse(numOfAccInput.text);
+            if (newNum < 0)
+            {
+                return;
+            }
+            accentNum = newNum;
+            if (accentNum > syllableNum)
+            {
+                accentNum = syllableNum;
+                changeNumberOfOneAccent();
+            }
 
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
     // Open the editor to change the affix
