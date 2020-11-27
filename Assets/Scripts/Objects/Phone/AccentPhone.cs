@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
+using System.Runtime.Serialization;
 
-public class AccentPhone : MonoBehaviour
+
+[Serializable]
+public class AccentPhone : ProtoPhone
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string Contour, Level;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
