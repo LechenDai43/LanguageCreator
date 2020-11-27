@@ -30,10 +30,13 @@ public class PartOfSpeechPageSix : MonoBehaviour
     public void addNewRuleButtonPressed()
     {
         GameObject instancePanel = (GameObject)Instantiate(prefabedPanel, transform.parent);
+        // TODO
+        // attach reference to this panel onto the instance panel
     }
 
     // Handle the button pressed to import rules
     public GameObject[] otherPartOfSpeech; // This is the immediate parent of the rule items
+    public GameObject prefabedBanner;
     public void importRuleButtonPressed(int buttonIndex)
     {
         if (buttonIndex >= otherPartOfSpeech.Length)
@@ -43,5 +46,20 @@ public class PartOfSpeechPageSix : MonoBehaviour
 
         // Todo...
         // Copy the items from the other part of speech to this panel
+        GameObject template = otherPartOfSpeech[buttonIndex];
+        for (int i = 0; i < template.transform.childCount; i++)
+        {
+            RuleBannerPageSix bannerScriptOld = template.transform.GetChild(i).GetComponent<RuleBannerPageSix>();
+            GameObject instanceBanner = (GameObject)Instantiate(prefabedBanner, thisPanel.transform);
+            RuleBannerPageSix bannerScriptNew = instanceBanner.transform.GetChild(i).GetComponent<RuleBannerPageSix>();
+            bannerScriptNew.text.text = bannerScriptOld.text.text;
+
+            WordFormat newWordFormat = new WordFormat();
+            newWordFormat.numOfSyllable = bannerScriptOld.format.numOfSyllable;
+            newWordFormat.arabicStyle = bannerScriptOld.format.arabicStyle;
+            newWordFormat.consonantWithSemivowel = bannerScriptOld.format.consonantWithSemivowel;
+            newWordFormat.specialVowel = bannerScriptOld.format.specialVowel;
+            newWordFormat.specialConsonant = bannerScriptOld.format.specialConsonant;
+        }
     }
 }
