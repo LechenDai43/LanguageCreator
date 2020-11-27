@@ -138,10 +138,14 @@ public class CreateRulePageSix : MonoBehaviour
         }
         else if (currentNumOfAccent > accentNum)
         {
-            Debug.Log("smaller");
+            
             while (accentPanel.transform.childCount > accentNum)
             {
-                Destroy(accentPanel.transform.GetChild(accentPanel.transform.childCount - 1));
+                Debug.Log(accentPanel.transform.childCount);
+                GameObject toDelete = accentPanel.transform.GetChild(accentPanel.transform.childCount - 1).gameObject;
+                toDelete.transform.parent = null;
+                Destroy(toDelete);
+                Debug.Log(accentPanel.transform.childCount);
             }
         } 
     }
