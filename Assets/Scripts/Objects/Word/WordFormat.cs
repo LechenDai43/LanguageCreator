@@ -10,6 +10,7 @@ public class WordFormat
     public Phoneme[] specialVowel, specialConsonant;
     public bool arabicStyle, consonantWithSemivowel;
     public Phoneme[] vowelHolders;
+    public PartOfSpeech wordType;
 
 
     public class AccentRule
@@ -17,5 +18,13 @@ public class WordFormat
         public int position;
         public bool backword;
         public AccentPhone[] accents;
+    }
+
+    public enum PartOfSpeech
+    {
+        Verb,
+        Noun,
+        Adjective,
+        Other
     }
 }
