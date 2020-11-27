@@ -55,7 +55,35 @@ public class CreateRulePageSix : MonoBehaviour
     // Display the corresponding panel as the toggle in formatter changed
     public void onFormatterToggleChanged(int toggleIndex)
     {
+        if (toggleIndex < 2)
+        {
+            if (specialAffixToggle.isOn || specialPhoneToggle.isOn)
+            {
+                arabicFormatPanel.SetActive(false);
+                arabicFormatToggle.isOn = false;
+            }
 
+            if (specialPhoneToggle.isOn)
+            {
+                specialPhonePanel.SetActive(true);
+            }
+
+            if (specialAffixToggle.isOn)
+            {
+                specialAffixPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            if (arabicFormatToggle.isOn)
+            {
+                arabicFormatPanel.SetActive(true);
+                specialPhonePanel.SetActive(false);
+                specialAffixPanel.SetActive(false);
+                specialAffixToggle.isOn = false;
+                specialPhoneToggle.isOn = false;
+            }
+        }
     }
 
     // Change the number of valid vowel holder and accent as the number of syllable chagned
