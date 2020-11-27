@@ -144,11 +144,6 @@ public class CreateRulePageSix : MonoBehaviour
                 Destroy(accentPanel.transform.GetChild(accentPanel.transform.childCount - 1));
             }
         } 
-        else
-        {
-            Debug.Log(currentNumOfAccent);
-            Debug.Log(accentNum);
-        }
     }
 
     // Change the number of OneVewol
