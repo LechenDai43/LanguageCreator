@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CreateRulePageSix : MonoBehaviour
 {
+    // Meta information
+    private int syllableNum = 0, accentNum = 0;
+
     // Information about who created this panel
     public GameObject fromThisPanel;
     public int fromThisIndex;
@@ -82,6 +86,7 @@ public class CreateRulePageSix : MonoBehaviour
                 specialAffixPanel.SetActive(false);
                 specialAffixToggle.isOn = false;
                 specialPhoneToggle.isOn = false;
+                changeNumberOfOneVewol();
             }
         }
     }
@@ -89,7 +94,23 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of valid vowel holder and accent as the number of syllable chagned
     public void onNumberOfSyllableChanged()
     {
-
+        try
+        {
+            syllableNum = int.Parse(numOfSylInput.text);
+            if (arabicFormatToggle.isOn)
+            {
+                changeNumberOfOneVewol();
+            }
+            if (accentNum > syllableNum)
+            {
+                changeNumberOfOneAccent();
+            }
+            
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
     // Change the number of accent rule as the number of accent chagned
