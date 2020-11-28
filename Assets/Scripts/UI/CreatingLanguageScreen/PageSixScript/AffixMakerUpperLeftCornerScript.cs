@@ -26,6 +26,7 @@ public class AffixMakerUpperLeftCornerScript : MonoBehaviour, IDropHandler
         {
             Phoneme draggedPhoneme = eventData.pointerDrag.GetComponent<UneditibleItemScript>().phoneme;
             parentScript.affixPhoneme.addPhone(draggedPhoneme);
+            // Debug.Log(parentScript.affixPhoneme.phones.Length);
             parentScript.thisIPA.text = parentScript.affixPhoneme.getIPA();
             parentScript.thisLetters.text = parentScript.affixPhoneme.letters;
         }

@@ -26,6 +26,8 @@ public class CreateRulePageSix : MonoBehaviour
     public Text specialVowelIPA, specialConsonantIPA, specialVowelLetters, specialConsonantLetters;
     public Toggle useSemivoweledConsonant, useClusteredConsonant;
     public GameObject arabicFormatContent;
+    public Phoneme suffixPhoneme, prefixPhoneme;
+    public Phoneme[] vowelsPhonemeForArabic;
 
     // Prefabed GameObject
     // TODO...
@@ -36,7 +38,8 @@ public class CreateRulePageSix : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        suffixPhoneme = new Phoneme();
+        prefixPhoneme = new Phoneme();
     }
 
     // Update is called once per frame
@@ -125,15 +128,25 @@ public class CreateRulePageSix : MonoBehaviour
             GameObject instanceAffixMaker = (GameObject)Instantiate(prefabedAffixMaker, transform);
             AffixMakerScript affixMakerScript = instanceAffixMaker.GetComponent<AffixMakerScript>();
             affixMakerScript.isPrefix = toggleIndex == 0;
+            affixMakerScript.affixPhoneme = new Phoneme();
+            // Debug.Log(prefixPhoneme.phones.Length);
             if (toggleIndex == 0)
             {
                 affixMakerScript.parentIPA = specialPrefixIPA;
                 affixMakerScript.parentLetter = specialPrefixLetters;
+                affixMakerScript.thisIPA.text = specialPrefixIPA.text;
+                affixMakerScript.thisLetters.text = specialPrefixLetters.text;
+                affixMakerScript.affixPhoneme.addPhone(prefixPhoneme);
+                affixMakerScript.parentPhoneme = prefixPhoneme;
             }
             else
             {
                 affixMakerScript.parentIPA = specialSuffixIPA;
                 affixMakerScript.parentLetter = specialSuffixLetters;
+                affixMakerScript.thisIPA.text = specialSuffixIPA.text;
+                affixMakerScript.thisLetters.text = specialSuffixLetters.text;
+                affixMakerScript.affixPhoneme.addPhone(suffixPhoneme);
+                affixMakerScript.parentPhoneme = suffixPhoneme;
             }
         }
     }

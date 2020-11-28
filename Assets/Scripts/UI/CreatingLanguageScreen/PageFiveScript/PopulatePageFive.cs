@@ -21,7 +21,6 @@ public class PopulatePageFive : MonoBehaviour
 
     public void populate()
     {
-        GameObject newItem;
         Manager manager = Object.FindObjectOfType<Manager>();
 
         // Get the semivowel phone pool from the manager

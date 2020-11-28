@@ -22,7 +22,6 @@ public class PopulateScrollViewPageFour : MonoBehaviour
     // Add the items onto the screen
     public void populate()
     {
-        GameObject newItem;
         Manager manager = Object.FindObjectOfType<Manager>();
 
         // Get the semivowel phone pool from the manager

@@ -54,4 +54,13 @@ public class Phoneme
 
         return result;
     }
+
+    public void clear()
+    {
+        letters = "";
+        phones = new ProtoPhone[0];
+        preceding = null;
+        successing = null;
+        frequency = 0.0;
+    }
 }

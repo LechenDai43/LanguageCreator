@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AffixMakerScript : MonoBehaviour
 {
     public GameObject vowelContent, consonantContent;
-    public Phoneme affixPhoneme;
+    public Phoneme affixPhoneme, parentPhoneme;
     public bool isPrefix;
     public GameObject prefabedItem;
     public Text thisIPA, thisLetters, parentIPA, parentLetter;
@@ -14,7 +14,6 @@ public class AffixMakerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject newItem;
         Manager manager = Object.FindObjectOfType<Manager>();
 
         // Get the consonant phone pool from the manager
@@ -43,8 +42,6 @@ public class AffixMakerScript : MonoBehaviour
         Phoneme[][] allVowel = new Phoneme[2][];
         allVowel[0] = languageManager.vowelAS;
         allVowel[1] = languageManager.vowelUS;
-        Debug.Log(allVowel[0].Length);
-        Debug.Log(allVowel[1].Length);
         foreach (Phoneme[] ps in allVowel)
         {
             foreach (Phoneme p in ps)
@@ -59,32 +56,31 @@ public class AffixMakerScript : MonoBehaviour
                 newConsonant.transform.GetComponent<UneditibleItemScript>().phoneme = p;
             }
         }
-
-        affixPhoneme = new Phoneme();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void handleCheckButtonPressed()
     {
         if (affixPhoneme.phones.Length > 0)
         {
-
+            parentIPA.text = thisIPA.text;
+            parentLetter.text = thisLetters.text;
+            parentPhoneme.clear();
+            parentPhoneme.addPhone(affixPhoneme);
         }
         Destroy(this.gameObject);
     }
 
     public void handleResetButtonPressed()
     {
-
-    }
-
-    public void import(Phoneme oldAffix)
-    {
-
+        thisIPA.text = parentIPA.text;
+        thisLetters.text = parentLetter.text;
+        affixPhoneme = new Phoneme();
+        affixPhoneme.addPhone(parentPhoneme);
     }
 }
