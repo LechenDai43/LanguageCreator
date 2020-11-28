@@ -444,6 +444,15 @@ public class CreateLanguageScreenManager : MonoBehaviour
             backButton.SetActive(true);
         }
 
+        if (panelPointer == panels.Length - 1)
+        {
+            nextButton.SetActive(false);
+        }
+        else
+        {
+            nextButton.SetActive(true);
+        }
+
         if (num == 1)
         {
             StartCoroutine(intoPageTwo());

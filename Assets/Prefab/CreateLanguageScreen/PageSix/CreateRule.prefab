@@ -292,7 +292,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3124,7 +3124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4161421149333043713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3675,7 +3675,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4428,6 +4428,8 @@ MonoBehaviour:
   prefabedOneAccent: {fileID: 7170280608232595899, guid: d92f3ee3cf74087469ba83bb57b9214a,
     type: 3}
   prefabedOneVowel: {fileID: 2812993411891048024, guid: eca62846cac52d44d943f6265811d034,
+    type: 3}
+  prefabedAffixMaker: {fileID: 5939977865377701936, guid: b99be07473acbcc4892ffbff09e2752f,
     type: 3}
 --- !u!1 &4161421149890732262
 GameObject:
@@ -6772,7 +6774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4161421150449320383
 RectTransform:
   m_ObjectHideFlags: 0

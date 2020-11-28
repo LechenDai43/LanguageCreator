@@ -21,9 +21,9 @@ public class CreateRulePageSix : MonoBehaviour
 
     // GameObject of the sub panels
     public Toggle specialPrefixToggle, specialSuffixToggle;
-    public Text specialPrefixIPA, specialSuffixIPA, specialPrefixLetters, specialSuffixLetter;
+    public Text specialPrefixIPA, specialSuffixIPA, specialPrefixLetters, specialSuffixLetters;
     public Toggle specialVowelToggle, specialConsonantToggle;
-    public Text specialVowelIPA, specialConsonantIPA, specialVowelLetters, specialConsonantLetter;
+    public Text specialVowelIPA, specialConsonantIPA, specialVowelLetters, specialConsonantLetters;
     public Toggle useSemivoweledConsonant, useClusteredConsonant;
     public GameObject arabicFormatContent;
 
@@ -31,6 +31,7 @@ public class CreateRulePageSix : MonoBehaviour
     // TODO...
     // List all the prefabed object needed for create rule
     public GameObject prefabedOneAccent, prefabedOneVowel;
+    public GameObject prefabedAffixMaker;
 
     // Start is called before the first frame update
     void Start()
@@ -107,7 +108,34 @@ public class CreateRulePageSix : MonoBehaviour
     // Open the editor to change the affix
     public void onEditeAffixButtonPressed(int toggleIndex)
     {
+        // Check if the corrensponding affix type is enabled
+        bool canCreate = false;
+        if (toggleIndex == 0)
+        {
+            canCreate = specialPrefixToggle.isOn;
+        }
+        else
+        {
+            canCreate = specialSuffixToggle.isOn;
+        }
 
+        // If the correponding affix type is enabled, then open the affix maker
+        if (canCreate)
+        {
+            GameObject instanceAffixMaker = (GameObject)Instantiate(prefabedAffixMaker, transform);
+            AffixMakerScript affixMakerScript = instanceAffixMaker.GetComponent<AffixMakerScript>();
+            affixMakerScript.isPrefix = toggleIndex == 0;
+            if (toggleIndex == 0)
+            {
+                affixMakerScript.parentIPA = specialPrefixIPA;
+                affixMakerScript.parentLetter = specialPrefixLetters;
+            }
+            else
+            {
+                affixMakerScript.parentIPA = specialSuffixIPA;
+                affixMakerScript.parentLetter = specialSuffixLetters;
+            }
+        }
     }
 
     // Open the editor to add or delete vowel
