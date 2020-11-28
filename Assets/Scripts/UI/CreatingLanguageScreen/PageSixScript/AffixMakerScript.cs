@@ -36,6 +36,7 @@ public class AffixMakerScript : MonoBehaviour
                 GameObject newConsonant = (GameObject)Instantiate(prefabedItem, consonantContent.transform);
                 newConsonant.transform.GetComponent<UneditibleItemScript>().IPA.text = p.getIPA();
                 newConsonant.transform.GetComponent<UneditibleItemScript>().letters.text = p.letters;
+                newConsonant.transform.GetComponent<UneditibleItemScript>().phoneme = p;
             }
         }
 

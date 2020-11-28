@@ -405,7 +405,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
             bool notFound = true;
             for (int j = 0; j < languageManager.accents.Length; j++)
             {
-                AccentPhone inManager = languageManager.accents[i];
+                AccentPhone inManager = languageManager.accents[j];
                 if (inManager.IPA.Equals(onPage.IPA))
                 {
                     accentItem.toggle.isOn = true;
