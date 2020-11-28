@@ -55,8 +55,11 @@ public class AffixMakerScript : MonoBehaviour
                 GameObject newConsonant = (GameObject)Instantiate(prefabedItem, vowelContent.transform);
                 newConsonant.transform.GetComponent<UneditibleItemScript>().IPA.text = p.getIPA();
                 newConsonant.transform.GetComponent<UneditibleItemScript>().letters.text = p.letters;
+                newConsonant.transform.GetComponent<UneditibleItemScript>().phoneme = p;
             }
         }
+
+        affixPhoneme = new Phoneme();
     }
 
     // Update is called once per frame
@@ -67,10 +70,19 @@ public class AffixMakerScript : MonoBehaviour
 
     public void handleCheckButtonPressed()
     {
+        if (affixPhoneme.phones.Length > 0)
+        {
 
+        }
+        Destroy(this.gameObject);
     }
 
     public void handleResetButtonPressed()
+    {
+
+    }
+
+    public void import(Phoneme oldAffix)
     {
 
     }

@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IPA: {fileID: 1490224706937242740}
   letters: {fileID: 4901340194218946044}
+  prefabedDragged: {fileID: 1879207604213942026}
+  instanceDragged: {fileID: 0}
 --- !u!1 &8235303799622899378
 GameObject:
   m_ObjectHideFlags: 0
