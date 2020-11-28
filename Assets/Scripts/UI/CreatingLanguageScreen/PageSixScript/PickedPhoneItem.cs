@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickedPhoneItem : MonoBehaviour
 {
+    public Text IPA, letters;
+    public Phoneme phoneme;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class PickedPhoneItem : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void handleDelete()
+    {
+        Destroy(this.transform.gameObject);
     }
 }

@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdafa71d776cad4d98afbbfa729720f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IPA: {fileID: 4244796203399990632}
+  letters: {fileID: 4244796204022720922}
 --- !u!1 &4244796203138931793
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +288,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4244796203138931820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8878410044873784481}
+        m_MethodName: handleDelete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4244796203399990638
 GameObject:
   m_ObjectHideFlags: 0

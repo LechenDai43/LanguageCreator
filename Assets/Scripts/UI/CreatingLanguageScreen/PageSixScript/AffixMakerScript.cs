@@ -78,9 +78,8 @@ public class AffixMakerScript : MonoBehaviour
 
     public void handleResetButtonPressed()
     {
-        thisIPA.text = parentIPA.text;
-        thisLetters.text = parentLetter.text;
+        thisIPA.text = "";
+        thisLetters.text = "";
         affixPhoneme = new Phoneme();
-        affixPhoneme.addPhone(parentPhoneme);
     }
 }

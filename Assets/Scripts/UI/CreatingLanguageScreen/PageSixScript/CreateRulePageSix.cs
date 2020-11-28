@@ -27,13 +27,14 @@ public class CreateRulePageSix : MonoBehaviour
     public Toggle useSemivoweledConsonant, useClusteredConsonant;
     public GameObject arabicFormatContent;
     public Phoneme suffixPhoneme, prefixPhoneme;
-    public Phoneme[] vowelsPhonemeForArabic;
+    public Phoneme[] vowelsPhonemeForArabic, specialPickedVowel, specialPickedConsonant;
 
     // Prefabed GameObject
     // TODO...
     // List all the prefabed object needed for create rule
     public GameObject prefabedOneAccent, prefabedOneVowel;
     public GameObject prefabedAffixMaker;
+    public GameObject prefabedSpecialPhonemePicker;
 
     // Start is called before the first frame update
     void Start()
@@ -111,6 +112,10 @@ public class CreateRulePageSix : MonoBehaviour
     // Open the editor to change the affix
     public void onEditeAffixButtonPressed(int toggleIndex)
     {
+        if (!specialAffixToggle.isOn)
+        {
+            return;
+        }
         // Check if the corrensponding affix type is enabled
         bool canCreate = false;
         if (toggleIndex == 0)
@@ -154,13 +159,30 @@ public class CreateRulePageSix : MonoBehaviour
     // Open the editor to add or delete vowel
     public void onAddSpecialVowelButtonPressed()
     {
-
+        if (specialVowelToggle.isOn && specialPhoneToggle.isOn)
+        {
+            GameObject instancePhonePicker = (GameObject)Instantiate(prefabedSpecialPhonemePicker, transform);
+            SpecialPhonePickingScript script = instancePhonePicker.GetComponent<SpecialPhonePickingScript>();
+            script.populate(1);
+            script.parent = this;
+            script.parentIPA = specialVowelIPA;
+            script.parentLetters = specialVowelLetters;
+        }
     }
 
     // Open the editor to add or delete consonant
     public void onAddSpecialConsonantButtonPressed()
     {
+        if (specialConsonantToggle.isOn && specialPhoneToggle.isOn)
+        {
+            GameObject instancePhonePicker = (GameObject)Instantiate(prefabedSpecialPhonemePicker, transform);
+            SpecialPhonePickingScript script = instancePhonePicker.GetComponent<SpecialPhonePickingScript>();
+            script.populate(0);
+            script.parent = this;
+            script.parentIPA = specialConsonantIPA;
+            script.parentLetters = specialConsonantLetters;
 
+        }
     }
 
     // Change the number of OneAccent
