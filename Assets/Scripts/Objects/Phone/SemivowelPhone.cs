@@ -9,6 +9,5 @@ using System.Runtime.Serialization;
 [Serializable]
 public class SemivowelPhone : ProtoPhone
 {
-    public string Sornority;
-    public string POA;
+    
 }

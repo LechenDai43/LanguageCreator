@@ -9,7 +9,5 @@ using System.Runtime.Serialization;
 [Serializable]
 public class AccentPhone : ProtoPhone
 {
-    public string Contour, Level;
-
 
 }

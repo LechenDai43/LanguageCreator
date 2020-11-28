@@ -43,4 +43,15 @@ public class Phoneme
         phones = newArr;
         letters += newPhone.letters;
     }
+
+    public string getIPA()
+    {
+        string result = "";
+        foreach (ProtoPhone pp in phones)
+        {
+            result += pp.IPA;
+        }
+
+        return result;
+    }
 }

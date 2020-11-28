@@ -8,6 +8,5 @@ using System.Runtime.Serialization;
 [Serializable]
 public class VowelPhone : ProtoPhone
 {
-    public string Openness;
-    public string Roundness;
+   
 }
