@@ -188,6 +188,16 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of OneAccent
     private void changeNumberOfOneAccent()
     {
+        Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+
+        // Get the consonant phone pool from the manager
+        LanguageManager languageManager = manager.languageManager;
+
+        if (languageManager.accents.Length <= 0)
+        {
+            return;
+        }
+
         int currentNumOfAccent = accentPanel.transform.childCount;
         if (currentNumOfAccent < accentNum)
         {
