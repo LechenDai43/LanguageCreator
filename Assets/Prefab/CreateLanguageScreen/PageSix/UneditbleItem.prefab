@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5980122237955423999}
   - component: {fileID: 3605679165912410776}
   - component: {fileID: 4446633805629756524}
+  - component: {fileID: 8846719985821471245}
   m_Layer: 5
   m_Name: UneditbleItem
   m_TagString: Untagged
@@ -93,6 +94,18 @@ MonoBehaviour:
   letters: {fileID: 4901340194218946044}
   prefabedDragged: {fileID: 1879207604213942026}
   instanceDragged: {fileID: 0}
+--- !u!225 &8846719985821471245
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879207604213942026}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8235303799622899378
 GameObject:
   m_ObjectHideFlags: 0

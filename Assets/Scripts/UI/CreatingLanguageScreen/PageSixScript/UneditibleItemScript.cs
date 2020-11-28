@@ -34,6 +34,7 @@ public class UneditibleItemScript : MonoBehaviour, IBeginDragHandler, IEndDragHa
         instanceDragged.transform.position = transform.position;
         instanceDragged.transform.GetComponent<UneditibleItemScript>().IPA.text = this.IPA.text;
         instanceDragged.transform.GetComponent<UneditibleItemScript>().letters.text = this.letters.text;
+        instanceDragged.transform.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
     }
     public void OnEndDrag(PointerEventData eventData)
