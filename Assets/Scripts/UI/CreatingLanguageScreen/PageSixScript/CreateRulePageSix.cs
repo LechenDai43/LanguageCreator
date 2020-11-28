@@ -222,7 +222,25 @@ public class CreateRulePageSix : MonoBehaviour
     // Change the number of OneVewol
     private void changeNumberOfOneVewol()
     {
+        int currentNumOfVowel = arabicFormatContent.transform.childCount;
+        if (currentNumOfVowel < syllableNum)
+        {
+            while (arabicFormatContent.transform.childCount < syllableNum)
+            {
+                GameObject newVowelItem = (GameObject)Instantiate(prefabedOneVowel, arabicFormatContent.transform);
+            }
 
+        }
+        else if (currentNumOfVowel > syllableNum)
+        {
+
+            while (arabicFormatContent.transform.childCount > syllableNum)
+            {
+                GameObject toDelete = arabicFormatContent.transform.GetChild(arabicFormatContent.transform.childCount - 1).gameObject;
+                toDelete.transform.parent = null;
+                Destroy(toDelete);
+            }
+        }
     }
 
     private IEnumerator enterSylNumberHelper()
