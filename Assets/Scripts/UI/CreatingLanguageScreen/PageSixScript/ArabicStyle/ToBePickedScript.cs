@@ -7,6 +7,7 @@ public class ToBePickedScript : MonoBehaviour
 {
     public GameObject prefabedPanel;
     public Text IPA, letter;
+    public Phoneme aVowelPhoneme;
 
     // Start is called before the first frame update
     void Start()

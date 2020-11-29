@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AllVowelToPickScript : MonoBehaviour
 {
     public List<Toggle> allToggles = new List<Toggle>();
+    public Phoneme[] allVowelPhoneme;
     public GameObject prefabedItem;
     public GameObject content;
     public ToBePickedScript parentEle;
@@ -65,12 +66,15 @@ public class AllVowelToPickScript : MonoBehaviour
             }
         }
 
+        allVowelPhoneme = vowelPhonemesList.ToArray();
+
         int count = 0;
         foreach (Phoneme toCreate in vowelPhonemesList)
         {
 
             GameObject instancePhonePicker = (GameObject)Instantiate(prefabedItem, content.transform);
             PickVowelForArabicStylePageSix script = instancePhonePicker.GetComponent<PickVowelForArabicStylePageSix>();
+            allToggles.Add(script.toggle);
             script.index = count;
             script.parent = this;
             script.IPA.text = toCreate.getIPA();
@@ -89,7 +93,19 @@ public class AllVowelToPickScript : MonoBehaviour
 
     public void onCheckButtonPressed()
     {
-
+        int count = 0;
+        foreach (Toggle t in allToggles)
+        {
+            if (t.isOn)
+            {
+                Phoneme selectedPhoneme = allVowelPhoneme[count];
+                parentEle.IPA.text = selectedPhoneme.getIPA();
+                parentEle.letter.text = selectedPhoneme.letters;
+                parentEle.aVowelPhoneme = selectedPhoneme;
+                Destroy(this.transform.gameObject);
+            }
+            count++;
+        }
     }
 
     public void onCancelButtonPressed()
