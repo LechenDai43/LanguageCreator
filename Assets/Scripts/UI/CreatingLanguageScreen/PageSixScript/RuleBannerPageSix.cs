@@ -44,7 +44,11 @@ public class RuleBannerPageSix : MonoBehaviour
             instanceScript.accentNum = format.accentRules.Length;
             instanceScript.holderOfAccNum.text = format.accentRules.Length.ToString();
 
+            foreach (WordFormat.AccentRule ar in format.accentRules)
+            {
+                GameObject newAccentRuleItem = (GameObject)Instantiate(instanceScript.prefabedOneAccent, instanceScript.accentPanel.transform);
 
+            }
         }
     }
 }
