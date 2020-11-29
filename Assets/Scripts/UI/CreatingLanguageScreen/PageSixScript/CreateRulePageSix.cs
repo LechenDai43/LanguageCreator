@@ -112,6 +112,7 @@ public class CreateRulePageSix : MonoBehaviour
     public void onNumberOfSyllableChanged()
     {
         StartCoroutine(enterSylNumberHelper());
+        StartCoroutine(enterAccNumberHelper());
     }
 
     // Change the number of accent rule as the number of accent chagned

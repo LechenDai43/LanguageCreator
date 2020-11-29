@@ -1598,6 +1598,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d532ffad366874688b7c4978860154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coundBack: {fileID: 7807543148837480499}
+  accentType: {fileID: 6235129797207786651}
+  positionField: {fileID: 1645886368426649798}
 --- !u!1 &7308723483470738585
 GameObject:
   m_ObjectHideFlags: 0
