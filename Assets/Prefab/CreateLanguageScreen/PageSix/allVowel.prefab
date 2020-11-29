@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3380ea0a083c404daee9fb2f5483832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allToggles: []
 --- !u!1 &1410481894979511359
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +361,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4409342069873119927}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1401260098055786517}
+        m_MethodName: onCancelButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3848865998003743280
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +840,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6212440986046650506}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1401260098055786517}
+        m_MethodName: onCheckButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6956703874121290312
 GameObject:
   m_ObjectHideFlags: 0
