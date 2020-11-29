@@ -7,6 +7,7 @@ public class RuleBannerPageSix : MonoBehaviour
 {
     public Text description;
     public WordFormat format;
+    public GameObject prefabedEditor;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,20 @@ public class RuleBannerPageSix : MonoBehaviour
     // The function called when edit button is pressed
     public void handleEditButtonPressed()
     {
-        // TODO...
-        // Reopen a rule panel and populate the information according to the word format
+        GameObject instanceEditor = (GameObject)Instantiate(prefabedEditor, transform.parent.parent.parent);
+        CreateRulePageSix instanceScript = instanceBanner.GetComponent<CreateRulePageSix>();
+
+        instanceScript.oldBanner = this;
+
+        instanceScript.syllableNum = format.numOfSyllable;
+        instanceScript.holderOfSylNum.text = format.numOfSyllable.ToString();
+
+        if (format.accentRules != null && format.accentRules.Length > 0)
+        {
+            instanceScript.accentNum = format.accentRules.Length;
+            instanceScript.holderOfAccNum = format.accentRules.Length.ToString();
+
+
+        }
     }
 }

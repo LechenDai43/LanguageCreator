@@ -8,12 +8,16 @@ public class CreateRulePageSix : MonoBehaviour
 {
     // Meta information
     private int syllableNum = 0, accentNum = 0;
+    public WordFormat aFormat;
+    public GameObject prefabedRuleBanner;
+    public RuleBannerPageSix oldBanner;
 
     // Information about who created this panel
     public GameObject fromThisPanel;
     public int fromThisIndex;
 
     // GameObject attached to this panel
+    public Text holderOfSylNum, holderOfAccNum;
     public Text numOfSylInput, numOfAccInput;
     public GameObject accentPanel;
     public Toggle specialAffixToggle, specialPhoneToggle, arabicFormatToggle;
@@ -52,7 +56,141 @@ public class CreateRulePageSix : MonoBehaviour
     // Save the newly created rule
     public void onSaveButtonPressed()
     {
+        aFormat = new WordFormat();
+        aFormat.numOfSyllable = syllableNum;        
+        
+        if (arabicFormatToggle.isOn)
+        {
+            aFormat.arabicStyle = true;
+            aFormat.consonantWithSemivowel = useSemivoweledConsonant.isOn;
+            aFormat.consonantCluster = useClusteredConsonant.isOn;
 
+            List<Phoneme> forVowelHolder = new List<Phoneme>();
+            for (int i = 0; i < arabicFormatContent.transform.childCount; i++)
+            {
+                ToBePickedScript script = arabicFormatContent.transform.GetChild(i).GetComponent<ToBePickedScript>();
+                if (script.aVowelPhoneme == null)
+                {
+                    aFormat.arabicStyle = false;
+                    aFormat.consonantWithSemivowel = false;
+                    aFormat.consonantCluster = false;
+                    break;
+                }
+                forVowelHolder.Add(script.aVowelPhoneme);
+            }
+            aFormat.vowelHolders = forVowelHolder.ToArray();
+        }
+        else
+        {
+            aFormat.arabicStyle = false;
+            
+            // Get accent rules
+            if (accentNum > 0)
+            {
+                List<WordFormat.AccentRule> aList = new List<WordFormat.AccentRule>();
+                for (int i = 0; i < accentPanel.transform.childCount; i++)
+                {
+                    AddAccentPageSix script = accentPanel.transform.GetChild(i).GetComponent<AddAccentPageSix>();
+                    WordFormat.AccentRule wfar = new WordFormat.AccentRule();
+
+                    if (script.coundBack.options.ToArray()[script.coundBack.value].text.Equals("Backward"))
+                    {
+                        wfar.backword = true;
+                    }
+                    else
+                    {
+                        wfar.backword = false;
+                    }
+
+                    try
+                    {
+                        if (script.positionField.text.Equals(""))
+                        {
+                            continue;
+                        }
+                        wfar.position = int.Parse(script.positionField.text);
+
+                        Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+                        LanguageManager languageManager = manager.languageManager;
+                        AccentPhone[] accents = languageManager.accents;
+
+                        if (script.accentType.value.Equals("all"))
+                        {
+                            wfar.accents = accents;
+                        }
+                        else
+                        {
+                            List<AccentPhone> potentialAccent = new List<AccentPhone>();
+                            foreach (AccentPhone actp in accents)
+                            {
+                                string value = script.accentType.options.ToArray()[script.accentType.value].text;
+                                string IPA = actp.IPA;
+                                string contour = actp.Contour;
+                                string level = actp.Level;
+                                if (value.Equals(IPA) || value.Equals(contour) || value.Equals(level))
+                                {
+                                    potentialAccent.Add(actp);
+                                }
+                            }
+                            wfar.accents = potentialAccent.ToArray();
+                        }
+                        aList.Add(wfar);
+                    }
+                    catch (Exception e)
+                    {
+                        continue;
+                    }
+                }
+                aFormat.accentRules = aList.ToArray();
+            }
+
+            // Get special affix
+            if (specialAffixToggle.isOn)
+            {
+                if (specialPrefixToggle.isOn && prefixPhoneme != null && prefixPhoneme.phones.Length > 0)
+                {
+                    aFormat.specialLeading = prefixPhoneme;
+                }
+                if (specialSuffixToggle.isOn && suffixPhoneme != null && suffixPhoneme.phones.Length > 0)
+                {
+                    aFormat.specialEnding = suffixPhoneme;
+                }
+            }
+
+            // Get special phone
+            if (specialPhoneToggle.isOn)
+            {
+                if (specialVowelToggle.isOn && specialPickedVowel != null && specialPickedVowel.Length > 0)
+                {
+                    aFormat.specialVowel = specialPickedVowel;
+                }
+
+                if (specialConsonantToggle.isOn && specialPickedConsonant != null && specialPickedConsonant.Length > 0)
+                {
+                    aFormat.specialConsonant = specialPickedConsonant;
+                }
+            }
+
+            // Create a rule banner 
+            // prefabedRuleBanner
+            // RuleBannerPageSix
+
+            if (oldBannder != null && fromThisPanel == null)
+            {
+                oldBannder.format = aFormat;
+                oldBannder.description.text = aFormat.getDescription();
+            }
+            if (oldBannder == null && fromThisPanel != null)
+            {
+                GameObject instanceBanner = (GameObject)Instantiate(prefabedRuleBanner, fromThisPanel.transform);
+                RuleBannerPageSix instanceScript = instanceBanner.GetComponent<RuleBannerPageSix>();
+                instanceScript.format = aFormat;
+                instanceScript.description.text = aFormat.getDescription();
+            }
+            
+
+            Destroy(this.transform.gameObject);
+        }
     }
 
     // Do not save this rule and exit the rule edit panel

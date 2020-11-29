@@ -18,13 +18,11 @@ public class PhonemePickerDropPanel : MonoBehaviour, IDropHandler
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Attention - Update");
     }
 
     public void OnDrop(PointerEventData eventData)
     {
 
-        Debug.Log("Attention");
         if (eventData.pointerDrag != null)
         {
             Phoneme draggedPhoneme = eventData.pointerDrag.GetComponent<UneditibleItemScript>().phoneme;

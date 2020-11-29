@@ -90,7 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f89255e26f4b9b4aa0b3e525abd8cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: {fileID: 0}
+  description: {fileID: 3388010584645662017}
+  prefabedEditor: {fileID: 4161421149876722709, guid: 6672eacba4bbe3c44b512a61267212dd,
+    type: 3}
 --- !u!1 &3800234930093470183
 GameObject:
   m_ObjectHideFlags: 0

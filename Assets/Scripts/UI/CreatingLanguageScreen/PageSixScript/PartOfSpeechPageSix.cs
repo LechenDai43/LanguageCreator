@@ -30,8 +30,8 @@ public class PartOfSpeechPageSix : MonoBehaviour
     public void addNewRuleButtonPressed()
     {
         GameObject instancePanel = (GameObject)Instantiate(prefabedPanel, transform.parent);
-        // TODO
-        // attach reference to this panel onto the instance panel
+        instancePanel.transform.GetComponent<CreateRulePageSix>().fromThisPanel = thisPanel;
+        instancePanel.transform.GetComponent<CreateRulePageSix>().fromThisIndex = index;
     }
 
     // Handle the button pressed to import rules

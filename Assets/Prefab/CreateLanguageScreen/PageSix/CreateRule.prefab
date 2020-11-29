@@ -4399,8 +4399,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03da3ad592e9df9429d19a546b4ccdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fromThisPanel: {fileID: 0}
+  prefabedRuleBanner: {fileID: 3362337034380234419, guid: 5a9abceb31932f04ead165d8b3f5cc03,
+    type: 3}
+  fromThisPanel: {fileID: 3362337034380234419, guid: 5a9abceb31932f04ead165d8b3f5cc03,
+    type: 3}
   fromThisIndex: 0
+  holderOfSylNum: {fileID: 4161421148682969755}
+  holderOfAccNum: {fileID: 4161421148479702517}
   numOfSylInput: {fileID: 4161421149452928826}
   numOfAccInput: {fileID: 4161421150198557192}
   accentPanel: {fileID: 4161421149350256223}
