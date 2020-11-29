@@ -32,7 +32,7 @@ public class RuleBannerPageSix : MonoBehaviour
     public void handleEditButtonPressed()
     {
         GameObject instanceEditor = (GameObject)Instantiate(prefabedEditor, transform.parent.parent.parent);
-        CreateRulePageSix instanceScript = instanceBanner.GetComponent<CreateRulePageSix>();
+        CreateRulePageSix instanceScript = instanceEditor.GetComponent<CreateRulePageSix>();
 
         instanceScript.oldBanner = this;
 
@@ -42,7 +42,7 @@ public class RuleBannerPageSix : MonoBehaviour
         if (format.accentRules != null && format.accentRules.Length > 0)
         {
             instanceScript.accentNum = format.accentRules.Length;
-            instanceScript.holderOfAccNum = format.accentRules.Length.ToString();
+            instanceScript.holderOfAccNum.text = format.accentRules.Length.ToString();
 
 
         }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CreateRulePageSix : MonoBehaviour
 {
     // Meta information
-    private int syllableNum = 0, accentNum = 0;
+    public int syllableNum = 0, accentNum = 0;
     public WordFormat aFormat;
     public GameObject prefabedRuleBanner;
     public RuleBannerPageSix oldBanner;
@@ -175,12 +175,12 @@ public class CreateRulePageSix : MonoBehaviour
             // prefabedRuleBanner
             // RuleBannerPageSix
 
-            if (oldBannder != null && fromThisPanel == null)
+            if (oldBanner != null && fromThisPanel == null)
             {
-                oldBannder.format = aFormat;
-                oldBannder.description.text = aFormat.getDescription();
+                oldBanner.format = aFormat;
+                oldBanner.description.text = aFormat.getDescription();
             }
-            if (oldBannder == null && fromThisPanel != null)
+            if (oldBanner == null && fromThisPanel != null)
             {
                 GameObject instanceBanner = (GameObject)Instantiate(prefabedRuleBanner, fromThisPanel.transform);
                 RuleBannerPageSix instanceScript = instanceBanner.GetComponent<RuleBannerPageSix>();
