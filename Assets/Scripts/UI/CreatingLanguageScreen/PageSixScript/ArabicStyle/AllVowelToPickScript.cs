@@ -10,7 +10,8 @@ public class AllVowelToPickScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
     }
 
     // Update is called once per frame
@@ -27,5 +28,21 @@ public class AllVowelToPickScript : MonoBehaviour
     public void onCancelButtonPressed()
     {
         Destroy(this.transform.gameObject);
+    }
+
+    public void onOneOFToggleChange(int index, bool isToggleOn)
+    {
+        if (isToggleOn)
+        {
+            int count = 0;
+            foreach (Toggle t in allToggles)
+            {
+                if (count != index)
+                {
+                    t.isOn = false;
+                }
+                count++;
+            }
+        }
     }
 }

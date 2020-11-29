@@ -24,6 +24,6 @@ public class PickVowelForArabicStylePageSix : MonoBehaviour
 
     public void onToggleChange()
     {
-
+        parent.onOneOFToggleChange(index, toggle.isOn);
     }
 }
