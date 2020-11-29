@@ -155,7 +155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!1 &2812993411891048024
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 205987767869965955}
   - component: {fileID: 8827929885648641811}
   - component: {fileID: 3757584626295325782}
-  - component: {fileID: 9040884347026122771}
+  - component: {fileID: 8619890675002697576}
   m_Layer: 5
   m_Name: PickVowel
   m_TagString: Untagged
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9040884347026122771
+--- !u!114 &8619890675002697576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,9 +243,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2812993411891048024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfaa9d30e8fced14abbfe5ed941dc4ee, type: 3}
+  m_Script: {fileID: 11500000, guid: bc58e044ab365d142b94bb5c7effcafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabedPanel: {fileID: 832815562814650057, guid: dbcd8840dd2cd3d44b38c42abb073f6c,
+    type: 3}
+  IPA: {fileID: 2935771781787053820}
+  letter: {fileID: 918328573642084620}
 --- !u!1 &3397550612068206593
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +368,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6670246096122430853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8619890675002697576}
+        m_MethodName: onButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6969009989102968639
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,4 +457,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 

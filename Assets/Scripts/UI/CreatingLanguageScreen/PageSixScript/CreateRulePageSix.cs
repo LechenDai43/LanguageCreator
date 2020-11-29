@@ -106,6 +106,8 @@ public class CreateRulePageSix : MonoBehaviour
                 arabicFormatPanel.SetActive(false);
             }
         }
+        onNumberOfAccentChanged();
+        changeNumberOfOneAccent();
     }
 
     // Change the number of valid vowel holder and accent as the number of syllable chagned
@@ -209,6 +211,11 @@ public class CreateRulePageSix : MonoBehaviour
         if (languageManager.accents.Length <= 0)
         {
             return;
+        }
+
+        if (arabicFormatToggle.isOn)
+        {
+            accentNum = 0;
         }
 
         int currentNumOfAccent = accentPanel.transform.childCount;
