@@ -30,6 +30,10 @@ public class Phoneme
 
     public void addPhone(Phoneme newPhone)
     {
+        if (newPhone == null || newPhone.phones == null)
+        {
+            return;
+        }
         ProtoPhone[] newArr = new ProtoPhone[phones.Length + newPhone.phones.Length];
         int i = 0;
         for (i = 0; i < phones.Length; i++)
