@@ -150,15 +150,15 @@ public class RuleBannerPageSix : MonoBehaviour
         // populate special phone
         if (!format.arabicStyle)
         {
-            if (format.specialVowel != null && fromat.specialVowel.Length > 0)
+            if (format.specialVowel != null && format.specialVowel.Length > 0)
             {
                 instanceScript.specialPhoneToggle.isOn = true;
                 instanceScript.specialPhonePanel.SetActive(true);
                 instanceScript.specialVowelToggle.isOn = true;
 
                 string totalIPA = "", totalLet = "";
-                instanceScript.specialPickedVowel = new Phoneme[fromat.specialVowel.Length];
-                for (int i = 0; i < fromat.specialVowel.Length; i++)
+                instanceScript.specialPickedVowel = new Phoneme[format.specialVowel.Length];
+                for (int i = 0; i < format.specialVowel.Length; i++)
                 {
                     if (i != 0)
                     {
@@ -166,7 +166,7 @@ public class RuleBannerPageSix : MonoBehaviour
                         totalLet += " ,";
                     }
                     instanceScript.specialPickedVowel[i] = new Phoneme();
-                    instanceScript.specialPickedVowel[i].addPhone(fromat.specialVowel[i]);
+                    instanceScript.specialPickedVowel[i].addPhone(format.specialVowel[i]);
                     totalIPA += instanceScript.specialPickedVowel[i].getIPA();
                     totalLet += instanceScript.specialPickedVowel[i].letters;
                 }
@@ -177,15 +177,15 @@ public class RuleBannerPageSix : MonoBehaviour
 
             }
 
-            if (format.specialConsonant != null && fromat.specialConsonant.Length > 0)
+            if (format.specialConsonant != null && format.specialConsonant.Length > 0)
             {
                 instanceScript.specialPhoneToggle.isOn = true;
                 instanceScript.specialPhonePanel.SetActive(true);
                 instanceScript.specialConsonantToggle.isOn = true;
 
                 string totalIPA = "", totalLet = "";
-                instanceScript.specialPickedConsonant = new Phoneme[fromat.specialConsonant.Length];
-                for (int i = 0; i < fromat.specialConsonant.Length; i++)
+                instanceScript.specialPickedConsonant = new Phoneme[format.specialConsonant.Length];
+                for (int i = 0; i < format.specialConsonant.Length; i++)
                 {
                     if (i != 0)
                     {
@@ -193,7 +193,7 @@ public class RuleBannerPageSix : MonoBehaviour
                         totalLet += " ,";
                     }
                     instanceScript.specialPickedConsonant[i] = new Phoneme();
-                    instanceScript.specialPickedConsonant[i].addPhone(fromat.specialConsonant[i]);
+                    instanceScript.specialPickedConsonant[i].addPhone(format.specialConsonant[i]);
                     totalIPA += instanceScript.specialPickedConsonant[i].getIPA();
                     totalLet += instanceScript.specialPickedConsonant[i].letters;
                 }
