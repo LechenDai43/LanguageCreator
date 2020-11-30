@@ -217,6 +217,13 @@ public class RuleBannerPageSix : MonoBehaviour
             instanceScript.useSemivoweledConsonant.isOn = format.consonantWithSemivowel;
             instanceScript.useClusteredConsonant.isOn = format.consonantCluster;
 
+            while (instanceScript.arabicFormatContent.transform.childCount > 0)
+            {
+                Transform tem = instanceScript.arabicFormatContent.transform.GetChild(0);
+                tem.parent = null;
+                Destroy(tem.gameObject);
+            }
+
             foreach (Phoneme vp in format.vowelHolders)
             {
                 GameObject newPickedVowelItem = (GameObject)Instantiate(instanceScript.prefabedOneVowel, instanceScript.arabicFormatContent.transform);

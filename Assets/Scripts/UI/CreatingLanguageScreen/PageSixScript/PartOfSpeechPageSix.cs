@@ -44,7 +44,7 @@ public class PartOfSpeechPageSix : MonoBehaviour
             return;
         }
 
-        GameObject template = otherPartOfSpeech[buttonIndex];
+        GameObject template = otherPartOfSpeech[buttonIndex].thisPanel ;
         for (int i = 0; i < template.transform.childCount; i++)
         {
             RuleBannerPageSix bannerScriptOld = template.transform.GetChild(i).GetComponent<RuleBannerPageSix>();
