@@ -106,9 +106,16 @@ public class CreateRulePageSix : MonoBehaviour
                     {
                         if (script.positionField.text.Equals(""))
                         {
+                            wfar.position = int.Parse(script.holder.text);
+                        }
+                        else
+                        {
+                            wfar.position = int.Parse(script.positionField.text);
+                        }
+                        if (wfar.position > syllableNum)
+                        {
                             continue;
                         }
-                        wfar.position = int.Parse(script.positionField.text);
 
                         Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
                         LanguageManager languageManager = manager.languageManager;
@@ -135,6 +142,7 @@ public class CreateRulePageSix : MonoBehaviour
                             wfar.accents = potentialAccent.ToArray();
                         }
                         aList.Add(wfar);
+                        
                     }
                     catch (Exception e)
                     {
@@ -175,10 +183,11 @@ public class CreateRulePageSix : MonoBehaviour
             // prefabedRuleBanner
             // RuleBannerPageSix
 
-            if (oldBanner != null && fromThisPanel == null)
+            if (oldBanner != null)
             {
                 oldBanner.format = aFormat;
                 oldBanner.description.text = aFormat.getDescription();
+
             }
             if (oldBanner == null && fromThisPanel != null)
             {

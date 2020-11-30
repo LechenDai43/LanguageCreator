@@ -31,7 +31,7 @@ public class RuleBannerPageSix : MonoBehaviour
     // The function called when edit button is pressed
     public void handleEditButtonPressed()
     {
-        GameObject instanceEditor = (GameObject)Instantiate(prefabedEditor, transform.parent.parent.parent);
+        GameObject instanceEditor = (GameObject)Instantiate(prefabedEditor, transform.parent.parent.parent.parent.parent);
         CreateRulePageSix instanceScript = instanceEditor.GetComponent<CreateRulePageSix>();
 
         instanceScript.oldBanner = this;
@@ -47,7 +47,8 @@ public class RuleBannerPageSix : MonoBehaviour
         {
             instanceScript.accentNum = format.accentRules.Length;
             instanceScript.holderOfAccNum.text = format.accentRules.Length.ToString();
-
+            instanceScript.accentNum = format.accentRules.Length;
+                Debug.Log(format.accentRules.Length);
             foreach (WordFormat.AccentRule ar in format.accentRules)
             {
                 GameObject newAccentRuleItem = (GameObject)Instantiate(instanceScript.prefabedOneAccent, instanceScript.accentPanel.transform);
@@ -62,6 +63,7 @@ public class RuleBannerPageSix : MonoBehaviour
                 {
                     accentScript.coundBack.value = 0;
                 }
+                    Debug.Log(accentScript.coundBack.value);
 
                 // positions
                 accentScript.holder.text = ar.position.ToString();
@@ -108,7 +110,7 @@ public class RuleBannerPageSix : MonoBehaviour
                         }
                     }
                 }
-                else
+                else if (ar.accents.Length == 1)
                 {
                     accentScript.accentType.value = findValueFromDropDown(accentScript.accentType, ar.accents[0].IPA);
                 }
@@ -207,6 +209,15 @@ public class RuleBannerPageSix : MonoBehaviour
 
 
         // populate arabic style
+        if (format.arabicStyle)
+        {
+            instanceScript.arabicFormatToggle.isOn = true;
+            instanceScript.arabicFormatContent.SetActive(true);
+            instanceScript.useSemivoweledConsonant.isOn = format.consonantWithSemivowel;
+            instanceScript.useClusteredConsonant.isOn = format.consonantCluster;
+
+
+        }
     }
     private int findValueFromDropDown(Dropdown dropdown, string text)
     {
