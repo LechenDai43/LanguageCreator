@@ -183,23 +183,25 @@ public class CreateRulePageSix : MonoBehaviour
             // prefabedRuleBanner
             // RuleBannerPageSix
 
-            if (oldBanner != null)
-            {
-                oldBanner.format = aFormat;
-                oldBanner.description.text = aFormat.getDescription();
-
-            }
-            if (oldBanner == null && fromThisPanel != null)
-            {
-                GameObject instanceBanner = (GameObject)Instantiate(prefabedRuleBanner, fromThisPanel.transform);
-                RuleBannerPageSix instanceScript = instanceBanner.GetComponent<RuleBannerPageSix>();
-                instanceScript.format = aFormat;
-                instanceScript.description.text = aFormat.getDescription();
-            }
             
-
-            Destroy(this.transform.gameObject);
         }
+
+        if (oldBanner != null)
+        {
+            oldBanner.format = aFormat;
+            oldBanner.description.text = aFormat.getDescription();
+
+        }
+        if (oldBanner == null && fromThisPanel != null)
+        {
+            GameObject instanceBanner = (GameObject)Instantiate(prefabedRuleBanner, fromThisPanel.transform);
+            RuleBannerPageSix instanceScript = instanceBanner.GetComponent<RuleBannerPageSix>();
+            instanceScript.format = aFormat;
+            instanceScript.description.text = aFormat.getDescription();
+        }
+
+
+        Destroy(this.transform.gameObject);
     }
 
     // Do not save this rule and exit the rule edit panel
