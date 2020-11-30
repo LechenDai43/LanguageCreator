@@ -48,7 +48,8 @@ public class RuleBannerPageSix : MonoBehaviour
             instanceScript.accentNum = format.accentRules.Length;
             instanceScript.holderOfAccNum.text = format.accentRules.Length.ToString();
             instanceScript.accentNum = format.accentRules.Length;
-                Debug.Log(format.accentRules.Length);
+                
+
             foreach (WordFormat.AccentRule ar in format.accentRules)
             {
                 GameObject newAccentRuleItem = (GameObject)Instantiate(instanceScript.prefabedOneAccent, instanceScript.accentPanel.transform);
@@ -216,7 +217,17 @@ public class RuleBannerPageSix : MonoBehaviour
             instanceScript.useSemivoweledConsonant.isOn = format.consonantWithSemivowel;
             instanceScript.useClusteredConsonant.isOn = format.consonantCluster;
 
+            foreach (Phoneme vp in format.vowelHolders)
+            {
+                GameObject newPickedVowelItem = (GameObject)Instantiate(instanceScript.prefabedOneVowel, instanceScript.arabicFormatContent.transform);
+                ToBePickedScript pickedScript = newPickedVowelItem.transform.GetComponent<ToBePickedScript>();
 
+                pickedScript.aVowelPhoneme = new Phoneme();
+                pickedScript.aVowelPhoneme.addPhone(vp);
+
+                pickedScript.IPA.text = vp.getIPA();
+                pickedScript.letter.text = vp.letters;
+            }
         }
     }
     private int findValueFromDropDown(Dropdown dropdown, string text)
