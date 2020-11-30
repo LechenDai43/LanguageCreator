@@ -150,7 +150,59 @@ public class RuleBannerPageSix : MonoBehaviour
         // populate special phone
         if (!format.arabicStyle)
         {
+            if (format.specialVowel != null && fromat.specialVowel.Length > 0)
+            {
+                instanceScript.specialPhoneToggle.isOn = true;
+                instanceScript.specialPhonePanel.SetActive(true);
+                instanceScript.specialVowelToggle.isOn = true;
 
+                string totalIPA = "", totalLet = "";
+                instanceScript.specialPickedVowel = new Phoneme[fromat.specialVowel.Length];
+                for (int i = 0; i < fromat.specialVowel.Length; i++)
+                {
+                    if (i != 0)
+                    {
+                        totalIPA += " ,";
+                        totalLet += " ,";
+                    }
+                    instanceScript.specialPickedVowel[i] = new Phoneme();
+                    instanceScript.specialPickedVowel[i].addPhone(fromat.specialVowel[i]);
+                    totalIPA += instanceScript.specialPickedVowel[i].getIPA();
+                    totalLet += instanceScript.specialPickedVowel[i].letters;
+                }
+
+                //specialVowelIPA, specialConsonantIPA, specialVowelLetters, specialConsonantLetters;
+                instanceScript.specialVowelIPA.text = totalIPA;
+                instanceScript.specialVowelLetters.text = totalLet;
+
+            }
+
+            if (format.specialConsonant != null && fromat.specialConsonant.Length > 0)
+            {
+                instanceScript.specialPhoneToggle.isOn = true;
+                instanceScript.specialPhonePanel.SetActive(true);
+                instanceScript.specialConsonantToggle.isOn = true;
+
+                string totalIPA = "", totalLet = "";
+                instanceScript.specialPickedConsonant = new Phoneme[fromat.specialConsonant.Length];
+                for (int i = 0; i < fromat.specialConsonant.Length; i++)
+                {
+                    if (i != 0)
+                    {
+                        totalIPA += " ,";
+                        totalLet += " ,";
+                    }
+                    instanceScript.specialPickedConsonant[i] = new Phoneme();
+                    instanceScript.specialPickedConsonant[i].addPhone(fromat.specialConsonant[i]);
+                    totalIPA += instanceScript.specialPickedConsonant[i].getIPA();
+                    totalLet += instanceScript.specialPickedConsonant[i].letters;
+                }
+
+                //specialVowelIPA, specialConsonantIPA, specialVowelLetters, specialConsonantLetters;
+                instanceScript.specialConsonantIPA.text = totalIPA;
+                instanceScript.specialConsonantLetters.text = totalLet;
+
+            }
         }
 
 
