@@ -36,9 +36,13 @@ public class RuleBannerPageSix : MonoBehaviour
 
         instanceScript.oldBanner = this;
 
+        // populate num of syllable and accent
         instanceScript.syllableNum = format.numOfSyllable;
         instanceScript.holderOfSylNum.text = format.numOfSyllable.ToString();
+        instanceScript.aFormat = format;
 
+
+        // populate the accents
         if (format.accentRules != null && format.accentRules.Length > 0)
         {
             instanceScript.accentNum = format.accentRules.Length;
@@ -47,8 +51,122 @@ public class RuleBannerPageSix : MonoBehaviour
             foreach (WordFormat.AccentRule ar in format.accentRules)
             {
                 GameObject newAccentRuleItem = (GameObject)Instantiate(instanceScript.prefabedOneAccent, instanceScript.accentPanel.transform);
+                AddAccentPageSix accentScript = newAccentRuleItem.transform.GetComponent<AddAccentPageSix>();
+
+                // if count back
+                if (ar.backword)
+                {
+                    accentScript.coundBack.value = 1;
+                }
+                else
+                {
+                    accentScript.coundBack.value = 0;
+                }
+
+                // positions
+                accentScript.holder.text = ar.position.ToString();
+
+                // accent types
+                if (ar.accents.Length > 1)
+                {
+                    string commonCon = null, commonLvl = null;
+                    bool findUniqueCon = false, findUniqueLvl = false;
+
+                    foreach (AccentPhone ap in ar.accents)
+                    {
+                        if (commonCon == null)
+                        {
+                            commonCon = ap.Contour;
+                            commonLvl = ap.Level;
+                        } 
+                        else
+                        {
+                            if (!commonCon.Equals(ap.Contour))
+                            {
+                                findUniqueCon = true;
+                            }
+                            if (!commonLvl.Equals(ap.Level))
+                            {
+                                findUniqueLvl = true;
+                            }
+                        }
+                    }
+
+                    if (findUniqueLvl && findUniqueCon)
+                    {
+                        accentScript.accentType.value = accentScript.accentType.options.Count;
+                    }
+                    else
+                    {
+                        if(findUniqueCon)
+                        {
+                            accentScript.accentType.value = findValueFromDropDown(accentScript.accentType, commonLvl);
+                        }
+                        else
+                        {
+                            accentScript.accentType.value = findValueFromDropDown(accentScript.accentType, commonCon);
+                        }
+                    }
+                }
+                else
+                {
+                    accentScript.accentType.value = findValueFromDropDown(accentScript.accentType, ar.accents[0].IPA);
+                }
+            }
+        }
+
+        // populate affix
+        if (!format.arabicStyle)
+        {   
+
+            if (format.specialLeading != null)
+            {
+                instanceScript.specialAffixToggle.isOn = true;
+                instanceScript.specialAffixPanel.SetActive(true);
+                instanceScript.specialPrefixToggle.isOn = true;
+                instanceScript.prefixPhoneme = new Phoneme();
+                instanceScript.prefixPhoneme.addPhone(format.specialLeading);
+                //  specialPrefixIPA, specialSuffixIPA, specialPrefixLetters
+                instanceScript.specialPrefixIPA.text = instanceScript.prefixPhoneme.getIPA();
+                instanceScript.specialPrefixLetters.text = instanceScript.prefixPhoneme.letters;
+
+            }
+
+            if (format.specialEnding != null)
+            {
+                instanceScript.specialAffixToggle.isOn = true;
+                instanceScript.specialAffixPanel.SetActive(true);
+                instanceScript.specialSuffixToggle.isOn = true;
+                instanceScript.suffixPhoneme = new Phoneme();
+                instanceScript.suffixPhoneme.addPhone(format.specialEnding);
+                //  specialPrefixIPA, specialSuffixIPA, specialPrefixLetters
+                instanceScript.specialSuffixIPA.text = instanceScript.suffixPhoneme.getIPA();
+                instanceScript.specialSuffixLetters.text = instanceScript.suffixPhoneme.letters;
 
             }
         }
+
+
+        // populate special phone
+        if (!format.arabicStyle)
+        {
+
+        }
+
+
+        // populate arabic style
+    }
+    private int findValueFromDropDown(Dropdown dropdown, string text)
+    {
+        int count = 0;
+        foreach (Dropdown.OptionData dpdnOpd in dropdown.options)
+        {
+            if (dpdnOpd.text.Equals(text))
+            {
+                break;
+            }
+            count++;
+        }
+        return count;
     }
 }
