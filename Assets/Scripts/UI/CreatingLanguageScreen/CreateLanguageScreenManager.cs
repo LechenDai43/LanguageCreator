@@ -538,8 +538,117 @@ public class CreateLanguageScreenManager : MonoBehaviour
 
         Manager manager = Object.FindObjectOfType<Manager>();
         LanguageManager languageManager = manager.languageManager;
+
         // Get consonants and vowels into the new language family object
         Phoneme[][] allPhonemes = new Phoneme[6][];
+        allPhonemes[0] = languageManager.consonantBoW;
+        allPhonemes[1] = languageManager.consonantBoS;
+        allPhonemes[2] = languageManager.consonantEoS;
+        allPhonemes[3] = languageManager.consonantEoW;
+        allPhonemes[4] = languageManager.vowelAS;
+        allPhonemes[5] = languageManager.vowelUS;
+
+        for (int i = 0; i < allPhonemes.Length; i++)
+        {
+            // Create new array of speech sounds
+            SpeechSound[] speechSounds;
+            if (i == 0)
+            {
+                newLanguageFamily.WordOnsets = new SpeechSound[allPhonemes[i].Length];
+                speechSounds = newLanguageFamily.WordOnsets;
+            }
+            else if (i == 1)
+            {
+                newLanguageFamily.SyllableOnsets = new SpeechSound[allPhonemes[i].Length];
+                speechSounds = newLanguageFamily.SyllableOnsets;
+            }
+            else if (i == 2)
+            {
+                newLanguageFamily.SyllableCodas = new SpeechSound[allPhonemes[i].Length];
+                speechSounds = newLanguageFamily.SyllableCodas;
+            }
+            else if (i == 3)
+            {
+                newLanguageFamily.WordCodas = new SpeechSound[allPhonemes[i].Length];
+                speechSounds = newLanguageFamily.WordCodas;
+            }
+            else if (i == 4)
+            {
+                newLanguageFamily.StressedVowels = new SpeechSound[allPhonemes[i].Length];
+                speechSounds = newLanguageFamily.StressedVowels;
+            }
+            else
+            {
+                newLanguageFamily.UnstressedVowels = new SpeechSound[allPhonemes[i].Length];
+                speechSounds = newLanguageFamily.UnstressedVowels;
+            }
+
+            for (int j = 0; j < allPhonemes[i].Length; j++)
+            {
+                Phoneme phoneme = allPhonemes[i][j];
+                SpeechSound ss = new SpeechSound();
+
+                if (phoneme.preceding != null)
+                {
+                    ss.Preceded = true;
+                    ss.Successed = false;
+
+                    Phone glide = new Phone();
+                    glide.converProtoPhone(phoneme.phones[0]);
+                    ss.Glide = glide;
+
+                    Phone[] phones = new Phone[phoneme.phones.Length - 1];
+                    for (int ii = 0; ii < phones.Length; ii++)
+                    {
+                        Phone phone = new Phone();
+                        phone.converProtoPhone(phoneme.phones[ii + 1]);
+                        phones[ii] = phone;
+                    }
+                    ss.Phonemes = phones;
+                }
+                else if (phoneme.successing != null)
+                {
+                    ss.Preceded = false;
+                    ss.Successed = true;
+
+                    Phone glide = new Phone();
+                    glide.converProtoPhone(phoneme.phones[phoneme.phones.Length - 1]);
+                    ss.Glide = glide;
+
+                    Phone[] phones = new Phone[phoneme.phones.Length - 1];
+                    for (int ii = 0; ii < phones.Length; ii++)
+                    {
+                        Phone phone = new Phone();
+                        phone.converProtoPhone(phoneme.phones[ii]);
+                        phones[ii] = phone;
+                    }
+                    ss.Phonemes = phones;
+                }
+                else
+                {
+                    ss.Preceded = false;
+                    ss.Successed = false;
+
+                    Phone[] phones = new Phone[phoneme.phones.Length];
+                    for (int ii = 0; ii < phones.Length; ii++)
+                    {
+                        Phone phone = new Phone();
+                        phone.converProtoPhone(phoneme.phones[ii]);
+                        phones[ii] = phone;
+                    }
+                    ss.Phonemes = phones;
+                }
+
+                ss.Transliteration = phoneme.letters;
+                ss.Frequency = phoneme.frequency;
+
+                speechSounds[j] = ss;
+            }
+        }
+
+        // WordOnsets, WordCodas, SyllableOnsets, SyllableCodas, StressedVowels, UnstressedVowels;
+        //consonantBoW, consonantBoS, consonantEoS, consonantEoW;
+        //public Phoneme[] vowelAS, vowelUS;
 
     }
 }
