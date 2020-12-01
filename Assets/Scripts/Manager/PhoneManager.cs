@@ -18,10 +18,26 @@ public class PhoneManager
     public VowelPhone[][] vowelPool;
     public SemivowelPhone[] semivowelPool;
     public AccentPhone[] accentPool;
+    public ConsonantPhone emptyConsonant;
+    public VowelPhone emptyVowel;
 
     // Initialize the four axis
     public PhoneManager()
     {
+        emptyConsonant = new ConsonantPhone();
+        emptyConsonant.IPA = "'";
+        emptyConsonant.POA = "null";
+        emptyConsonant.MOA = "null";
+        emptyConsonant.FCB = "back";
+        emptyConsonant.Aspiration = "no";
+        emptyConsonant.Voiceness = "no";
+
+        emptyVowel = new VowelPhone();
+        emptyVowel.IPA = "ɿ";
+        emptyVowel.Openness = "close";
+        emptyVowel.Roundness = "unrounded";
+        emptyVowel.FCB = "front";
+
         consonantHorizontal.Clear();
         consonantVertical.Clear();
         vowelHorizontal.Clear();

@@ -71,8 +71,9 @@ public class PopulateScrollViewPageTwo : MonoBehaviour
         GetComponent<GridLayoutGroup>().constraintCount = validColumnNum + 1;
 
         // Generate the top row
-        newItem = (GameObject)Instantiate(tagItem, transform);
-        newItem.GetComponent<Text>().text = "";
+        newItem = (GameObject)Instantiate(prefabedItem, transform);
+        newItem.transform.GetChild(0).GetComponent<Text>().text = phoneManager.emptyConsonant.IPA;
+        newItem.transform.GetComponent<PhoneElementItem>().phone = phoneManager.emptyConsonant;
         for (int i = 0; i < consonantPhones[0].Length; i++)
         {
             bool inEmptyColumn = false;
