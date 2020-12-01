@@ -655,9 +655,161 @@ public class CreateLanguageScreenManager : MonoBehaviour
         }
         newLanguageFamily.Accents = accents;
 
+        // Get all the accent rule
+        
+
         // WordOnsets, WordCodas, SyllableOnsets, SyllableCodas, StressedVowels, UnstressedVowels;
         //consonantBoW, consonantBoS, consonantEoS, consonantEoW;
         //public Phoneme[] vowelAS, vowelUS;
 
+    }
+
+    private Morphome[] getOnePartOfSpeech(GameObject panel)
+    {
+        List<Morphome> result = new List<Morphome>();
+        for (int i = 0; i < panel.transform.childCount; i++)
+        {
+            Transform go = panel.transform.GetChild(i);
+            RuleBannerPageSix script = go.GetComponent<RuleBannerPageSix>();
+            WordFormat format = script.format;
+            result.Add(getFormat(format));
+        }
+
+        return result.ToArray();
+    }
+
+    private Morphome getFormat(WordFormat format)
+    {
+        Morphome result = new Morphome();
+        result.SyllableNumber = format.numOfSyllable;
+
+        // Get info if the format is in arabic style
+        if (format.arabicStyle)
+        {
+            result.AfroAsian = true;
+            result.Affixed = false;
+            result.SpecialPhone = false;
+            result.SemivoweledConsonant = format.consonantWithSemivowel;
+            result.ClusteredConsonant = format.consonantCluster;
+            result.HolderVowels = convertPhonemes(format.vowelHolders);
+        }
+
+        // Get info if the format is not arabic style
+        else
+        {
+            result.AfroAsian = false;
+            result.SemivoweledConsonant = false;
+            result.ClusteredConsonant = false;
+            result.Affixed = false;
+            result.SpecialPhone = false;
+
+            // Set affix
+            if (format.specialLeading != null && format.specialLeading.phones.Length > 0)
+            {
+                result.Affixed = true;
+                result.Prefix = convertPhoneme(format.specialLeading);
+            }
+            if (format.specialEnding != null && format.specialEnding.phones.Length > 0)
+            {
+                result.Affixed = true;
+                result.Suffix = convertPhoneme(format.specialEnding);
+            }
+
+            // Set special phone
+            if (format.specialVowel != null && format.specialVowel.Length > 0)
+            {
+                result.SpecialPhone = true;
+                result.SpecialVowels = convertPhonemes(format.specialVowel);
+            }
+            if (format.specialConsonant != null && format.specialConsonant.Length > 0)
+            {
+                result.SpecialPhone = true;
+                result.SpecialConsonants = convertPhonemes(format.specialConsonant);
+            }
+
+            // Set accent rule
+            if (format.accentRules != null && format.accentRules.Length > 0)
+            {
+                for (int k = 0; k < format.accentRules.Length; k++)
+                {
+                    AccentRule accentRule = format.accentRules[k];
+
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private SpeechSound[] convertPhonemes(Phoneme[] arr)
+    {
+        List<SpeechSound> result = new List<SpeechSound>();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            Phoneme phoneme = arr[i];
+            
+            result.Add(convertPhoneme(phoneme));
+        }
+        return result.ToArray();
+    }
+
+    private SpeechSound convertPhoneme(Phoneme phoneme)
+    {
+        SpeechSound ss = new SpeechSound();
+
+        if (phoneme.preceding != null)
+        {
+            ss.Preceded = true;
+            ss.Successed = false;
+
+            Phone glide = new Phone();
+            glide.converProtoPhone(phoneme.phones[0]);
+            ss.Glide = glide;
+
+            Phone[] phones = new Phone[phoneme.phones.Length - 1];
+            for (int ii = 0; ii < phones.Length; ii++)
+            {
+                Phone phone = new Phone();
+                phone.converProtoPhone(phoneme.phones[ii + 1]);
+                phones[ii] = phone;
+            }
+            ss.Phonemes = phones;
+        }
+        else if (phoneme.successing != null)
+        {
+            ss.Preceded = false;
+            ss.Successed = true;
+
+            Phone glide = new Phone();
+            glide.converProtoPhone(phoneme.phones[phoneme.phones.Length - 1]);
+            ss.Glide = glide;
+
+            Phone[] phones = new Phone[phoneme.phones.Length - 1];
+            for (int ii = 0; ii < phones.Length; ii++)
+            {
+                Phone phone = new Phone();
+                phone.converProtoPhone(phoneme.phones[ii]);
+                phones[ii] = phone;
+            }
+            ss.Phonemes = phones;
+        }
+        else
+        {
+            ss.Preceded = false;
+            ss.Successed = false;
+
+            Phone[] phones = new Phone[phoneme.phones.Length];
+            for (int ii = 0; ii < phones.Length; ii++)
+            {
+                Phone phone = new Phone();
+                phone.converProtoPhone(phoneme.phones[ii]);
+                phones[ii] = phone;
+            }
+            ss.Phonemes = phones;
+        }
+
+        ss.Transliteration = phoneme.letters;
+        ss.Frequency = phoneme.frequency;
+        return ss;
     }
 }
