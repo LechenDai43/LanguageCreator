@@ -6229,6 +6229,10 @@ MonoBehaviour:
   pageFourOverSizeItem: {fileID: 2701421200095995468, guid: 3996182cb1009c9469bbd015a2d473da,
     type: 3}
   pageFivePanel: {fileID: 58602394}
+  generalPanel: {fileID: 269069533}
+  VerbPanerl: {fileID: 2058890671}
+  NounPanel: {fileID: 877022479}
+  AdjectivePanel: {fileID: 1435177205}
 --- !u!1 &873048454
 GameObject:
   m_ObjectHideFlags: 0
@@ -9676,7 +9680,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1264967348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 866354788}
+        m_MethodName: createLangauge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1264967348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11865,6 +11880,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433525451}
   m_CullTransparentMesh: 0
+--- !u!1 &1435177205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8652417368161783768, guid: bc0ff0a83cdb9e94391444dcd60fc5e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1428731013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1458742061
 GameObject:
   m_ObjectHideFlags: 0

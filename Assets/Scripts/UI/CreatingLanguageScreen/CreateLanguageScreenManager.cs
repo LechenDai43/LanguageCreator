@@ -529,4 +529,17 @@ public class CreateLanguageScreenManager : MonoBehaviour
             generatedItmObject.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }
+
+    // Create the new language and jump to the next page
+    public GameObject generalPanel, VerbPanerl, NounPanel, AdjectivePanel;
+    public void createLangauge ()
+    {
+        LanguageFamily newLanguageFamily = new LanguageFamily();
+
+        Manager manager = Object.FindObjectOfType<Manager>();
+        LanguageManager languageManager = manager.languageManager;
+        // Get consonants and vowels into the new language family object
+        Phoneme[][] allPhonemes = new Phoneme[6][];
+
+    }
 }
