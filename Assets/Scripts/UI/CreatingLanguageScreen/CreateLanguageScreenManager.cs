@@ -646,6 +646,15 @@ public class CreateLanguageScreenManager : MonoBehaviour
             }
         }
 
+        // Get accents into the new language family object
+        Phone[] accents = new Phone[languageManager.accents.Length];
+        for (int i = 0; i < languageManager.accents.Length; i++)
+        {
+            Phone accent = new Phone();
+            accent.converProtoPhone(languageManager.accents[i]);
+        }
+        newLanguageFamily.Accents = accents;
+
         // WordOnsets, WordCodas, SyllableOnsets, SyllableCodas, StressedVowels, UnstressedVowels;
         //consonantBoW, consonantBoS, consonantEoS, consonantEoW;
         //public Phoneme[] vowelAS, vowelUS;
