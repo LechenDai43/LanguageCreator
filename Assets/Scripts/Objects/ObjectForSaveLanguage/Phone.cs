@@ -9,5 +9,14 @@ using System.Runtime.Serialization;
 [Serializable]
 public class Phone
 {
-    
+    public string IPA;
+    public string FCB;
+    public string Openness;
+    public string Roundness;
+    public string Sornority;
+    public string POA;
+    public string MOA;
+    public string Aspiration;
+    public string Voiceness;
+    public string Contour, Level;
 }
