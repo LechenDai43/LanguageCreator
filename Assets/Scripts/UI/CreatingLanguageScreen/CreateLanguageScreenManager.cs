@@ -539,6 +539,8 @@ public class CreateLanguageScreenManager : MonoBehaviour
         Manager manager = Object.FindObjectOfType<Manager>();
         LanguageManager languageManager = manager.languageManager;
 
+        newLanguageFamily.Name = languageManager.languageName;
+
         // Get consonants and vowels into the new language family object
         Phoneme[][] allPhonemes = new Phoneme[6][];
         allPhonemes[0] = languageManager.consonantBoW;
