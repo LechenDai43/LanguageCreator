@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingLanguageScreen.unity
     guid: 313148e1bd4314f47925213838c7f1f6
+  - enabled: 1
+    path: Assets/Scenes/LanguageScreen.unity
+    guid: b06d49b97ce41b6489dc68a988f82d6e
   m_configObjects: {}
