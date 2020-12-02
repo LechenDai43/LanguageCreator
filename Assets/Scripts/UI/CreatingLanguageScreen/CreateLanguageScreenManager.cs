@@ -656,11 +656,19 @@ public class CreateLanguageScreenManager : MonoBehaviour
         newLanguageFamily.Accents = accents;
 
         // Get all the accent rule
-        
+        // generalPanel, VerbPanerl, NounPanel, AdjectivePanel;
+        // Nouns, Adjectives;
+        newLanguageFamily.Generals = getOnePartOfSpeech(generalPanel);
+        newLanguageFamily.Verbs = getOnePartOfSpeech(VerbPanerl);
+        newLanguageFamily.Nouns = getOnePartOfSpeech(NounPanel);
+        newLanguageFamily.Adjectives = getOnePartOfSpeech(AdjectivePanel);
 
         // WordOnsets, WordCodas, SyllableOnsets, SyllableCodas, StressedVowels, UnstressedVowels;
         //consonantBoW, consonantBoS, consonantEoS, consonantEoW;
         //public Phoneme[] vowelAS, vowelUS;
+
+        string langaugeData = JsonUtility.ToJson(newLanguageFamily);
+        System.IO.File.WriteAllText(Application.dataPath + "/Files/NewLanguageData.json", langaugeData);
 
     }
 
@@ -730,12 +738,40 @@ public class CreateLanguageScreenManager : MonoBehaviour
             // Set accent rule
             if (format.accentRules != null && format.accentRules.Length > 0)
             {
+                List<Morphome.ToneRequiement> ruleList = new List<Morphome.ToneRequiement>();
                 for (int k = 0; k < format.accentRules.Length; k++)
                 {
-                    AccentRule accentRule = format.accentRules[k];
+                    WordFormat.AccentRule accentRule = format.accentRules[k];
+                    Morphome.ToneRequiement tone = new Morphome.ToneRequiement();
 
+                    if (accentRule.backword)
+                    {
+                        int position = result.SyllableNumber - accentRule.position;
+                        tone.Position = position;
+                    }
+                    else
+                    {
+                        tone.Position = accentRule.position;
+                    }
+                    if (tone.Position <= 0 || tone.Position > result.SyllableNumber)
+                    {
+                        continue;
+                    }
+
+                    Phone[] potentials = new Phone[accentRule.accents.Length];
+                    for (int kk = 0; kk < potentials.Length; kk++)
+                    {
+                        Phone potential = new Phone();
+                        potential.converProtoPhone(accentRule.accents[kk]);
+                        potentials[kk] = potential;
+                    }
+                    tone.Accents = potentials;
+
+                    ruleList.Add(tone);
                 }
+                result.Tones = ruleList.ToArray();
             }
+            
         }
 
         return result;

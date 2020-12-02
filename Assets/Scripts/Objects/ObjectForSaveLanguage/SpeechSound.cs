@@ -7,7 +7,7 @@ using System.IO;
 using System.Runtime.Serialization;
 
 [Serializable]
-public class SpeechSound : MonoBehaviour
+public class SpeechSound
 {
     public Phone[] Phonemes;
     public Phone Glide;
