@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour//, //Singleton<Manager>
     public LocaleManager localeManager;
     public PhoneManager phoneManager;
     public LanguageManager languageManager;
+    public LanguageFamily currentLanguage;
 
     void Awake()
     {
