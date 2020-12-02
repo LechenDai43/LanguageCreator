@@ -14,4 +14,16 @@ public class SpeechSound
     public bool Preceded, Successed;
     public string Transliteration;
     public double Frequency;
+
+    public static SpeechSound deepCopy (SpeechSound other)
+    {
+        SpeechSound result = new SpeechSound();
+        result.Phonemes = other.Phonemes;
+        result.Glide = other.Glide;
+        result.Preceded = other.Preceded;
+        result.Successed = other.Successed;
+        result.Transliteration = other.Transliteration;
+        result.Frequency = other.Frequency;
+        return result;
+    }
 }

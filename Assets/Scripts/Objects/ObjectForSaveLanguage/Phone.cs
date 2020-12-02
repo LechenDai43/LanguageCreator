@@ -34,4 +34,13 @@ public class Phone
         this.Contour = pp.Contour;
         this.Level = pp.Level;
     }
+
+    public bool Equals(Phone other)
+    {
+        return IPA.Equals(other.IPA) && Level.Equals(other.Level) && 
+            Openness.Equals(other.Openness) && Roundness.Equals(other.Roundness) &&
+            Sornority.Equals(other.Sornority) && POA.Equals(other.POA) &&
+            MOA.Equals(other.MOA) && Aspiration.Equals(other.Aspiration) &&
+            Voiceness.Equals(other.Voiceness) && Contour.Equals(other.Contour);
+    }
 }
