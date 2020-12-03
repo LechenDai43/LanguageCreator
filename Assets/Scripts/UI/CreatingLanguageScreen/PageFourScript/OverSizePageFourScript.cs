@@ -26,7 +26,7 @@ public class OverSizePageFourScript : MonoBehaviour, IDropHandler
 
     public void handleDeleteButtonPressed()
     {
-        StartCoroutine(enterLetterHelper());
+        Destroy(this.transform.gameObject);
     }
 
     public void handleEnterLetters()
@@ -41,7 +41,7 @@ public class OverSizePageFourScript : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null && !this.transform.GetChild(0).GetComponent<Text>().text.Equals("'"))
+        if (eventData.pointerDrag != null && !this.transform.GetChild(0).GetComponent<Text>().text.Equals(""))
         {
             SemivowelItemScript draggedObject = eventData.pointerDrag.GetComponent<SemivowelItemScript>();
             GameObject overSizeObject = draggedObject.instanceOfObject;
