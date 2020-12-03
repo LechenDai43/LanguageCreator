@@ -97,7 +97,7 @@ public class PhoneManager
         else
         {
             // Read the consonant file
-            string consonantPath = path + "/Files/Utility/Phone/SimpleConsonant.phonePool";
+            string consonantPath = path + "/Files/Utility/Phone/SimpleConsonant.pp";
             sr = new StreamReader(consonantPath);
             string content = sr.ReadToEnd();
             ConsonantGroup consonantGroup = JsonUtility.FromJson<ConsonantGroup>(content);
@@ -105,7 +105,7 @@ public class PhoneManager
             sr.Close();
 
             // Read the vowel file
-            string vowelPath = path + "/Files/Utility/Phone/SimpleVowel.phonePool";
+            string vowelPath = path + "/Files/Utility/Phone/SimpleVowel.pp";
             sr = new StreamReader(vowelPath);
             content = sr.ReadToEnd();
             VowelGroup vowelGroup = JsonUtility.FromJson<VowelGroup>(content);
@@ -160,9 +160,16 @@ public class PhoneManager
                 }
 
                 // Change the index for special case
-                if (h == 0 || h == 6 || h == 8)
+                if (h == 6 || h == 8 || h == 16 || h == 18)
                 {
                     if (cp.Voiceness.Equals("yes"))
+                    {
+                        h++;
+                    }
+                }
+                if (h == 0)
+                {
+                    if (cp.Aspiration.Equals("yes"))
                     {
                         h++;
                     }

@@ -6,14 +6,66 @@
             "Level": "middle"
 	    },
         {
-            "IPA": "³⁵",
+            "IPA": "¹⁵",
             "Contour": "rise",
             "Level": "middle"
 	    },
         {
-            "IPA": "³¹",
+            "IPA": "⁵¹",
             "Contour": "fall",
             "Level": "middle"
+	    },
+        
+        {
+            "IPA": "⁵⁵",
+            "Contour": "flat",
+            "Level": "high"
+	    },
+        {
+            "IPA": "³⁵",
+            "Contour": "rise",
+            "Level": "high"
+	    },
+        {
+            "IPA": "⁵³",
+            "Contour": "fall",
+            "Level": "high"
+	    },
+        {
+            "IPA": "⁵³⁵",
+            "Contour": "turn",
+            "Level": "high"
+	    },
+        {
+            "IPA": "³⁵³",
+            "Contour": "sharp",
+            "Level": "high"
+	    },
+        
+        {
+            "IPA": "¹¹",
+            "Contour": "flat",
+            "Level": "low"
+	    },
+        {
+            "IPA": "¹³",
+            "Contour": "rise",
+            "Level": "low"
+	    },
+        {
+            "IPA": "³¹",
+            "Contour": "fall",
+            "Level": "low"
+	    },
+        {
+            "IPA": "³¹³",
+            "Contour": "turn",
+            "Level": "low"
+	    },
+        {
+            "IPA": "¹³¹",
+            "Contour": "sharp",
+            "Level": "low"
 	    }
     ]
 }
