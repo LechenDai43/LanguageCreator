@@ -22,11 +22,7 @@ public class LanguageFamily
         }
         List<Word> result = new List<Word>();
         Morphome chosen = Generals[type];
-        for (int i = 0; i < num; i++)
-        {
-            Word word = generateWord(chosen);
-            result.Add(word);
-        }
+        return generateVocabulary(chosen, num);
         return result.ToArray();
     }
 
@@ -38,12 +34,7 @@ public class LanguageFamily
         }
         List<Word> result = new List<Word>();
         Morphome chosen = Verbs[type];
-        for (int i = 0; i < num; i++)
-        {
-            Word word = generateWord(chosen);
-            result.Add(word);
-        }
-        return result.ToArray();
+        return generateVocabulary(chosen, num);
     }
 
     public Word[] generateNounWord(int type, int num)
@@ -54,12 +45,7 @@ public class LanguageFamily
         }
         List<Word> result = new List<Word>();
         Morphome chosen = Nouns[type];
-        for (int i = 0; i < num; i++)
-        {
-            Word word = generateWord(chosen);
-            result.Add(word);
-        }
-        return result.ToArray();
+        return generateVocabulary(chosen, num);
     }
 
     public Word[] generateAdjectiveWord(int type, int num)
@@ -70,9 +56,29 @@ public class LanguageFamily
         }
         List<Word> result = new List<Word>();
         Morphome chosen = Adjectives[type];
+        return generateVocabulary(chosen, num);
+    }
+
+    public Word[] generateVocabulary(Morphome chosen, int num)
+    {
+        List<Word> result = new List<Word>();
         for (int i = 0; i < num; i++)
         {
-            Word word = generateWord(chosen);
+            Word word = null;
+            bool dup = true;
+            while (dup)
+            {
+                word = generateWord(chosen);
+                bool duplicated = false;
+                foreach (Word old in result)
+                {
+                    if (word.ToString().Equals(old.ToString()))
+                    {
+                        duplicated = true;
+                    }
+                }
+                dup = duplicated;
+            }
             result.Add(word);
         }
         return result.ToArray();
@@ -304,6 +310,7 @@ public class LanguageFamily
         }
         else
         {
+            Debug.Log("Afro Asian");
             // Get all the consonants ready
             List<SpeechSound> potentialConsonant = new List<SpeechSound>();
             SpeechSound[][] allsounds = new SpeechSound[4][];
@@ -392,6 +399,7 @@ public class LanguageFamily
             result.Phonemes = list.ToArray();
         }
 
+        Debug.Log(result.ToString());
         return result;
     }
 }
