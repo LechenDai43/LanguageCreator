@@ -82,11 +82,11 @@ public class GenerateWord : MonoBehaviour
                 vcb.Name = currentLanguage.Name;
             }
 
-            scrollView.SetActive(true);
-            vcb.addWords(partOfSpeech.value, words);
+            // scrollView.SetActive(true);
+            // vcb.addWords(partOfSpeech.value, words);
 
-            string langaugeData = JsonUtility.ToJson(vcb);
-            System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + currentLanguage.Name + ".vocabulary", langaugeData);
+            // string langaugeData = JsonUtility.ToJson(vcb);
+            // System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + currentLanguage.Name + ".vocabulary", langaugeData);
 
         }
         catch(Exception e)

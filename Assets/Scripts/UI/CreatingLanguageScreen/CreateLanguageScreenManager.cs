@@ -670,7 +670,7 @@ public class CreateLanguageScreenManager : MonoBehaviour
         //public Phoneme[] vowelAS, vowelUS;
 
         string langaugeData = JsonUtility.ToJson(newLanguageFamily);
-        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + newLanguageFamily.Name + ".languageFamily", langaugeData);
+        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/Languages/" + newLanguageFamily.Name + ".languageFamily", langaugeData);
 
         // Set the new language to the manager
         manager.currentLanguage = newLanguageFamily;
