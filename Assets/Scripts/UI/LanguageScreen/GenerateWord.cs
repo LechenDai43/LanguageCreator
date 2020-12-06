@@ -13,6 +13,7 @@ public class GenerateWord : MonoBehaviour
     public GameObject scrollView, wordPanel;
     public int dropDownValuePOS;
     public GameObject prefabedWordItem;
+    public GameObject parent;
 
     // Start is called before the first frame update
     void Start()

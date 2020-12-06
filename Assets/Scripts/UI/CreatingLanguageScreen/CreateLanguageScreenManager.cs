@@ -671,7 +671,8 @@ public class CreateLanguageScreenManager : MonoBehaviour
 
         string langaugeData = JsonUtility.ToJson(newLanguageFamily);
         System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/Languages/" + newLanguageFamily.Name + ".languageFamily", langaugeData);
-
+        System.IO.Directory.CreateDirectory(Application.dataPath + "/" + newLanguageFamily.Name);
+        
         // Set the new language to the manager
         manager.currentLanguage = newLanguageFamily;
 

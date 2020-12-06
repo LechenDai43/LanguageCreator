@@ -13,6 +13,7 @@ public class LanguageFamily
     public Phone[] Accents;
     public Morphome[] Generals, Verbs, Nouns, Adjectives;
     public SoundChange[] Branches;
+    public string Directory;
     
     public Word[] generateGenralWord(int type, int num)
     {
