@@ -69,27 +69,23 @@ public class GenerateWord : MonoBehaviour
                 instanceWord.GetComponent<Text>().text = word.ToString();
             }
 
-            Vocabulary vcb = null;
-            try
+            LanguageScreenManager lsm = parent.GetComponent<LanguageScreenManager>();
+            if (partOfSpeech.value == 0)
             {
-                string consonantPath = Application.dataPath + "/Files/Customization/" + currentLanguage.Name + ".vocabulary";
-                StreamReader sr;
-                sr = new StreamReader(consonantPath);
-                string content = sr.ReadToEnd();
-                vcb = JsonUtility.FromJson<Vocabulary>(content);
+                lsm.others[type].addWords(words);
             }
-            catch(Exception e)
+            else if (partOfSpeech.value == 1)
             {
-                vcb = new Vocabulary();
-                vcb.Name = currentLanguage.Name;
+                lsm.verbs[type].addWords(words);
             }
-
-            // scrollView.SetActive(true);
-            // vcb.addWords(partOfSpeech.value, words);
-
-            // string langaugeData = JsonUtility.ToJson(vcb);
-            // System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + currentLanguage.Name + ".vocabulary", langaugeData);
-
+            else if (partOfSpeech.value == 2)
+            {
+                lsm.nouns[type].addWords(words);
+            }
+            else
+            {
+                lsm.adjectives[type].addWords(words);
+            }
         }
         catch(Exception e)
         {

@@ -71,11 +71,32 @@ public class LanguageScreenManager : MonoBehaviour
 
             }
         }
+
+        populateUndefined(others);
+        populateUndefined(verbs);
+        populateUndefined(nouns);
+        populateUndefined(adjectives);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void populateUndefined(Vocabulary[] input)
+    {
+        Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+        LanguageFamily currentLanguage = manager.currentLanguage;
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == null)
+            {
+                Vocabulary temp = new Vocabulary();
+                temp.Name = currentLanguage.Name;
+                input[i] = temp;
+            }
+        }
     }
 }
