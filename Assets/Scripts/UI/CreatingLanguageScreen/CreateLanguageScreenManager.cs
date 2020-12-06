@@ -668,10 +668,16 @@ public class CreateLanguageScreenManager : MonoBehaviour
         // WordOnsets, WordCodas, SyllableOnsets, SyllableCodas, StressedVowels, UnstressedVowels;
         //consonantBoW, consonantBoS, consonantEoS, consonantEoW;
         //public Phoneme[] vowelAS, vowelUS;
-
+        string vocabPath = "/Files/Customization/" + newLanguageFamily.Name;
+        Debug.Log(vocabPath);
+        if (!System.IO.Directory.Exists(Application.dataPath + vocabPath))
+        {
+            System.IO.Directory.CreateDirectory(Application.dataPath + vocabPath);
+        }
+        newLanguageFamily.Directory = vocabPath;
         string langaugeData = JsonUtility.ToJson(newLanguageFamily);
         System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/Languages/" + newLanguageFamily.Name + ".languageFamily", langaugeData);
-        System.IO.Directory.CreateDirectory(Application.dataPath + "/" + newLanguageFamily.Name);
+
         
         // Set the new language to the manager
         manager.currentLanguage = newLanguageFamily;

@@ -14,6 +14,7 @@ public class GenerateWord : MonoBehaviour
     public int dropDownValuePOS;
     public GameObject prefabedWordItem;
     public GameObject parent;
+    public string pathTitle;
 
     // Start is called before the first frame update
     void Start()
@@ -107,15 +108,19 @@ public class GenerateWord : MonoBehaviour
         {
             case 0:
                 list = currentLanguage.Generals;
+                pathTitle = "O";
                 break;
             case 1:
                 list = currentLanguage.Verbs;
+                pathTitle = "V";
                 break;
             case 2:
                 list = currentLanguage.Nouns;
+                pathTitle = "N";
                 break;
             case 3:
                 list = currentLanguage.Adjectives;
+                pathTitle = "A";
                 break;
         }
 
