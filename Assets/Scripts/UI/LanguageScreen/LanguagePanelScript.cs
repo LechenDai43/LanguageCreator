@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GenerateWord : MonoBehaviour
+public class LanguagePanelScript : MonoBehaviour
 {
     public Dropdown partOfSpeech, typeOfWord;
     public Text inputNum;
@@ -15,24 +15,21 @@ public class GenerateWord : MonoBehaviour
     public GameObject prefabedWordItem;
     public GameObject parent;
     public string pathTitle;
-    public Word[] holdeingWord;
+    // public GameObject wordPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        changePartOfSpeech();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("c"))
-        {
-            closePanel();
-        }
+        
     }
 
-    public void createVocabulary ()
+    public void createVocabulary()
     {
         try
         {
@@ -58,13 +55,15 @@ public class GenerateWord : MonoBehaviour
             {
                 words = currentLanguage.generateAdjectiveWord(type, num);
             }
+            wordPanel.GetComponent<WordPanelScript>().holdingWord = words;
             foreach (Word word in words)
             {
+                Word newWord = getTransformed(word);
                 GameObject instanceWord = (GameObject)Instantiate(prefabedWordItem, wordPanel.transform);
-                instanceWord.GetComponent<Text>().text = word.ToString();
-            }            
+                instanceWord.GetComponent<Text>().text = newWord.ToString();
+            }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
 
         }
@@ -81,19 +80,15 @@ public class GenerateWord : MonoBehaviour
         {
             case 0:
                 list = currentLanguage.Generals;
-                pathTitle = "O";
                 break;
             case 1:
                 list = currentLanguage.Verbs;
-                pathTitle = "V";
                 break;
             case 2:
                 list = currentLanguage.Nouns;
-                pathTitle = "N";
                 break;
             case 3:
                 list = currentLanguage.Adjectives;
-                pathTitle = "A";
                 break;
         }
 
@@ -112,50 +107,8 @@ public class GenerateWord : MonoBehaviour
         typeOfWord.options = options;
     }
 
-    public void saveWords()
+    private Word getTransformed(Word word)
     {
-        if (holdeingWord == null || holdeingWord.Length <= 0)
-        {
-            return;
-        }
-        LanguageScreenManager lsm = parent.GetComponent<LanguageScreenManager>();
-        int type = typeOfWord.value;
-        if (partOfSpeech.value == 0)
-        {
-            lsm.others[type].addWords(holdeingWord);
-        }
-        else if (partOfSpeech.value == 1)
-        {
-            lsm.verbs[type].addWords(holdeingWord);
-        }
-        else if (partOfSpeech.value == 2)
-        {
-            lsm.nouns[type].addWords(holdeingWord);
-        }
-        else
-        {
-            lsm.adjectives[type].addWords(holdeingWord);
-        }
-
-        holdeingWord = null;
-        scrollView.SetActive(false);
-        while (wordPanel.transform.childCount > 0)
-        {
-            Transform tem = wordPanel.transform.GetChild(0);
-            tem.parent = null;
-            Destroy(tem.gameObject);
-        }
-    }
-
-    public void closePanel()
-    {
-        scrollView.SetActive(false);
-        while (wordPanel.transform.childCount > 0)
-        {
-            Transform tem = wordPanel.transform.GetChild(0);
-            tem.parent = null;
-            Destroy(tem.gameObject);
-        }
-        holdeingWord = null;
+        return word;
     }
 }
