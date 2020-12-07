@@ -85,6 +85,45 @@ public class LanguageScreenManager : MonoBehaviour
         
     }
 
+    public void saveVocabulary()
+    {
+        Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+        LanguageFamily currentLanguage = manager.currentLanguage;
+        string directoryPath = Application.dataPath + currentLanguage.Directory;
+
+        for (int i = 0; i < verbs.Length; i++)
+        {
+            string filePath = directoryPath + "/verbs-" + i.ToString() + ".vocabulary";
+
+            string langaugeData = JsonUtility.ToJson(verbs[i]);
+            System.IO.File.WriteAllText(filePath, langaugeData);
+        }
+
+        for (int i = 0; i < nouns.Length; i++)
+        {
+            string filePath = directoryPath + "/nouns-" + i.ToString() + ".vocabulary";
+
+            string langaugeData = JsonUtility.ToJson(nouns[i]);
+            System.IO.File.WriteAllText(filePath, langaugeData);
+        }
+
+        for (int i = 0; i < others.Length; i++)
+        {
+            string filePath = directoryPath + "/others-" + i.ToString() + ".vocabulary";
+
+            string langaugeData = JsonUtility.ToJson(others[i]);
+            System.IO.File.WriteAllText(filePath, langaugeData);
+        }
+
+        for (int i = 0; i < adjectives.Length; i++)
+        {
+            string filePath = directoryPath + "/adjectives-" + i.ToString() + ".vocabulary";
+
+            string langaugeData = JsonUtility.ToJson(adjectives[i]);
+            System.IO.File.WriteAllText(filePath, langaugeData);
+        }
+    }
+
     private void populateUndefined(Vocabulary[] input)
     {
         Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
@@ -99,4 +138,6 @@ public class LanguageScreenManager : MonoBehaviour
             }
         }
     }
+
+
 }

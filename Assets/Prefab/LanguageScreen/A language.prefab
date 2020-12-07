@@ -1498,6 +1498,10 @@ MonoBehaviour:
     Name: 
     Branches: []
     Rules: []
+  sublanguageButtonPrefab: {fileID: 3810947278573577653, guid: 91af7363f28032c4ebca30d4e279e644,
+    type: 3}
+  createSubdivisionPrefab: {fileID: 3306553745440089449, guid: 9966ee8ed9b607748b7507e5a8104dde,
+    type: 3}
 --- !u!1 &8479267162467311668
 GameObject:
   m_ObjectHideFlags: 0

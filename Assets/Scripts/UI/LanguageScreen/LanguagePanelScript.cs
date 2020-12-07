@@ -15,8 +15,7 @@ public class LanguagePanelScript : MonoBehaviour
     public GameObject prefabedWordItem;
     public GameObject parent; // populate on creating
     public SoundChange changingRule; // populate on creating
-    // public string pathTitle;
-    // public GameObject wordPanel;
+    public GameObject sublanguageButtonPrefab, createSubdivisionPrefab;
 
     // Start is called before the first frame update
     void Start()

@@ -11,7 +11,6 @@ public class Vocabulary
 {
     public string Name;
     public Word[] Word = new Word[0];
-    public Word[] General = new Word[0], Verb = new Word[0], Noun = new Word[0], Adjective = new Word[0];
 
     public void addWords(Word[] newWord)
     {

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubLanguageButton : MonoBehaviour
+public class SandhiBannerScript : MonoBehaviour
 {
-    public LanguagePanelScript parentScript;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +14,5 @@ public class SubLanguageButton : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void handleClick()
-    {
-
     }
 }
