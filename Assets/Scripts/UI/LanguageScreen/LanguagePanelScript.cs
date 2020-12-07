@@ -98,6 +98,26 @@ public class LanguagePanelScript : MonoBehaviour
         reformatType(list);
     }
 
+    public void createSubdivision()
+    {
+
+    }
+
+    public void showOldWord()
+    {
+
+    }
+
+    public void backUpperDirectory()
+    {
+
+    }
+
+    public void openSubdivision()
+    {
+
+    }
+
     private void reformatType(Morphome[] list)
     {
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();

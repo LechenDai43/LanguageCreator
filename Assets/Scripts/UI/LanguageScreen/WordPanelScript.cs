@@ -50,16 +50,7 @@ public class WordPanelScript : MonoBehaviour
             lsm.adjectives[type].addWords(holdingWord);
         }
 
-        holdingWord = null;
-        this.gameObject.SetActive(false);
-        while (wordPanel.transform.childCount > 0)
-        {
-            Transform tem = wordPanel.transform.GetChild(0);
-            tem.parent = null;
-            Destroy(tem.gameObject);
-        }
-        partOfSpeech = null;
-        typeOfWord = null;
+        closePanel();
     }
 
     public void closePanel()
