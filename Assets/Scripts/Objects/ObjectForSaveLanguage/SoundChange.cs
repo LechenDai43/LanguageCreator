@@ -10,13 +10,15 @@ using System.Runtime.Serialization;
 public class SoundChange
 {
     public SoundChange[] Branches;
+    public Sandhi[] Rules;
 
     public Word change(Word input)
     {
         Word output = Word.deepCopy(input);
-
-        //TODO ...
-        //change the word according to some rules
+        foreach (Sandhi rule in Rules)
+        {
+            output = rule.changeWord(output);
+        }
 
         return output;
     }
