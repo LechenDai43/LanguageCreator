@@ -133,7 +133,7 @@ public class LanguagePanelScript : MonoBehaviour
 
     private Word getTransformed(Word word)
     {
-        Word result = word;
+        Word result = Word.deepCopy(word);
         if (parent != null)
         {
             LanguagePanelScript lps = parent.GetComponent<LanguagePanelScript>();
@@ -141,19 +141,11 @@ public class LanguagePanelScript : MonoBehaviour
             {
                 result = lps.getTransformed(result);
             }
-            else
-            {
-
-            }
         }
         if (changingRule != null)
         {
             result = changingRule.change(result);
         }
-        else
-        {
-
-        }
-        return word;
+        return result;
     }
 }

@@ -12,7 +12,7 @@ public class LanguageFamily
     public SpeechSound[] WordOnsets, WordCodas, SyllableOnsets, SyllableCodas, StressedVowels, UnstressedVowels;
     public Phone[] Accents;
     public Morphome[] Generals, Verbs, Nouns, Adjectives;
-    public SoundChange[] Branches;
+    public SoundChange Root;
     public string Directory;
     
     public Word[] generateGenralWord(int type, int num)

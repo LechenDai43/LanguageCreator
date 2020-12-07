@@ -9,10 +9,15 @@ using System.Runtime.Serialization;
 [Serializable]
 public class SoundChange
 {
-
+    public SoundChange[] Branches;
 
     public Word change(Word input)
     {
-        return input;
+        Word output = Word.deepCopy(input);
+
+        //TODO ...
+        //change the word according to some rules
+
+        return output;
     }
 }
