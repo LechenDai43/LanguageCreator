@@ -21,7 +21,7 @@ public class LanguagePanelScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        changePartOfSpeech();
     }
 
     // Update is called once per frame
@@ -61,6 +61,7 @@ public class LanguagePanelScript : MonoBehaviour
             wordPanel.GetComponent<WordPanelScript>().partOfSpeech = partOfSpeech;
             wordPanel.GetComponent<WordPanelScript>().typeOfWord = typeOfWord;
             wordPanel.GetComponent<WordPanelScript>().saveButton.SetActive(true);
+            wordPanel.SetActive(true);
 
             foreach (Word word in words)
             {
@@ -71,7 +72,7 @@ public class LanguagePanelScript : MonoBehaviour
         }
         catch (Exception e)
         {
-
+            Debug.Log(e);
         }
     }
 
@@ -103,6 +104,13 @@ public class LanguagePanelScript : MonoBehaviour
 
     public void createSubdivision()
     {
+        
+    }
+
+    public void showOldWord()
+    {
+        Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+        LanguageFamily currentLanguage = manager.currentLanguage;
         Word[] words = null;
         int num = typeOfWord.value;
         if (partOfSpeech.value == 0)
@@ -129,11 +137,7 @@ public class LanguagePanelScript : MonoBehaviour
             instanceWord.GetComponent<Text>().text = newWord.ToString();
         }
         wordPanel.GetComponent<WordPanelScript>().saveButton.SetActive(false);
-    }
-
-    public void showOldWord()
-    {
-
+        wordPanel.SetActive(true);
     }
 
     public void backUpperDirectory()

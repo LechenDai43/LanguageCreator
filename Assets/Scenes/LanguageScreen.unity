@@ -732,6 +732,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1785178844836699792, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785178844836699792, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3147259149969927990, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -742,10 +752,35 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3235707377414288614, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.001044765
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239525000150503214, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239525000150503214, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3564988901893796584, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000026478683
+      value: 0.0000033080578
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564988901893796584, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564988901893796584, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4133129637809571272, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
@@ -772,11 +807,61 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5374241901356154611, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374241901356154611, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374241901356154611, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5374241901356154611, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587950676036819487, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587950676036819487, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633095271455442543, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633095271455442543, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633095271455442543, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6623749019646615237, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
       propertyPath: wordPanel
       value: 
       objectReference: {fileID: 1798605414}
+    - target: {fileID: 6623749019646615237, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: languageScreenManager
+      value: 
+      objectReference: {fileID: 131508748}
     - target: {fileID: 8479267161832096969, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -965,6 +1050,36 @@ PrefabInstance:
     - target: {fileID: 8479267163764772965, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496139088374286046, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496139088374286046, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496139088374286046, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496139088374286046, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496139088374286046, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8496139088374286046, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112393548282597541, guid: 7e4f50fe22097b1488f2583dad1a89c5,
@@ -1704,6 +1819,7 @@ MonoBehaviour:
   wordPanel: {fileID: 822490795}
   partOfSpeech: {fileID: 0}
   typeOfWord: {fileID: 0}
+  saveButton: {fileID: 868519453}
 --- !u!114 &1798605417
 MonoBehaviour:
   m_ObjectHideFlags: 0

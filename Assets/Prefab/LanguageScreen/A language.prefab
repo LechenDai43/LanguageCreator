@@ -428,7 +428,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8314116918210889806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6623749019646615237}
+        m_MethodName: showOldWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1632939680471098620
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +917,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3705799498903933872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6623749019646615237}
+        m_MethodName: backUpperDirectory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6126951889928583051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,10 +1515,10 @@ MonoBehaviour:
   dropDownValuePOS: 0
   prefabedWordItem: {fileID: 6504295428461586755, guid: 1dbe580d76cfee7498018ac2ed94c2d4,
     type: 3}
+  languageScreenManager: {fileID: 0}
   parent: {fileID: 0}
   changingRule:
     Name: 
-    Branches: []
     Rules: []
   sublanguageButtonPrefab: {fileID: 3810947278573577653, guid: 91af7363f28032c4ebca30d4e279e644,
     type: 3}
@@ -2948,7 +2970,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6623749019646615237}
         m_MethodName: createVocabulary
         m_Mode: 1
         m_Arguments:
@@ -3688,7 +3710,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6623749019646615237}
         m_MethodName: changePartOfSpeech
         m_Mode: 1
         m_Arguments:
@@ -4092,7 +4114,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8479267163953950267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6623749019646615237}
+        m_MethodName: createSubdivision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8911587476694514166
 GameObject:
   m_ObjectHideFlags: 0
