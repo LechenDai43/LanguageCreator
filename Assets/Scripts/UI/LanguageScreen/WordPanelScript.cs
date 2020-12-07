@@ -58,6 +58,8 @@ public class WordPanelScript : MonoBehaviour
             tem.parent = null;
             Destroy(tem.gameObject);
         }
+        partOfSpeech = null;
+        typeOfWord = null;
     }
 
     public void closePanel()
@@ -70,5 +72,7 @@ public class WordPanelScript : MonoBehaviour
             Destroy(tem.gameObject);
         }
         holdingWord = null;
+        partOfSpeech = null;
+        typeOfWord = null;
     }
 }

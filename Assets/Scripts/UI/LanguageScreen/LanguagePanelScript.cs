@@ -55,7 +55,10 @@ public class LanguagePanelScript : MonoBehaviour
             {
                 words = currentLanguage.generateAdjectiveWord(type, num);
             }
+
             wordPanel.GetComponent<WordPanelScript>().holdingWord = words;
+            wordPanel.GetComponent<WordPanelScript>().partOfSpeech = partOfSpeech;
+            wordPanel.GetComponent<WordPanelScript>().typeOfWord = typeOfWord;
             foreach (Word word in words)
             {
                 Word newWord = getTransformed(word);
