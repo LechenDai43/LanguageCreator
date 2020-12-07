@@ -10,7 +10,7 @@ public class LanguagePanelScript : MonoBehaviour
 {
     public Dropdown partOfSpeech, typeOfWord;
     public Text inputNum;
-    public GameObject scrollView, wordPanel;
+    public GameObject subdivisionView, wordPanel;
     public int dropDownValuePOS;
     public GameObject prefabedWordItem;
     public GameObject parent;
@@ -59,7 +59,7 @@ public class LanguagePanelScript : MonoBehaviour
             foreach (Word word in words)
             {
                 Word newWord = getTransformed(word);
-                GameObject instanceWord = (GameObject)Instantiate(prefabedWordItem, wordPanel.transform);
+                GameObject instanceWord = (GameObject)Instantiate(prefabedWordItem, wordPanel.GetComponent<WordPanelScript>().wordPanel.transform);
                 instanceWord.GetComponent<Text>().text = newWord.ToString();
             }
         }
