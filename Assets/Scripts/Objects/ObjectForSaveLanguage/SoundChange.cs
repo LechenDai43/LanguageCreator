@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 [Serializable]
 public class SoundChange
 {
+    public string Name;
     public SoundChange[] Branches;
     public Sandhi[] Rules;
 
