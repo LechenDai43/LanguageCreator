@@ -35,6 +35,23 @@ public class Phone
         this.Level = pp.Level;
     }
 
+    public static Phone deepCopy (Phone other)
+    {
+        Phone result = new Phone();
+        result.IPA = other.IPA;
+        result.FCB = other.FCB;
+        result.Openness = other.Openness;
+        result.Roundness = other.Roundness;
+        result.Sornority = other.Sornority;
+        result.POA = other.POA;
+        result.MOA = other.MOA;
+        result.Aspiration = other.Aspiration;
+        result.Voiceness = other.Voiceness;
+        result.Contour = other.Contour;
+        result.Level = other.Level;
+        return result;
+    }
+
     public bool Equals(Phone other)
     {
         return IPA.Equals(other.IPA) && Level.Equals(other.Level) && 

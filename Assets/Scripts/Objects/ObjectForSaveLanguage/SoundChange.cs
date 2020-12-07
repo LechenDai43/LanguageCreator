@@ -10,4 +10,9 @@ using System.Runtime.Serialization;
 public class SoundChange
 {
 
+
+    public Word change(Word input)
+    {
+        return input;
+    }
 }

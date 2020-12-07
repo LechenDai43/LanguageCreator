@@ -21,10 +21,8 @@ public class LanguageFamily
         {
             return new Word[0];
         }
-        List<Word> result = new List<Word>();
         Morphome chosen = Generals[type];
         return generateVocabulary(chosen, num);
-        return result.ToArray();
     }
 
     public Word[] generateVerbWord(int type, int num)

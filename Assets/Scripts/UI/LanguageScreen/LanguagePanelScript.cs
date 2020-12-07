@@ -13,8 +13,9 @@ public class LanguagePanelScript : MonoBehaviour
     public GameObject subdivisionView, wordPanel;
     public int dropDownValuePOS;
     public GameObject prefabedWordItem;
-    public GameObject parent;
-    public string pathTitle;
+    public GameObject parent; // populate on creating
+    public SoundChange changingRule; // populate on creating
+    // public string pathTitle;
     // public GameObject wordPanel;
 
     // Start is called before the first frame update
@@ -132,6 +133,27 @@ public class LanguagePanelScript : MonoBehaviour
 
     private Word getTransformed(Word word)
     {
+        Word result = word;
+        if (parent != null)
+        {
+            LanguagePanelScript lps = parent.GetComponent<LanguagePanelScript>();
+            if (lps != null)
+            {
+                result = lps.getTransformed(result);
+            }
+            else
+            {
+
+            }
+        }
+        if (changingRule != null)
+        {
+            result = changingRule.change(result);
+        }
+        else
+        {
+
+        }
         return word;
     }
 }

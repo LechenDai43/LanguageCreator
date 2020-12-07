@@ -18,8 +18,13 @@ public class SpeechSound
     public static SpeechSound deepCopy (SpeechSound other)
     {
         SpeechSound result = new SpeechSound();
-        result.Phonemes = other.Phonemes;
-        result.Glide = other.Glide;
+        // result.Phonemes = other.Phonemes; // need change
+        result.Phonemes = new Phone[other.Phonemes.Length];
+        for (int i = 0; i < other.Phonemes.Length; i++)
+        {
+            result.Phonemes[i] = Phone.deepCopy(other.Phonemes[i]);
+        }
+        result.Glide = Phone.deepCopy(other.Glide) ; // need change
         result.Preceded = other.Preceded;
         result.Successed = other.Successed;
         result.Transliteration = other.Transliteration;

@@ -16,10 +16,10 @@ public class LanguageScreenManager : MonoBehaviour
     {
         Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
         LanguageFamily currentLanguage = manager.currentLanguage;
-        others = new Vocabulary[currentLanguage.Generals.Length == null? 0: currentLanguage.Generals.Length];
-        verbs = new Vocabulary[currentLanguage.Verbs.Length == null ? 0 : currentLanguage.Verbs.Length];
-        nouns = new Vocabulary[currentLanguage.Nouns.Length == null ? 0 : currentLanguage.Nouns.Length];
-        adjectives = new Vocabulary[currentLanguage.Adjectives.Length == null ? 0 : currentLanguage.Adjectives.Length];
+        others = new Vocabulary[currentLanguage.Generals == null? 0: currentLanguage.Generals.Length];
+        verbs = new Vocabulary[currentLanguage.Verbs == null ? 0 : currentLanguage.Verbs.Length];
+        nouns = new Vocabulary[currentLanguage.Nouns == null ? 0 : currentLanguage.Nouns.Length];
+        adjectives = new Vocabulary[currentLanguage.Adjectives == null ? 0 : currentLanguage.Adjectives.Length];
 
         string directoryPath = Application.dataPath + currentLanguage.Directory;
         DirectoryInfo dir = new DirectoryInfo(directoryPath);
