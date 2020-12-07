@@ -12,6 +12,7 @@ public class WordPanelScript : MonoBehaviour
     public Word[] holdingWord;
     public GameObject parent, wordPanel;
     public Dropdown partOfSpeech, typeOfWord;
+    public GameObject saveButton;
 
     // Start is called before the first frame update
     void Start()

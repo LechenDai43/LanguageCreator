@@ -13,6 +13,7 @@ public class LanguagePanelScript : MonoBehaviour
     public GameObject subdivisionView, wordPanel;
     public int dropDownValuePOS;
     public GameObject prefabedWordItem;
+    public LanguageScreenManager languageScreenManager;
     public GameObject parent; // populate on creating
     public SoundChange changingRule; // populate on creating
     public GameObject sublanguageButtonPrefab, createSubdivisionPrefab;
@@ -59,6 +60,8 @@ public class LanguagePanelScript : MonoBehaviour
             wordPanel.GetComponent<WordPanelScript>().holdingWord = words;
             wordPanel.GetComponent<WordPanelScript>().partOfSpeech = partOfSpeech;
             wordPanel.GetComponent<WordPanelScript>().typeOfWord = typeOfWord;
+            wordPanel.GetComponent<WordPanelScript>().saveButton.SetActive(true);
+
             foreach (Word word in words)
             {
                 Word newWord = getTransformed(word);
@@ -100,7 +103,32 @@ public class LanguagePanelScript : MonoBehaviour
 
     public void createSubdivision()
     {
+        Word[] words = null;
+        int num = typeOfWord.value;
+        if (partOfSpeech.value == 0)
+        {
+            words = languageScreenManager.others[num].Word;
+        }
+        else if (partOfSpeech.value == 1)
+        {
+            words = languageScreenManager.verbs[num].Word;
+        }
+        else if (partOfSpeech.value == 2)
+        {
+            words = languageScreenManager.nouns[num].Word;
+        }
+        else
+        {
+            words = languageScreenManager.adjectives[num].Word;
+        }
 
+        foreach (Word word in words)
+        {
+            Word newWord = getTransformed(word);
+            GameObject instanceWord = (GameObject)Instantiate(prefabedWordItem, wordPanel.GetComponent<WordPanelScript>().wordPanel.transform);
+            instanceWord.GetComponent<Text>().text = newWord.ToString();
+        }
+        wordPanel.GetComponent<WordPanelScript>().saveButton.SetActive(false);
     }
 
     public void showOldWord()
