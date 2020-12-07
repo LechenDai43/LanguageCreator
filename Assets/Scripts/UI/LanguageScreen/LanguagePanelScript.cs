@@ -111,7 +111,8 @@ public class LanguagePanelScript : MonoBehaviour
 
     public void backUpperDirectory()
     {
-
+        parent.SetActive(true);
+        Destroy(this.gameObject);
     }
 
     public void openSubdivision()
