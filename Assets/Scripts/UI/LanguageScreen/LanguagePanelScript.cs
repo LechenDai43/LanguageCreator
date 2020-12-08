@@ -104,7 +104,8 @@ public class LanguagePanelScript : MonoBehaviour
 
     public void createSubdivision()
     {
-        
+        GameObject createSubPanel = (GameObject)Instantiate(createSubdivisionPrefab, languageScreenManager.transform);
+        // instanceWord.GetComponent<Text>().text = newWord.ToString();
     }
 
     public void showOldWord()
