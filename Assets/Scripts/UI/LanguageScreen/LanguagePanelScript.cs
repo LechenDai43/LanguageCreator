@@ -105,6 +105,7 @@ public class LanguagePanelScript : MonoBehaviour
     public void createSubdivision()
     {
         GameObject createSubPanel = (GameObject)Instantiate(createSubdivisionPrefab, languageScreenManager.transform);
+        AddSandhiPanelScript istantiatedScript = createSubPanel.GetComponent<AddSandhiPanelScript>();
         // instanceWord.GetComponent<Text>().text = newWord.ToString();
     }
 
