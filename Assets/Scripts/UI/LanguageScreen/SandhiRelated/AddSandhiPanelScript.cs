@@ -15,6 +15,7 @@ public class AddSandhiPanelScript : MonoBehaviour
 
     // objects in editor
     public GameObject upperContent, lowerContent;
+    public GameObject prefabedDescriptionContainer, prefabedMetaBlock, prefabedDescription;
 
 
     // Start is called before the first frame update
@@ -41,7 +42,11 @@ public class AddSandhiPanelScript : MonoBehaviour
 
     public void addSandhiButton()
     {
+        sandhiEditor.SetActive(true);
 
+        GameObject targetDesCon = (GameObject)Instantiate(prefabedDescriptionContainer, upperContent.transform);
+        GameObject targetMetBlo = (GameObject)Instantiate(prefabedMetaBlock, lowerContent.transform);
+        targetDesCon.GetComponent<DescriptionContainerScript>().correspondingBlock = targetMetBlo.GetComponent<MetaBlockScript>();
     }
 
     public void editorSaveButton()
@@ -51,7 +56,9 @@ public class AddSandhiPanelScript : MonoBehaviour
 
     public void editorAddButton()
     {
-
+        GameObject targetDesCon = (GameObject)Instantiate(prefabedDescriptionContainer, upperContent.transform);
+        GameObject targetMetBlo = (GameObject)Instantiate(prefabedMetaBlock, lowerContent.transform);
+        targetDesCon.GetComponent<DescriptionContainerScript>().correspondingBlock = targetMetBlo.GetComponent<MetaBlockScript>();
     }
 
     public void editorCancelButton()
