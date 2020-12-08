@@ -50,6 +50,7 @@ public class WordPanelScript : MonoBehaviour
         {
             lsm.adjectives[type].addWords(holdingWord);
         }
+        lsm.saveVocabulary();
 
         closePanel();
     }

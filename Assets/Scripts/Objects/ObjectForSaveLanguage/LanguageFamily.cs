@@ -291,7 +291,6 @@ public class LanguageFamily
                     }
                 }
             }
-            result.Phonemes = list.ToArray();
             
             if (rule.Affixed)
             {
@@ -395,9 +394,23 @@ public class LanguageFamily
                 list.Add(chosen);
                 list.Add(SpeechSound.deepCopy(rule.HolderVowels[i]));
             }
-            result.Phonemes = list.ToArray();
         }
 
+        SpeechSound previous = list[0];
+        for (int i = 1; i < list.Count; i++)
+        {
+            SpeechSound current = list[i];
+            if (current.Phonemes.Length == 1 && current.Phonemes[0].IPA != null && current.Phonemes[0].IPA.Equals("'"))
+            {
+                if (previous.Phonemes.Length > 0 && (previous.Phonemes[previous.Phonemes.Length - 1].Openness == null || previous.Phonemes[previous.Phonemes.Length - 1].Openness.Equals("")))
+                {
+                    list.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
+        result.Phonemes = list.ToArray();
         Debug.Log(result.ToString());
         return result;
     }
