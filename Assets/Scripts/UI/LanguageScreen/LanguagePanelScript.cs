@@ -12,11 +12,14 @@ public class LanguagePanelScript : MonoBehaviour
     public Text inputNum;
     public GameObject subdivisionView, wordPanel;
     public int dropDownValuePOS;
-    public GameObject prefabedWordItem;
+
     public LanguageScreenManager languageScreenManager;
+
+    public GameObject sublanguageButtonPrefab, createSubdivisionPrefab;
+    public GameObject prefabedWordItem;
+
     public GameObject parent; // populate on creating
     public SoundChange changingRule; // populate on creating
-    public GameObject sublanguageButtonPrefab, createSubdivisionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +109,7 @@ public class LanguagePanelScript : MonoBehaviour
     {
         GameObject createSubPanel = (GameObject)Instantiate(createSubdivisionPrefab, languageScreenManager.transform);
         AddSandhiPanelScript istantiatedScript = createSubPanel.GetComponent<AddSandhiPanelScript>();
+        istantiatedScript.parentScript = this;
         // instanceWord.GetComponent<Text>().text = newWord.ToString();
     }
 
