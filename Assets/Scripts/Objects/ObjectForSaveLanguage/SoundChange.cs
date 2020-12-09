@@ -25,4 +25,12 @@ public class SoundChange
 
         return output;
     }
+
+    public void addBranches(string subPath)
+    {
+        List<string> tem = new List<string>();
+        tem.AddRange(Branches);
+        tem.Add(subPath);
+        Branches = tem.ToArray();
+    }
 }

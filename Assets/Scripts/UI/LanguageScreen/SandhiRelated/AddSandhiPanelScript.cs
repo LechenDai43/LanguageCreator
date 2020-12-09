@@ -9,7 +9,7 @@ public class AddSandhiPanelScript : MonoBehaviour
     public GameObject sandhiConent, sandhiEditor;
     public GameObject prefabedSandhiBanner;
     
-    public List<Sandhi> sandhis;
+    // public List<Sandhi> sandhis;
 
     public LanguagePanelScript parentScript;
 
@@ -24,8 +24,6 @@ public class AddSandhiPanelScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sandhis = new List<Sandhi>();
-
         mannersL.Add("unchanged");
         positionsL.Add("unchanged");
         opennessL.Add("unchanged");
@@ -112,6 +110,36 @@ public class AddSandhiPanelScript : MonoBehaviour
 
     public void saveButton()
     {
+        if (name.text == null || name.text.Equals(""))
+        {
+            return;
+        }
+        string subName = name.text;
+
+        SoundChange parentNode = parentScript.changingRule;
+        SoundChange thisNode = new SoundChange();
+
+        thisNode.Name = subName;
+        thisNode.Branches = new string[0];
+
+        Sandhi[] sandhiList = new Sandhi[sandhiConent.transform.childCount];
+        for (int i = 0; i < sandhiConent.transform.childCount; i++)
+        {
+            SandhiBannerScript temp = sandhiConent.transform.GetChild(i).GetComponent<SandhiBannerScript>();
+            sandhiList[i] = temp.sandhi;
+        }
+
+        thisNode.Rules = sandhiList;
+        thisNode.Directory = parentNode.Directory + "-" + parentNode.Count.ToString();
+        thisNode.Count = 0;
+
+        string langaugeData = JsonUtility.ToJson(thisNode);
+        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + thisNode.Directory + ".soundChange", langaugeData);
+
+        parentNode.addBranches(thisNode.Directory + ".soundChange");
+        parentNode.Count++;
+
+        cancelButton();
 
     }
 
