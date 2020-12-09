@@ -163,6 +163,10 @@ public class AddSandhiPanelScript : MonoBehaviour
         GameObject targetDesCon = (GameObject)Instantiate(prefabedDescriptionContainer, upperContent.transform);
         GameObject targetMetBlo = (GameObject)Instantiate(prefabedMetaBlock, lowerContent.transform);
         targetDesCon.GetComponent<DescriptionContainerScript>().correspondingBlock = targetMetBlo.GetComponent<MetaBlockScript>();
+        targetDesCon.GetComponent<DescriptionContainerScript>().parentScript = this;
+        targetMetBlo.GetComponent<MetaBlockScript>().parent = this;
+        targetDesCon.GetComponent<DescriptionContainerScript>().changeDropdown(mannersU, positionsU, opennessU, roundednessU);
+        targetMetBlo.GetComponent<MetaBlockScript>().changeDropdown(mannersL, positionsL, opennessL, roundednessL);
     }
 
     public void editorCancelButton()
