@@ -136,7 +136,26 @@ public class AddSandhiPanelScript : MonoBehaviour
 
     public void editorSaveButton()
     {
+        GameObject banner = (GameObject)Instantiate(prefabedSandhiBanner, sandhiConent.transform);
+        SandhiBannerScript bannerScript = banner.transform.GetComponent<SandhiBannerScript>();
 
+        List<Sandhi.Description> upperList = new List<Sandhi.Description>();
+        List<Sandhi.MetaBlock> lowerList = new List<Sandhi.MetaBlock>();
+
+        for (int i = 0; i < upperContent.transform.childCount; i++)
+        {
+            DescriptionContainerScript upper = upperContent.transform.GetChild(i).GetComponent<DescriptionContainerScript>();
+            upperList.Add(upper.packUp());
+
+            MetaBlockScript lower = lowerContent.transform.GetChild(i).GetComponent<MetaBlockScript>();
+            lowerList.Add(lower.packUp());
+        }
+
+        bannerScript.sandhi = new Sandhi();
+        bannerScript.sandhi.Target = upperList.ToArray();
+        bannerScript.sandhi.Result = lowerList.ToArray();
+
+        editorCancelButton();
     }
 
     public void editorAddButton()
@@ -161,6 +180,8 @@ public class AddSandhiPanelScript : MonoBehaviour
             tem.parent = null;
             Destroy(tem.gameObject);
         }
+
+        sandhiEditor.SetActive(false);
     }
 
     public void targetMainDropdownChanged()

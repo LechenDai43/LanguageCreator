@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SandhiBannerScript : MonoBehaviour
 {
+    public Sandhi sandhi;
+
     // Start is called before the first frame update
     void Start()
     {
