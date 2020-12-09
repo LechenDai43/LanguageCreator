@@ -242,6 +242,7 @@ MonoBehaviour:
   prefabedPanel: {fileID: 8479267162446832843, guid: 7e4f50fe22097b1488f2583dad1a89c5,
     type: 3}
   listOfPanel: []
+  rootPanel: {fileID: 1705462668}
 --- !u!1 &167608762
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1001,12 @@ PrefabInstance:
     - target: {fileID: 8479267162446832843, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
       propertyPath: m_Name
-      value: A language
+      value: root panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479267162446832843, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8479267162446832847, guid: 7e4f50fe22097b1488f2583dad1a89c5,
         type: 3}
@@ -1106,7 +1112,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 793782864}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1705462668}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb9c299b36cba4a4faa8bbc2b10a7fe7, type: 3}
@@ -1687,6 +1693,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604628291}
   m_CullTransparentMesh: 0
+--- !u!1 &1705462668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8479267162446832843, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 793782864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1759814301
 GameObject:
   m_ObjectHideFlags: 0

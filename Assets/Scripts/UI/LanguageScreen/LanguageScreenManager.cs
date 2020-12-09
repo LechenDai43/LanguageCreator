@@ -9,6 +9,7 @@ public class LanguageScreenManager : MonoBehaviour
     public Vocabulary[] verbs, nouns, others, adjectives;
     public GameObject prefabedPanel;
     public List<GameObject> listOfPanel;
+    public GameObject rootPanel;
     
 
     // Start is called before the first frame update
