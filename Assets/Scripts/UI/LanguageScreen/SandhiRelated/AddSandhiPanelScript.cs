@@ -8,6 +8,7 @@ public class AddSandhiPanelScript : MonoBehaviour
     public Text name;
     public GameObject sandhiConent, sandhiEditor;
     public GameObject prefabedSandhiBanner;
+    public GameObject prefabedButton;
     
     // public List<Sandhi> sandhis;
 
@@ -138,6 +139,13 @@ public class AddSandhiPanelScript : MonoBehaviour
 
         parentNode.addBranches(thisNode.Directory + ".soundChange");
         parentNode.Count++;
+
+        GameObject instanceButton = (GameObject)Instantiate(prefabedButton, parentScript.subdivisionView.transform);
+        SubLanguageButton buttonScript = instanceButton.GetComponent<SubLanguageButton>();
+        buttonScript.buttonText.text = thisNode.Name;
+        buttonScript.parentScript = parentScript;
+        buttonScript.soundChange = thisNode;
+
 
         cancelButton();
 

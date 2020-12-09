@@ -1438,7 +1438,8 @@ MonoBehaviour:
   sandhiEditor: {fileID: 7028118732863857177}
   prefabedSandhiBanner: {fileID: 8155907965681567718, guid: 687b138ea9ef0294fa85590bbf1ecbf4,
     type: 3}
-  sandhis: []
+  prefabedButton: {fileID: 3810947278573577653, guid: 91af7363f28032c4ebca30d4e279e644,
+    type: 3}
   parentScript: {fileID: 0}
   upperContent: {fileID: 7277218950877440316}
   lowerContent: {fileID: 4089890535917613704}
@@ -1448,6 +1449,14 @@ MonoBehaviour:
     type: 3}
   prefabedDescription: {fileID: 4843343166837332740, guid: c28cbc28b81e98842a69fad4bbf2dde6,
     type: 3}
+  mannersU: []
+  positionsU: []
+  opennessU: []
+  roundednessU: []
+  mannersL: []
+  positionsL: []
+  opennessL: []
+  roundednessL: []
 --- !u!1 &3524652277266256574
 GameObject:
   m_ObjectHideFlags: 0

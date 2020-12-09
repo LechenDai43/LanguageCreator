@@ -8,6 +8,7 @@ public class SubLanguageButton : MonoBehaviour
     public LanguagePanelScript parentScript;
     public Text buttonText;
     public SoundChange soundChange;
+    public GameObject prefabedPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,13 @@ public class SubLanguageButton : MonoBehaviour
 
     public void handleClick()
     {
+        GameObject instancePanel = (GameObject)Instantiate(prefabedPanel, parentScript.transform.parent);
+        LanguagePanelScript instanceScript = instancePanel.GetComponent<LanguagePanelScript>();
+        instanceScript.parent = parentScript.gameObject;
+        instanceScript.changingRule = soundChange;
+
+        parentScript.gameObject.SetActive(false);
+
 
     }
 }
