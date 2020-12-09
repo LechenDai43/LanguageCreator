@@ -39,4 +39,15 @@ public class DescriptionContainerScript : MonoBehaviour
         child.roundednessSelector.ClearOptions();
         child.roundednessSelector.AddOptions(roundedness);
     }
+
+    public void removeComponent()
+    {
+        if (correspondingBlock != null)
+        {
+            correspondingBlock.transform.parent = null;
+            Destroy(correspondingBlock.transform.gameObject);
+        }
+        this.transform.parent = null;
+        Destroy(this.transform.gameObject);
+    }
 }
