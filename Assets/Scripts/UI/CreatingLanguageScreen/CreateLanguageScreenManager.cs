@@ -675,6 +675,13 @@ public class CreateLanguageScreenManager : MonoBehaviour
             System.IO.Directory.CreateDirectory(Application.dataPath + vocabPath);
         }
         newLanguageFamily.Directory = vocabPath;
+
+        SoundChange rootChange = new SoundChange();
+        rootChange.Name = newLanguageFamily.Name;
+        rootChange.Directory = vocabPath + "/change_rule/root";
+        newLanguageFamily.Root = rootChange;
+
+
         string langaugeData = JsonUtility.ToJson(newLanguageFamily);
         System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/Languages/" + newLanguageFamily.Name + ".languageFamily", langaugeData);
 

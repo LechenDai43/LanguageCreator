@@ -10,8 +10,10 @@ using System.Runtime.Serialization;
 public class SoundChange
 {
     public string Name;
-    // public SoundChange[] Branches;
+    public string[] Branches;
     public Sandhi[] Rules;
+    public string Directory;
+    public int Count = 0;
 
     public Word change(Word input)
     {
