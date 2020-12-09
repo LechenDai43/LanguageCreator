@@ -63,6 +63,18 @@ public class AddSandhiPanelScript : MonoBehaviour
 
     public void editorCancelButton()
     {
+        while (upperContent.transform.childCount > 0)
+        {
+            Transform tem = upperContent.transform.GetChild(0);
+            tem.parent = null;
+            Destroy(tem.gameObject);
+        }
 
+        while (lowerContent.transform.childCount > 0)
+        {
+            Transform tem = lowerContent.transform.GetChild(0);
+            tem.parent = null;
+            Destroy(tem.gameObject);
+        }
     }
 }
