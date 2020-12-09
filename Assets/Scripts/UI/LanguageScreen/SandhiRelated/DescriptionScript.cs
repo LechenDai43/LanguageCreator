@@ -7,6 +7,7 @@ public class DescriptionScript : MonoBehaviour
 {
     public Dropdown mainSelector;
     public GameObject generic, consonant, vowel;
+    public DescriptionContainerScript container = null;
 
     // for generic
     public Toggle initialPosition, endingPosition;
@@ -50,6 +51,11 @@ public class DescriptionScript : MonoBehaviour
             generic.SetActive(false);
             consonant.SetActive(false);
             vowel.SetActive(true);
+        }
+
+        if (container != null)
+        {
+            container.childChangeToggle();
         }
     }
 

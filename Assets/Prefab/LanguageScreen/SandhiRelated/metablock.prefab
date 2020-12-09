@@ -933,6 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf223e08ca625a748937acaae386f018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollView: {fileID: 1510078511650720609}
 --- !u!1001 &6638936681467191186
 PrefabInstance:
   m_ObjectHideFlags: 0
