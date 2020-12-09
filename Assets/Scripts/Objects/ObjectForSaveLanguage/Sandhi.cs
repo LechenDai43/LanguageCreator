@@ -61,6 +61,6 @@ public class Sandhi
         public bool Initial = false, Terminal = false;
         public bool SingleHolder = false, MultipleHolder = false;
         public bool DimensionOne = false, DimensionTwo = false;
-
+        public bool Unchanged = false;
     }
 }

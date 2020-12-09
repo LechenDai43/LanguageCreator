@@ -48,6 +48,8 @@ public class DescriptionContainerScript : MonoBehaviour
             Destroy(correspondingBlock.transform.gameObject);
         }
         this.transform.parent = null;
+        parentScript.changePosition();
+        parentScript.targetMainDropdownChanged();
         Destroy(this.transform.gameObject);
     }
 

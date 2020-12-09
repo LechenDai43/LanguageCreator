@@ -223,4 +223,13 @@ public class AddSandhiPanelScript : MonoBehaviour
             tem.changeDropdown(mannersL, positionsL, opennessL, roundednessL);
         }
     }
+
+    public void changePosition()
+    {
+        for (int i = 0; i < upperContent.transform.childCount; i++)
+        {
+            DescriptionContainerScript tem = upperContent.transform.GetChild(i).GetComponent<DescriptionContainerScript>();
+            tem.correspondingBlock.position = i;
+        }
+    }
 }

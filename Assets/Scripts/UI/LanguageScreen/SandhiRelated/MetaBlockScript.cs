@@ -7,6 +7,7 @@ public class MetaBlockScript : MonoBehaviour
     public GameObject scrollView, removeButton;
     public GameObject prefabedItemt;
     public AddSandhiPanelScript parent;
+    public int position = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -91,7 +92,87 @@ public class MetaBlockScript : MonoBehaviour
         result.Descriptions = new Sandhi.Description[scrollView.transform.childCount];
         for (int i = 0; i < scrollView.transform.childCount; i++)
         {
+            DescriptionScript temp = scrollView.transform.GetChild(i).GetComponent<DescriptionScript>();
+            Sandhi.Description desc = new Sandhi.Description();
 
+            if (temp.mainSelector.value == 0)
+            {
+                desc.Unchanged = true;
+            }
+            else if (temp.mainSelector.value == 1)
+            {
+                desc.Type = "Consonant";
+
+                if (temp.mannerSelector.value == 0)
+                {
+                    desc.MOA = position;
+                    desc.DimensionOne = true;
+                }
+                else if (temp.mannerSelector.value <= 20)
+                {
+                    desc.MOA = temp.mannerSelector.value - 1;
+                }
+                else
+                {
+                    desc.MOA = temp.mannerSelector.value - 21;
+                    desc.DimensionOne = true;
+                }
+
+
+                if (temp.positionSelector.value == 0)
+                {
+                    desc.POA = position;
+                    desc.DimensionTwo= true;
+                }
+                else if (temp.positionSelector.value <= 11)
+                {
+                    desc.POA = temp.positionSelector.value - 1;
+                }
+                else
+                {
+                    desc.POA = temp.positionSelector.value - 1 - 11;
+                    desc.DimensionTwo = true;
+                }
+            }
+            else if (temp.mainSelector.value == 2)
+            {
+                desc.Type = "Vowel";
+
+                if (temp.opennessSelector.value == 0)
+                {
+                    desc.Openness = position;
+                    desc.DimensionOne = true;
+                }
+                else if (temp.opennessSelector.value <= 7)
+                {
+                    desc.Openness = temp.opennessSelector.value - 1;
+                }
+                else
+                {
+                    desc.Openness = temp.opennessSelector.value - 1 - 7;
+                    desc.DimensionOne = true;
+                }
+
+
+                if (temp.roundednessSelector.value == 0)
+                {
+                    desc.Roundness = position;
+                    desc.DimensionTwo = true;
+                }
+                else if (temp.roundednessSelector.value <= 6)
+                {
+                    desc.Roundness = temp.roundednessSelector.value - 1;
+                }
+                else
+                {
+                    desc.Roundness = temp.roundednessSelector.value - 1 - 6;
+                    desc.DimensionTwo = true;
+                }
+            }
+
+            result.Descriptions[i] = desc;
         }
+
+        return result;
     }
 }
