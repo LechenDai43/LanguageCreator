@@ -56,33 +56,54 @@ public class DescriptionScript : MonoBehaviour
     public void toggleChanged(int index)
     {
         Debug.Log(index);
-        initialPosition.isOn = false;
-        endingPosition.isOn = false;
-        oneConsonent.isOn = false;
-        oneVowel.isOn = false;
-        consonantCluster.isOn = false;
-        vowelCluster.isOn = false;
-
-        switch (index)
+        
+        if (index == 0)
         {
-            case 0:
-                initialPosition.isOn = true;
-                break;
-            case 1:
-                endingPosition.isOn = true;
-                break;
-            case 2:
-                oneConsonent.isOn = true;
-                break;
-            case 3:
-                oneVowel.isOn = true;
-                break;
-            case 4:
-                consonantCluster.isOn = true;
-                break;
-            case 5:
-                vowelCluster.isOn = true;
-                break;
+            endingPosition.isOn = false;
+            oneConsonent.isOn = false;
+            oneVowel.isOn = false;
+            consonantCluster.isOn = false;
+            vowelCluster.isOn = false;
+        }
+        else if (index == 1)
+        {
+            initialPosition.isOn = false;
+            oneConsonent.isOn = false;
+            oneVowel.isOn = false;
+            consonantCluster.isOn = false;
+            vowelCluster.isOn = false;
+        }
+        else if (index == 2)
+        {
+            initialPosition.isOn = false;
+            endingPosition.isOn = false;
+            oneVowel.isOn = false;
+            consonantCluster.isOn = false;
+            vowelCluster.isOn = false;
+        }
+        else if (index == 3)
+        {
+            initialPosition.isOn = false;
+            endingPosition.isOn = false;
+            oneConsonent.isOn = false;
+            consonantCluster.isOn = false;
+            vowelCluster.isOn = false;
+        }
+        else if (index == 4)
+        {
+            initialPosition.isOn = false;
+            endingPosition.isOn = false;
+            oneConsonent.isOn = false;
+            oneVowel.isOn = false;
+            vowelCluster.isOn = false;
+        }
+        else if (index == 5)
+        {
+            initialPosition.isOn = false;
+            endingPosition.isOn = false;
+            oneConsonent.isOn = false;
+            oneVowel.isOn = false;
+            consonantCluster.isOn = false;
         }
     }
 }
