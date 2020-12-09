@@ -37,4 +37,9 @@ public class MetaBlockScript : MonoBehaviour
             tem.roundednessSelector.AddOptions(roundedness);
         }
     }
+
+    public void childChangeToggle(DescriptionScript source)
+    {
+        source.generic.SetActive(false);
+    }
 }
