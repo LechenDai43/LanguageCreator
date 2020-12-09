@@ -17,4 +17,10 @@ public class SandhiBannerScript : MonoBehaviour
     {
         
     }
+
+    public void deleteButton()
+    {
+        this.transform.parent = null;
+        Destroy(this.gameObject);
+    }
 }
