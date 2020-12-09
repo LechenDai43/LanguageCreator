@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SubLanguageButton : MonoBehaviour
 {
     public LanguagePanelScript parentScript;
+    public Text buttonText;
+    public SoundChange soundChange;
 
     // Start is called before the first frame update
     void Start()
