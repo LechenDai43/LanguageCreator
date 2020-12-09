@@ -24,7 +24,10 @@ public class DescriptionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (block != null)
+        {
+            block.childChangeToggle(this);
+        }
     }
 
     // Update is called once per frame

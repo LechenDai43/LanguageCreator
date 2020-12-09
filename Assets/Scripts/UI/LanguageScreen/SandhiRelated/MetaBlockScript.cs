@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MetaBlockScript : MonoBehaviour
 {
-    public GameObject scrollView;
+    public GameObject scrollView, removeButton;
+    public GameObject prefabedItemt;
+    public AddSandhiPanelScript parent;
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +43,44 @@ public class MetaBlockScript : MonoBehaviour
     public void childChangeToggle(DescriptionScript source)
     {
         source.generic.SetActive(false);
+    }
+
+    public void addItem()
+    {
+        GameObject description = (GameObject)Instantiate(prefabedItemt, scrollView.transform);
+        DescriptionScript tem = description.GetComponent<DescriptionScript>();
+        tem.block = this;
+
+        tem.mannerSelector.ClearOptions();
+        tem.mannerSelector.AddOptions(parent.mannersL);
+
+        tem.positionSelector.ClearOptions();
+        tem.positionSelector.AddOptions(parent.positionsL);
+
+        tem.opennessSelector.ClearOptions();
+        tem.opennessSelector.AddOptions(parent.opennessL);
+
+        tem.roundednessSelector.ClearOptions();
+        tem.roundednessSelector.AddOptions(parent.roundednessL);
+
+        if (scrollView.transform.childCount > 1)
+        {
+            removeButton.SetActive(true);
+        }
+    }
+
+    public void removeItem()
+    {
+        if (scrollView.transform.childCount > 1)
+        {
+            Transform tem = scrollView.transform.GetChild(scrollView.transform.childCount - 1);
+            tem.parent = null;
+            Destroy(tem.gameObject);
+
+            if (scrollView.transform.childCount == 1)
+            {
+                removeButton.SetActive(false);
+            }
+        }
     }
 }
