@@ -201,6 +201,19 @@ public class AddSandhiPanelScript : MonoBehaviour
                 opennessL.Add(text);
                 roundednessL.Add(text);
             }
+            else if (tem.mainSelector.value == 0)
+            {
+                if (tem.oneConsonent.isOn || tem.consonantCluster.isOn)
+                {
+                    mannersL.Add(text);
+                    positionsL.Add(text);
+                }
+                else if (tem.oneVowel.isOn || tem.vowelCluster.isOn)
+                {
+                    opennessL.Add(text);
+                    roundednessL.Add(text);
+                }
+            }
         }
 
         for (int i = 0; i < lowerContent.transform.childCount; i++)

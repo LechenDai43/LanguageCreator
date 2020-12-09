@@ -83,4 +83,15 @@ public class MetaBlockScript : MonoBehaviour
             }
         }
     }
+
+    public Sandhi.MetaBlock packUp()
+    {
+        Sandhi.MetaBlock result = new Sandhi.MetaBlock();
+
+        result.Descriptions = new Sandhi.Description[scrollView.transform.childCount];
+        for (int i = 0; i < scrollView.transform.childCount; i++)
+        {
+
+        }
+    }
 }
