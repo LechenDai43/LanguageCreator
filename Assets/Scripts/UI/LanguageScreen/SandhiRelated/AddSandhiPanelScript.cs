@@ -129,6 +129,8 @@ public class AddSandhiPanelScript : MonoBehaviour
 
         targetDesCon.GetComponent<DescriptionContainerScript>().correspondingBlock = targetMetBlo.GetComponent<MetaBlockScript>();
         targetDesCon.GetComponent<DescriptionContainerScript>().parentScript = this;
+        targetDesCon.GetComponent<DescriptionContainerScript>().changeDropdown(mannersU, positionsU, opennessU, roundednessU);
+        targetMetBlo.GetComponent<MetaBlockScript>().changeDropdown(mannersL, positionsL, opennessL, roundednessL);
     }
 
     public void editorSaveButton()
