@@ -53,14 +53,13 @@ public class Sandhi
     [Serializable]
     public class Description
     {
-        public string IPA;
-        public string FCB;
-        public string Openness;
-        public string Roundness;
-        public string POA;
-        public string MOA;
-        public string Aspiration;
-        public string Voiceness;
-        public string Type;
+        public int Openness = -1;
+        public int Roundness = -1;
+        public int POA = -1;
+        public int MOA = -1;
+        public string Type = "";
+        public bool Initial = false, Terminal = false;
+        public bool SingleHolder = false, MultipleHolder = false;
+
     }
 }

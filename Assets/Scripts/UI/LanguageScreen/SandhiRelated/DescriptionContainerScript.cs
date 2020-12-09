@@ -50,4 +50,56 @@ public class DescriptionContainerScript : MonoBehaviour
         this.transform.parent = null;
         Destroy(this.transform.gameObject);
     }
+
+    public Sandhi.Description packUp()
+    {
+        Sandhi.Description result = new Sandhi.Description();
+
+        if (child.mainSelector.value == 0)
+        {
+            if (child.initialPosition.isOn)
+            {
+                result.Initial = true;
+            }
+
+            if (child.endingPosition.isOn)
+            {
+                result.Terminal = true;
+            }
+
+            if (child.oneConsonent.isOn || child.consonantCluster.isOn)
+            {
+                result.Type = "Consonant";
+            }
+
+            if (child.oneVowel.isOn || child.vowelCluster.isOn)
+            {
+                result.Type = "Vowel";
+            }
+
+            if (child.oneConsonent.isOn || child.oneVowel.isOn)
+            {
+                result.SingleHolder = true;
+            }
+
+            if (child.consonantCluster.isOn || child.vowelCluster.isOn)
+            {
+                result.MultipleHolder = true;
+            }
+        }
+        else if (child.mainSelector.value == 1)
+        {
+            result.Type = "Consonant";
+            result.POA = child.positionSelector.value;
+            result.MOA = child.mannerSelector.value;
+        }
+        else
+        {
+            result.Type = "Vowel";
+            result.Openness = child.opennessSelector.value;
+            result.Roundness = child.roundednessSelector.value;
+        }
+
+        return result;
+    }
 }
