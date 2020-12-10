@@ -41,6 +41,56 @@ public class Sandhi
         // find the target pattern
         // change the target pattern to the desired pattern
 
+        int i = 0;
+        while (i < list.Count - Target.Length)
+        {
+            if (list[i].Level == null || list[i].Level.Equals(""))
+            {
+                i++;
+                continue;
+            }
+
+            bool fullMatch = true;
+            int length = 0;
+
+            List<List<Phone>> founded = new List<List<Phone>>();
+            for (int j = 0; j < Target.Length; j++)
+            {
+                // If this require an initial position
+                if (Target[j].Initial)
+                {
+                    if (i + length == 0)
+                    {
+                        founded.Add(new List<Phone>());
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                }
+                // If this requires a terminal position
+                else if (Target[j].Terminal)
+                {
+                    if (i + length == list.Count - 1)
+                    {
+                        founded.Add(new List<Phone>());
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                }
+                // If this is a single vowel
+                else if (Target[j].SingleHolder && Target[j].Type.Contains("w"))
+                {
+                    List<Phone> tem = new List<Phone>();
+                    
+                }
+            }
+        }
+
         return null;
     }
 
