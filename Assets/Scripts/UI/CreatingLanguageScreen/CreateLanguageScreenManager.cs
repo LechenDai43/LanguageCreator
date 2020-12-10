@@ -678,7 +678,16 @@ public class CreateLanguageScreenManager : MonoBehaviour
 
         SoundChange rootChange = new SoundChange();
         rootChange.Name = newLanguageFamily.Name;
+        rootChange.Directory = vocabPath + "/change_rule/";
+        if (!System.IO.Directory.Exists(Application.dataPath + rootChange.Directory))
+        {
+            System.IO.Directory.CreateDirectory(Application.dataPath + rootChange.Directory);
+        }
+
         rootChange.Directory = vocabPath + "/change_rule/root";
+        rootChange.Branches = new string[0];
+        rootChange.Rules = new Sandhi[0];
+
         newLanguageFamily.Root = rootChange;
 
 

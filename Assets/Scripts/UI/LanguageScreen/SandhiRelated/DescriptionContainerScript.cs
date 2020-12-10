@@ -27,17 +27,25 @@ public class DescriptionContainerScript : MonoBehaviour
 
     public void changeDropdown(List<string> manner, List<string> position, List<string> openness, List<string> roundedness)
     {
+        List<string> last = new List<string>();
+        last.Add("any");
+
         child.mannerSelector.ClearOptions();
         child.mannerSelector.AddOptions(manner);
+        child.mannerSelector.AddOptions(last);
 
         child.positionSelector.ClearOptions();
         child.positionSelector.AddOptions(position);
+        child.positionSelector.AddOptions(last);
+
 
         child.opennessSelector.ClearOptions();
         child.opennessSelector.AddOptions(openness);
+        child.opennessSelector.AddOptions(last);
 
         child.roundednessSelector.ClearOptions();
         child.roundednessSelector.AddOptions(roundedness);
+        child.roundednessSelector.AddOptions(last);
     }
 
     public void removeComponent()

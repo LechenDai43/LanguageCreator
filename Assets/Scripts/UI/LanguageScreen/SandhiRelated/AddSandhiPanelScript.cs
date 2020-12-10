@@ -135,7 +135,7 @@ public class AddSandhiPanelScript : MonoBehaviour
         thisNode.Count = 0;
 
         string langaugeData = JsonUtility.ToJson(thisNode);
-        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + thisNode.Directory + ".soundChange", langaugeData);
+        System.IO.File.WriteAllText(Application.dataPath + thisNode.Directory + ".soundChange", langaugeData);
 
         parentNode.addBranches(thisNode.Directory + ".soundChange");
         parentNode.Count++;

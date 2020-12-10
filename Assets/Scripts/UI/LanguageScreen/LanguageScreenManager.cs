@@ -78,6 +78,9 @@ public class LanguageScreenManager : MonoBehaviour
         populateUndefined(nouns);
         populateUndefined(adjectives);
 
+        LanguagePanelScript rootScript = rootPanel.GetComponent<LanguagePanelScript>();
+        rootScript.changingRule = currentLanguage.Root;
+        rootScript.populateSubLanguageButton();
     }
 
     // Update is called once per frame

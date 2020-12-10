@@ -157,6 +157,32 @@ public class LanguagePanelScript : MonoBehaviour
 
     }
 
+    public void populateSubLanguageButton()
+    {
+        if (changingRule != null)
+        {
+            StreamReader sr;
+            for (int i = 0; i < changingRule.Branches.Length; i++)
+            {
+                string path = changingRule.Branches[i];
+                sr = new StreamReader(path);
+                string content = sr.ReadToEnd();
+                SoundChange oneSub = JsonUtility.FromJson<SoundChange>(content);
+
+                GameObject instanceButton = (GameObject)Instantiate(sublanguageButtonPrefab, subdivisionView.transform);
+                SubLanguageButton buttonScript = instanceButton.GetComponent<SubLanguageButton>();
+                buttonScript.parentScript = this;
+                buttonScript.soundChange = oneSub;
+                buttonScript.buttonText.text = oneSub.Name;
+                sr.Close();
+            }
+        }
+        else
+        {
+            Debug.Log("Sound change did not find");
+        }
+    }
+
     private void reformatType(Morphome[] list)
     {
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
@@ -186,4 +212,6 @@ public class LanguagePanelScript : MonoBehaviour
         }
         return result;
     }
+
+
 }

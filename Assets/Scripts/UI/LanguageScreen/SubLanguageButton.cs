@@ -28,6 +28,7 @@ public class SubLanguageButton : MonoBehaviour
         LanguagePanelScript instanceScript = instancePanel.GetComponent<LanguagePanelScript>();
         instanceScript.parent = parentScript.gameObject;
         instanceScript.changingRule = soundChange;
+        instanceScript.populateSubLanguageButton();
 
         parentScript.gameObject.SetActive(false);
 
