@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class LanguageScreenManager : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class LanguageScreenManager : MonoBehaviour
     public GameObject prefabedPanel;
     public List<GameObject> listOfPanel;
     public GameObject rootPanel;
+
+    public void backHomePage()
+    {
+        SceneManager.LoadScene("InitialScreen");
+    }
     
 
     // Start is called before the first frame update
