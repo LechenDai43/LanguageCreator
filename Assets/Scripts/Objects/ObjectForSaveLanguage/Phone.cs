@@ -57,10 +57,19 @@ public class Phone
 
     public bool Equals(Phone other)
     {
-        return IPA.Equals(other.IPA) && Level.Equals(other.Level) && 
+        bool result = true;
+        try
+        {
+            result = IPA != null && other.IPA != null && IPA.Equals(other.IPA) && Level.Equals(other.Level) &&
             Openness.Equals(other.Openness) && Roundness.Equals(other.Roundness) &&
             Sornority.Equals(other.Sornority) && POA.Equals(other.POA) &&
             MOA.Equals(other.MOA) && Aspiration.Equals(other.Aspiration) &&
             Voiceness.Equals(other.Voiceness) && Contour.Equals(other.Contour);
+            return result;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 }
