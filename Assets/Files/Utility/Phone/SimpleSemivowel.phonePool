@@ -3,69 +3,69 @@
         {
             "IPA": "w",
             "FCB": "front",
-            "Sonority": "glide",
+            "Sornority": "glide",
             "POA": "bilabial"
         },
         {
             "IPA": "j",
             "FCB": "central",
-            "Sonority": "glide",
+            "Sornority": "glide",
             "POA": "palatal"	
         },
         {
             "IPA": "ɥ",
             "FCB": "front",
-            "Sonority": "glide",
+            "Sornority": "glide",
             "POA": "palatal"	
         },
         {
             "IPA": "ɰ",
             "FCB": "front",
-            "Sonority": "glide",
+            "Sornority": "glide",
             "POA": "bilabial"	
         },
         {
             "IPA": "ɹ",
             "FCB": "central",
-            "Sonority": "liquid",
+            "Sornority": "liquid",
             "POA": "retroflex"	
         },
         {
             "IPA": "ɹ",
             "FCB": "central",
-            "Sonority": "liquid",
+            "Sornority": "liquid",
             "POA": "dental"	
         },        
         {
             "IPA": "ʋ",
             "FCB": "front",
-            "Sonority": "liquid",
+            "Sornority": "liquid",
             "POA": "labiodental"	
         },
         {
             "IPA": "h̃",
             "FCB": "back",
-            "Sonority": "liquid",
+            "Sornority": "liquid",
             "POA": "velar"	
         },
         
         {
             "IPA": "nᵊ",
             "FCB": "central",
-            "Sonority": "nasal",
+            "Sornority": "nasal",
             "POA": "dental"
         },
            
         {
             "IPA": "sᵊ",
             "FCB": "central",
-            "Sonority": "fricative",
+            "Sornority": "fricative",
             "POA": "dental"	
         },
         {
             "IPA": "ʃᵊ",
             "FCB": "central",
-            "Sonority": "fricative",
+            "Sornority": "fricative",
             "POA": "postalveolar"	
         }
     ]

@@ -169,6 +169,12 @@ public class MetaBlockScript : MonoBehaviour
                     desc.DimensionTwo = true;
                 }
             }
+            else if (temp.mainSelector.value == 3)
+            {
+                desc.Type = "Glide";
+
+                desc.GlideIndex = temp.glideSelector.value;
+            }
 
             result.Descriptions[i] = desc;
         }

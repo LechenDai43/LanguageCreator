@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DescriptionScript : MonoBehaviour
 {
     public Dropdown mainSelector;
-    public GameObject generic, consonant, vowel;
+    public GameObject generic, consonant, vowel, glide;
     public DescriptionContainerScript container = null;
     public MetaBlockScript block = null;
 
@@ -21,6 +21,9 @@ public class DescriptionScript : MonoBehaviour
     // for vowel
     public Dropdown opennessSelector, roundednessSelector;
 
+    // for glide
+    public Dropdown glideSelector;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,16 @@ public class DescriptionScript : MonoBehaviour
         {
             block.childChangeToggle(this);
         }
+
+        List<string> glideString = new List<string>();
+        Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+        PhoneManager phoneManager = manager.phoneManager;
+        foreach (SemivowelPhone sp in phoneManager.semivowelPool)
+        {
+            glideString.Add(sp.IPA);
+        }
+        glideString.Add("any");
+        glideSelector.AddOptions(glideString);
     }
 
     // Update is called once per frame
@@ -43,18 +56,28 @@ public class DescriptionScript : MonoBehaviour
             generic.SetActive(true);
             consonant.SetActive(false);
             vowel.SetActive(false);
+            glide.SetActive(false);
         } 
         else if (mainSelector.value == 1)
         {
             generic.SetActive(false);
             consonant.SetActive(true);
             vowel.SetActive(false);
+            glide.SetActive(false);
+        }
+        else if (mainSelector.value == 2)
+        {
+            generic.SetActive(false);
+            consonant.SetActive(false);
+            vowel.SetActive(true);
+            glide.SetActive(false);
         }
         else
         {
             generic.SetActive(false);
             consonant.SetActive(false);
-            vowel.SetActive(true);
+            vowel.SetActive(false);
+            glide.SetActive(true);
         }
 
         if (container != null)

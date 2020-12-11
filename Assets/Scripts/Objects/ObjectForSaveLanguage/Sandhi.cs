@@ -137,7 +137,7 @@ public class Sandhi
                         fullMatch = false;
                         break;
                     }
-                    if (list[i + length].POA != null && !list[i + length].POA.Equals(""))
+                    if (list[i + length].MOA != null && !list[i + length].MOA.Equals(""))
                     {
                         tem.Add(list[i + length]);
                         length++;
@@ -289,13 +289,13 @@ public class Sandhi
                         break;
                     }
                 }
-                // If this is a pecified consonant
+                // If this is a specified consonant
                 else if (Target[j].Type.Contains("n"))
                 {
                     List<Phone> tem = new List<Phone>();
 
 
-                    if (i + length >= list.Count || list[i + length].POA == null || list[i + length].POA.Equals(""))
+                    if (i + length >= list.Count || list[i + length].MOA == null || list[i + length].MOA.Equals(""))
                     {
                         fullMatch = false;
                         break;
@@ -354,6 +354,48 @@ public class Sandhi
                     }
 
                     if (isPOA && isMOA)
+                    {
+                        tem.Add(list[i + length]);
+                        length++;
+                        founded.Add(tem);
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                }
+                // If this is a specified glide
+                else if (Target[j].Type.Contains("d"))
+                {
+                    List<Phone> tem = new List<Phone>();
+
+
+                    if (i + length >= list.Count || list[i + length].Sornority == null || list[i + length].Sornority.Equals(""))
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                    int row = Target[j].GlideIndex;
+
+                    bool isPOA = false;
+
+                    if (row >= phoneManager.semivowelPool.Length)
+                    {
+                        isPOA = true;
+                    }
+                    else if (row >= 0)
+                    {
+                        if (phoneManager.semivowelPool[row] != null)
+                        {
+                            if (list[i + length].IPA.Equals(phoneManager.semivowelPool[row].IPA))
+                            {
+                                isPOA = true;
+                            }
+                        }
+                    }
+
+                    if (isPOA)
                     {
                         tem.Add(list[i + length]);
                         length++;
@@ -490,7 +532,7 @@ public class Sandhi
                                     string poa = founded[description.POA][0].POA;
                                     for (int k = 0; k < phoneManager.consonantPool.Length; k++)
                                     {
-                                        if (poa.Equals(phoneManager.consonantPool[k][0].POA))
+                                        if (phoneManager.consonantPool[k][0] != null && poa.Equals(phoneManager.consonantPool[k][0].POA))
                                         {
                                             row = k;
                                             break;
@@ -544,6 +586,13 @@ public class Sandhi
                                 }
                                 Debug.Log(tem.Count);
 
+                            }
+                            // if the description is a specified consonant
+                            else if (description.Type.Contains("d"))
+                            {
+                                Phone newPhone = new Phone();
+                                newPhone.converProtoPhone(phoneManager.semivowelPool[description.GlideIndex % phoneManager.semivowelPool.Length]);
+                                tem.Add(newPhone);
                             }
                             // back up case, this should not be used
                             else
@@ -654,6 +703,7 @@ public class Sandhi
         public int Roundness = -1;
         public int POA = -1;
         public int MOA = -1;
+        public int GlideIndex = -1;
         public string Type = "";
         public bool Initial = false, Terminal = false;
         public bool SingleHolder = false, MultipleHolder = false;

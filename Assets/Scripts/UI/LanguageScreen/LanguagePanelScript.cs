@@ -165,7 +165,7 @@ public class LanguagePanelScript : MonoBehaviour
             for (int i = 0; i < changingRule.Branches.Length; i++)
             {
                 string path = changingRule.Branches[i];
-                sr = new StreamReader(path);
+                sr = new StreamReader(Application.dataPath + path);
                 string content = sr.ReadToEnd();
                 SoundChange oneSub = JsonUtility.FromJson<SoundChange>(content);
 

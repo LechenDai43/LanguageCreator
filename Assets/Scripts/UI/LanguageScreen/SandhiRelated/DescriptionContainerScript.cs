@@ -103,12 +103,18 @@ public class DescriptionContainerScript : MonoBehaviour
             result.POA = child.positionSelector.value;
             result.MOA = child.mannerSelector.value;
         }
+        else if (child.mainSelector.value == 3)
+        {
+            result.Type = "Glide";
+            result.GlideIndex = child.glideSelector.value;
+        }
         else
         {
             result.Type = "Vowel";
             result.Openness = child.opennessSelector.value;
             result.Roundness = child.roundednessSelector.value;
         }
+
 
         return result;
     }
