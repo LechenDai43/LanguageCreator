@@ -443,8 +443,12 @@ public class Sandhi
                                     column = description.Openness;
                                 }
 
-                                // check out the phone from phone pool
-                                if (row < 0 || column < 0 || row >= phoneManager.vowelPool.Length || column >= phoneManager.vowelPool[0].Length)
+                                // check out the phone from phone pool   
+                                if (description.DimensionTwo && description.DimensionOne && description.Roundness == description.Openness) 
+                                {
+                                    tem.Add(founded[description.Roundness][0]);
+                                }
+                                else if (row < 0 || column < 0 || row >= phoneManager.vowelPool.Length || column >= phoneManager.vowelPool[0].Length)
                                 {
                                     if (phoneManager.vowelPool[row][column] != null)
                                     {
@@ -480,6 +484,11 @@ public class Sandhi
                                 }
 
                                 // check out the column/openness of the vowel
+                                if (description.DimensionTwo && description.DimensionOne && description.MOA == description.POA) 
+                                {
+                                    tem.Add(founded[description.Roundness][0]);
+                                }
+                                else
                                 if (description.DimensionOne)
                                 {
                                     string moa = founded[description.MOA][0].MOA;
@@ -520,6 +529,14 @@ public class Sandhi
                             else
                             {
 
+                            }
+                            
+                            foreach(Phone p in tem)
+                            {
+                                if (p.Level != null && !p.Level.Equals(""))
+                                {
+                                    getAccent = true;
+                                }
                             }
                         }
                     }
