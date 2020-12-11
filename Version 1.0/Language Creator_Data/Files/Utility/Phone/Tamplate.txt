@@ -1,0 +1,28 @@
+	{
+            "IPA": "",
+            "POA": "",
+            "MOA": "",
+            "FCB": "",
+            "Aspiration": "",
+            "Voiceness": ""
+        }
+
+	{
+            "IPA": "",
+            "Openness": "",
+            "Roundness": "",
+            "FCB": ""
+        }
+
+	{
+            "IPA": "",
+            "FCB": "",
+            "Sonority": "",
+            "POA": ""
+        }
+
+	{
+            "IPA": "",
+            "Contour": "",
+            "Level": ""
+	}

@@ -1,0 +1,64 @@
+{
+    "SimpleVowels": [
+        {
+            "IPA": "i",
+            "Openness": "close",
+            "Roundness": "unrounded",
+            "FCB": "front"
+        },
+        {
+            "IPA": "e",
+            "Openness": "half-close",
+            "Roundness": "unrounded",
+            "FCB": "front"
+        },
+        {
+            "IPA": "ɛ",
+            "Openness": "half-open",
+            "Roundness": "unrounded",
+            "FCB": "front"
+        },
+        {
+            "IPA": "a",
+            "Openness": "open",
+            "Roundness": "unrounded",
+            "FCB": "front"
+        },
+        {
+            "IPA": "ə",
+            "Openness": "middle",
+            "Roundness": "unrounded",
+            "FCB": "central"
+        },
+        {
+            "IPA": "ɐ",
+            "Openness": "near-open",
+            "Roundness": "unrounded",
+            "FCB": "central"
+        },
+        {
+            "IPA": "u",
+            "Openness": "close",
+            "Roundness": "rounded",
+            "FCB": "back"
+        },
+        {
+            "IPA": "o",
+            "Openness": "half-close",
+            "Roundness": "rounded",
+            "FCB": "back"
+        },
+        {
+            "IPA": "ɔ",
+            "Openness": "half-open",
+            "Roundness": "rounded",
+            "FCB": "back"
+        },
+        {
+            "IPA": "ɒ",
+            "Openness": "open",
+            "Roundness": "rounded",
+            "FCB": "back"
+        }
+    ]
+}
