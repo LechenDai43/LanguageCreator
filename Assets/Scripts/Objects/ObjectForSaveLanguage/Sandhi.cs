@@ -55,6 +55,7 @@ public class Sandhi
             bool fullMatch = true;
             int length = 0;
 
+            // Find the target parttern
             List<List<Phone>> founded = new List<List<Phone>>();
             for (int j = 0; j < Target.Length; j++)
             {
@@ -354,6 +355,64 @@ public class Sandhi
                 {
                     fullMatch = false;
                     break;
+                }
+            }
+
+            // If the pattern is found, then process it
+            if (fullMatch)
+            {
+                // First, parse the original list to have the first part and the last part
+                List<Phone> head = new List<Phone>(), tail = new List<Phone>();
+                for (int j = 0; j < i; j++)
+                {
+                    head.Add(list[j]);
+                }
+                for (int j = i + length; j < list.Count; j++)
+                {
+                    tail.Add(list[j]);
+                }
+
+                // Then build up the middle part
+                List<List<Phone>> middle = new List<List<Phone>>();
+                for (int j = 0; j < Result.Length; j++)
+                {
+                    MetaBlock block = Result[j];
+
+                    // if the meta block is empty, then make the corresponding part empty
+                    if (block.Descriptions.Length == 0)
+                    {
+                        middle.Add(new List<Phone>());
+                    }
+                    // if the meta block is not empty, then build up the list
+                    else
+                    {
+                        List<Phone> tem = new List<Phone>();
+                        bool getAccent = false;
+
+                        foreach (Description description in block.Descriptions)
+                        {
+                            // if the description is unchanged
+                            if (description.Unchanged)
+                            {
+                                tem.AddRange(list[j]);
+                            }
+                            // if the description is a specified vowel
+                            else if (Target[j].Type.Contains("w"))
+                            {
+
+                            }
+                            // if the description is a specified consonant
+                            else if (Target[j].Type.Contains("c"))
+                            {
+
+                            }
+                            // back up case, this should not be used
+                            else
+                            {
+
+                            }
+                        }
+                    }
                 }
             }
         }
