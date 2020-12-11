@@ -394,7 +394,7 @@ public class Sandhi
                             // if the description is unchanged
                             if (description.Unchanged)
                             {
-                                tem.AddRange(list[j]);
+                                tem.AddRange(founded[j]);
                             }
                             // if the description is a specified vowel
                             else if (Target[j].Type.Contains("w"))
