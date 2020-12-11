@@ -26,10 +26,7 @@ public class Sandhi
             }
             foreach(Phone p in ss.Phonemes)
             {
-                if (p.Contour != null && !p.Contour.Equals(""))
-                {
-                    list.Add(p);
-                }
+                list.Add(p);
             }
             if (ss.Successed)
             {
@@ -37,11 +34,14 @@ public class Sandhi
             }
         }
 
+        Debug.Log(list.Count);
         // TODO...
         // find the target pattern
         // change the target pattern to the desired pattern
         Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
         PhoneManager phoneManager = manager.phoneManager;
+
+            bool found_debug = false;
 
         int i = 0;
         while (i < list.Count - Target.Length + 1)
@@ -212,7 +212,7 @@ public class Sandhi
 
                     bool isOpen = false, isRound = false;
 
-                    if (row > phoneManager.vowelPool.Length)
+                    if (row >= phoneManager.vowelPool.Length)
                     {
                         isRound = true;
                     }
@@ -233,7 +233,7 @@ public class Sandhi
                         }
                     }
 
-                    if (column > phoneManager.vowelPool[0].Length)
+                    if (column >= phoneManager.vowelPool[0].Length)
                     {
                         isOpen = true;
                     }
@@ -357,6 +357,8 @@ public class Sandhi
                     break;
                 }
             }
+
+                found_debug = found_debug || fullMatch;
 
             // If the pattern is found, then process it
             if (fullMatch)
@@ -595,6 +597,9 @@ public class Sandhi
         result.Prefixed = input.Prefixed;
 
         result.Phonemes = new SpeechSound[list.Count];
+
+            Debug.Log(found_debug);
+
         for (i = 0; i < list.Count; i++)
         {
             SpeechSound ss = new SpeechSound();

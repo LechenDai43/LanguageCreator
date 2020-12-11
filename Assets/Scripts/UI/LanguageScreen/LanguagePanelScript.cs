@@ -206,6 +206,8 @@ public class LanguagePanelScript : MonoBehaviour
                 result = lps.getTransformed(result);
             }
         }
+
+        // Debug.Log(changingRule != null);
         if (changingRule != null)
         {
             result = changingRule.change(result);

@@ -27,7 +27,6 @@ public class LanguageScreenManager : MonoBehaviour
         FileInfo[] fileInfos = dir.GetFiles("*.vocabulary");
         foreach (FileInfo ff in fileInfos)
         {
-            Debug.Log(ff.FullName);
 
             string front = ff.Name.Substring(0, ff.Name.LastIndexOf("-"));
             string behind = ff.Name.Substring(ff.Name.LastIndexOf("-") + 1);

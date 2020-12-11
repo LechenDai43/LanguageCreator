@@ -226,6 +226,8 @@ MonoBehaviour:
     Rules: []
     Directory: 
     Count: 0
+  prefabedPanel: {fileID: 8479267162446832843, guid: 7e4f50fe22097b1488f2583dad1a89c5,
+    type: 3}
 --- !u!1 &7690913993158544857
 GameObject:
   m_ObjectHideFlags: 0

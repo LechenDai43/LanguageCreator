@@ -168,6 +168,7 @@ public class AddSandhiPanelScript : MonoBehaviour
         targetMetBlo.GetComponent<MetaBlockScript>().parent = this;
         targetDesCon.GetComponent<DescriptionContainerScript>().changeDropdown(mannersU, positionsU, opennessU, roundednessU);
         targetMetBlo.GetComponent<MetaBlockScript>().changeDropdown(mannersL, positionsL, opennessL, roundednessL);
+        targetMetBlo.GetComponent<MetaBlockScript>().position = lowerContent.transform.childCount - 1;
     }
 
     public void editorSaveButton()
@@ -203,6 +204,7 @@ public class AddSandhiPanelScript : MonoBehaviour
         targetMetBlo.GetComponent<MetaBlockScript>().parent = this;
         targetDesCon.GetComponent<DescriptionContainerScript>().changeDropdown(mannersU, positionsU, opennessU, roundednessU);
         targetMetBlo.GetComponent<MetaBlockScript>().changeDropdown(mannersL, positionsL, opennessL, roundednessL);
+        targetMetBlo.GetComponent<MetaBlockScript>().position = lowerContent.transform.childCount - 1;
     }
 
     public void editorCancelButton()

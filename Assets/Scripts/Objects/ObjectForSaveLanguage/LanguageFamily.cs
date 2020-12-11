@@ -308,7 +308,6 @@ public class LanguageFamily
         }
         else
         {
-            Debug.Log("Afro Asian");
             // Get all the consonants ready
             List<SpeechSound> potentialConsonant = new List<SpeechSound>();
             SpeechSound[][] allsounds = new SpeechSound[4][];
@@ -411,7 +410,6 @@ public class LanguageFamily
         }
 
         result.Phonemes = list.ToArray();
-        Debug.Log(result.ToString());
         return result;
     }
 }
