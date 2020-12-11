@@ -30,7 +30,7 @@ public class LanguageScreenManager : MonoBehaviour
 
             string front = ff.Name.Substring(0, ff.Name.LastIndexOf("-"));
             string behind = ff.Name.Substring(ff.Name.LastIndexOf("-") + 1);
-
+            behind = behind.Substring(0, behind.LastIndexOf(".v"));
             try
             {
                 int index = int.Parse(behind);
@@ -54,7 +54,7 @@ public class LanguageScreenManager : MonoBehaviour
 
                 if (holder != null)
                 {
-                    string consonantPath = Application.dataPath + ff.FullName;
+                    string consonantPath = ff.FullName;
                     StreamReader sr = new StreamReader(consonantPath);
                     string content = sr.ReadToEnd();
                     sr.Close();
@@ -68,7 +68,7 @@ public class LanguageScreenManager : MonoBehaviour
             }
             catch (Exception e)
             {
-
+                Debug.Log(e);
             }
         }
 

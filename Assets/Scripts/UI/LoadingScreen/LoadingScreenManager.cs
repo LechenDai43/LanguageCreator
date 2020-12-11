@@ -21,7 +21,7 @@ public class LoadingScreenManager : MonoBehaviour
         {
             try
             {
-                string filePath = Application.dataPath + ff.FullName;
+                string filePath = ff.FullName;
                 string name = ff.Name.Replace(".languageFamily", "");
 
                 GameObject instanceButton = (GameObject)Instantiate(prefabedButton, buttonContent.transform);
