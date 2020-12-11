@@ -98,12 +98,7 @@ public class Sandhi
                         tem.Add(list[i + length]);
                         length++;
 
-                        if (i + length >= list.Count)
-                        {
-                            fullMatch = false;
-                            break;
-                        }
-                        if (list[i + length].Level != null && !list[i + length].Level.Equals(""))
+                        if (i + length < list.Count && list[i + length].Level != null && !list[i + length].Level.Equals(""))
                         {
                             tem.Add(list[i + length]);
                             length++;
@@ -155,13 +150,7 @@ public class Sandhi
 
                         tem.Add(list[i + length]);
                         length++;
-
-                        if (i + length >= list.Count)
-                        {
-                            fullMatch = false;
-                            break;
-                        }
-                        if (list[i + length].Level != null && !list[i + length].Level.Equals(""))
+                        if (i + length < list.Count && list[i + length].Level != null && !list[i + length].Level.Equals(""))
                         {
                             tem.Add(list[i + length]);
                             length++;
@@ -179,7 +168,7 @@ public class Sandhi
                     
                 }
                 // If this is a consonant cluster
-                else if (Target[j].MultipleHolder && Target[j].Type.Contains("w"))
+                else if (Target[j].MultipleHolder && Target[j].Type.Contains("c"))
                 {
                     List<Phone> tem = new List<Phone>();
                     int count = 0;
@@ -271,7 +260,7 @@ public class Sandhi
                     {
                         tem.Add(list[i + length]);
                         length++;
-                        if (list[i + length].Level != null && !list[i + length].Level.Equals(""))
+                        if (i + length < list.Count && list[i + length].Level != null && !list[i + length].Level.Equals(""))
                         {
                             tem.Add(list[i + length]);
                             length++;
@@ -283,6 +272,88 @@ public class Sandhi
                         fullMatch = false;
                         break;
                     }
+                }
+                // If this is a pecified consonant
+                else if (Target[j].Type.Contains("c"))
+                {
+                    List<Phone> tem = new List<Phone>();
+
+
+                    if (i + length >= list.Count)
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                    int row = Target[j].POA;
+                    int column = Target[j].MOA;
+
+                    bool isPOA = false, isMOA = false;
+
+                    if (row > phoneManager.consonantPool.Length)
+                    {
+                        isPOA = true;
+                    }
+                    else if (row >= 0)
+                    {
+                        int poolIndex = 0;
+                        while (poolIndex < phoneManager.consonantPool[row].Length)
+                        {
+                            if (phoneManager.consonantPool[row][poolIndex] != null)
+                            {
+                                if (list[i + length].POA.Equals(phoneManager.vowelPool[row][poolIndex].POA))
+                                {
+                                    isPOA = true;
+                                }
+                                break;
+                            }
+                            poolIndex++;
+                        }
+                    }
+
+                    if (column > phoneManager.consonantPool[0].Length)
+                    {
+                        isMOA = true;
+                    }
+                    else if (column >= 0)
+                    {
+                        int poolIndex = 0;
+                        while (poolIndex < phoneManager.consonantPool.Length)
+                        {
+                            if (phoneManager.consonantPool[poolIndex][column] != null)
+                            {
+                                if (list[i + length].MOA.Equals(phoneManager.consonantPool[poolIndex][column].MOA))
+                                {
+                                    if (list[i + length].Aspiration.Equals(phoneManager.consonantPool[poolIndex][column].Aspiration))
+                                    {
+                                        if (list[i + length].Voiceness.Equals(phoneManager.consonantPool[poolIndex][column].Voiceness))
+                                        {
+                                            isMOA = true;
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                            poolIndex++;
+                        }
+                    }
+
+                    if (isPOA && isMOA)
+                    {
+                        tem.Add(list[i + length]);
+                        length++;
+                        founded.Add(tem);
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                }
+                // Back up case, should not be used
+                else
+                {
+                    fullMatch = false;
+                    break;
                 }
             }
         }
