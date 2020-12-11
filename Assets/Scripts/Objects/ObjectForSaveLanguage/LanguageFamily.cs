@@ -249,7 +249,7 @@ public class LanguageFamily
                     if (accented)
                     {
                         string accentTrans = accents[rnd.Next(0, accents.Length)].IPA;
-                        vowel.Transliteration += accents;
+                        vowel.Transliteration += accentTrans;
                     }
 
 
