@@ -86,8 +86,89 @@ public class Sandhi
                 else if (Target[j].SingleHolder && Target[j].Type.Contains("w"))
                 {
                     List<Phone> tem = new List<Phone>();
+                    if (list[i + length].Openness != null && !list[i + length].Openness.Equals(""))
+                    {
+                        tem.Add(list[i + length]);
+                        length++;
+                        if (list[i + length].Level != null && !list[i + length].Level.Equals(""))
+                        {
+                            tem.Add(list[i + length]);
+                            length++;
+                        }
+                        founded.Add(tem);
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                }
+                // If this is a single consonant
+                else if (Target[j].SingleHolder && Target[j].Type.Contains("c"))
+                {
+                    List<Phone> tem = new List<Phone>();
+                    if (list[i + length].POA != null && !list[i + length].POA.Equals(""))
+                    {
+                        tem.Add(list[i + length]);
+                        length++;
+                        founded.Add(tem);
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+                }
+                // If this is a vowel cluster
+                else if (Target[j].MultipleHolder && Target[j].Type.Contains("w"))
+                {
+                    List<Phone> tem = new List<Phone>();
+                    int count = 0;
+                    while (list[i + length].Openness != null && !list[i + length].Openness.Equals(""))
+                    {
+                        count++;
+                        tem.Add(list[i + length]);
+                        length++;
+                        if (list[i + length].Level != null && !list[i + length].Level.Equals(""))
+                        {
+                            tem.Add(list[i + length]);
+                            length++;
+                        }
+                    }
+                    if (count != 0)
+                    {
+                        founded.Add(tem);
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
                     
                 }
+                // If this is a consonant cluster
+                else if (Target[j].MultipleHolder && Target[j].Type.Contains("w"))
+                {
+                    List<Phone> tem = new List<Phone>();
+                    int count = 0;
+                    while (list[i + length].POA != null && !list[i + length].POA.Equals(""))
+                    {
+                        count++;
+                        tem.Add(list[i + length]);
+                        length++;
+                    }
+                    if (count != 0)
+                    {
+                        founded.Add(tem);
+                    }
+                    else
+                    {
+                        fullMatch = false;
+                        break;
+                    }
+
+                }
+
             }
         }
 

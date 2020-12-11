@@ -72,7 +72,7 @@ public class MetaBlockScript : MonoBehaviour
 
     public void removeItem()
     {
-        if (scrollView.transform.childCount > 1)
+        if (scrollView.transform.childCount > 0)
         {
             Transform tem = scrollView.transform.GetChild(scrollView.transform.childCount - 1);
             tem.parent = null;
