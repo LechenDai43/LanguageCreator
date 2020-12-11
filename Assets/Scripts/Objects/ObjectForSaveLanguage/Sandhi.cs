@@ -538,6 +538,29 @@ public class Sandhi
                                     getAccent = true;
                                 }
                             }
+
+                            bool originalHasAccent = false;
+                            Phone accent = null;
+                            foreach (Phone p in founded[j])
+                            {
+                                if (p.Level != null && !p.Level.Equals(""))
+                                {
+                                    originalHasAccent = true;
+                                    accent = p;
+                                }
+                            }
+
+                            if (!getAccent && originalHasAccent)
+                            {
+                                for (int k = 0; k < tem.Count; k++)
+                                {
+                                    if (tem[k].Openness != null && !tem[k].Openness.Equals(""))
+                                    {
+                                        tem.Insert(k + 1, accent);
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
