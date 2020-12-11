@@ -528,7 +528,9 @@ public class Sandhi
                             // back up case, this should not be used
                             else
                             {
-
+                                tem.Clear();
+                                tem.AddRange(founded[j]);
+                                break;
                             }
                             
                             foreach(Phone p in tem)
@@ -562,8 +564,26 @@ public class Sandhi
                                 }
                             }
                         }
+
+                        middle.Add(tem);
                     }
                 }
+
+
+                // Now, all three parts has been built, it is time to create a new list
+                List<Phone> newList = new List<Phone>();
+                newList.AddRange(head);
+                for (int j = 0; j < middle.Count; j++)
+                {
+                    newList.AddRange(middle[j]);
+                }
+                int newIndex = newList.Count;
+                i = newIndex - 1;
+                newList.AddRange(tail);
+            }
+            else
+            {
+                i++;
             }
         }
 
