@@ -14,7 +14,7 @@ public class LoadingScreenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string directoryPath = Application.dataPath + "Files/Customization/Languages";
+        string directoryPath = Application.dataPath + "/Files/Customization/Languages";
         DirectoryInfo dir = new DirectoryInfo(directoryPath);
         FileInfo[] fileInfos = dir.GetFiles("*.languageFamily");
         foreach (FileInfo ff in fileInfos)
