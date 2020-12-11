@@ -56,7 +56,7 @@ public class Sandhi
         Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
         PhoneManager phoneManager = manager.phoneManager;
         int i = 0;
-        while (i < list.Count - Target.Length + 1)
+        while (i < list.Count)
         {
 
             if (list[i].Level != null && !list[i].Level.Equals(""))
@@ -90,8 +90,10 @@ public class Sandhi
                 // If this requires a terminal position
                 else if (Target[j].Terminal)
                 {
-                    if (i + length == list.Count - 1)
+                    Debug.Log("in branch");
+                    if (i + length == list.Count)
                     {
+                        Debug.Log("find end");
                         founded.Add(new List<Phone>());
                     }
                     else

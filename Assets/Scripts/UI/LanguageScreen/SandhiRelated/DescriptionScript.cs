@@ -40,6 +40,7 @@ public class DescriptionScript : MonoBehaviour
             glideString.Add(sp.IPA);
         }
         glideString.Add("any");
+        glideSelector.ClearOptions();
         glideSelector.AddOptions(glideString);
     }
 

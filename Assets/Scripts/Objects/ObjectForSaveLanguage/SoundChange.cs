@@ -37,6 +37,6 @@ public class SoundChange
     public void saveSelf()
     {
         string langaugeData = JsonUtility.ToJson(this);
-        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + Directory + ".soundChange", langaugeData);
+        System.IO.File.WriteAllText(Application.dataPath + Directory + ".soundChange", langaugeData);
     }
 }
