@@ -397,12 +397,65 @@ public class Sandhi
                                 tem.AddRange(founded[j]);
                             }
                             // if the description is a specified vowel
-                            else if (Target[j].Type.Contains("w"))
+                            else if (description.Type.Contains("w"))
                             {
+                                int row = -1, column = -1;
 
+                                // check out the row/roundedness of the vowel
+                                // if the vowel is copying old roundness
+                                if (description.DimensionTwo)
+                                {
+                                    string roundedness = founded[description.Roundness][0].Roundness;
+                                    for (int k = 0; k < phoneManager.vowelPool.Length; k++)
+                                    {
+                                        if (roundedness.Equals(phoneManager.vowelPool[k][0].Roundness))
+                                        {
+                                            row = k;
+                                            break;
+                                        }
+                                    }
+                                }
+                                // if the vowel specifying new roundness
+                                else
+                                {
+                                    row = description.Roundness;
+                                }
+
+                                // check out the column/openness of the vowel
+                                if (description.DimensionOne)
+                                {
+                                    string openness = founded[description.Openness][0].Openness;
+                                    for (int k = 0; k < phoneManager.vowelPool[0].Length; k++)
+                                    {
+                                        if (openness.Equals(phoneManager.vowelPool[0][k].Openness))
+                                        {
+                                            if (founded[description.Openness][0].FCB.Equals(phoneManager.vowelPool[0][k].FCB))
+                                            {
+                                                column = k;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                // if the vowel specifying new roundness
+                                else
+                                {
+                                    column = description.Openness;
+                                }
+
+                                // check out the phone from phone pool
+                                if (row < 0 || column < 0 || row >= phoneManager.vowelPool.Length || column >= phoneManager.vowelPool[0].Length)
+                                {
+                                    if (phoneManager.vowelPool[row][column] != null)
+                                    {
+                                        Phone newPhone = new Phone();
+                                        newPhone.converProtoPhone(phoneManager.vowelPool[row][column]);
+                                        tem.Add(newPhone);
+                                    }
+                                }
                             }
                             // if the description is a specified consonant
-                            else if (Target[j].Type.Contains("c"))
+                            else if (description.Type.Contains("c"))
                             {
 
                             }
