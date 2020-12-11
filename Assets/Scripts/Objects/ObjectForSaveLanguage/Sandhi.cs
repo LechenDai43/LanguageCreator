@@ -457,6 +457,63 @@ public class Sandhi
                             // if the description is a specified consonant
                             else if (description.Type.Contains("c"))
                             {
+                                int row = -1, column = -1;
+
+                                // check out the row/roundedness of the vowel
+                                // if the vowel is copying old roundness
+                                if (description.DimensionTwo)
+                                {
+                                    string poa = founded[description.POA][0].POA;
+                                    for (int k = 0; k < phoneManager.consonantPool.Length; k++)
+                                    {
+                                        if (poa.Equals(phoneManager.consonantPool[k][0].POA))
+                                        {
+                                            row = k;
+                                            break;
+                                        }
+                                    }
+                                }
+                                // if the vowel specifying new roundness
+                                else
+                                {
+                                    row = description.POA;
+                                }
+
+                                // check out the column/openness of the vowel
+                                if (description.DimensionOne)
+                                {
+                                    string moa = founded[description.MOA][0].MOA;
+                                    for (int k = 0; k < phoneManager.consonantPool[0].Length; k++)
+                                    {
+                                        if (moa.Equals(phoneManager.consonantPool[0][k].MOA))
+                                        {
+                                            if (founded[description.MOA][0].Aspiration.Equals(phoneManager.consonantPool[0][k].Aspiration))
+                                            {
+                                                if (founded[description.MOA][0].Voiceness.Equals(phoneManager.consonantPool[0][k].Voiceness))
+                                                {
+                                                    column = k;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                // if the vowel specifying new roundness
+                                else
+                                {
+                                    column = description.MOA;
+                                }
+
+                                // check out the phone from phone pool
+                                if (row < 0 || column < 0 || row >= phoneManager.consonantPool.Length || column >= phoneManager.consonantPool[0].Length)
+                                {
+                                    if (phoneManager.vowelPool[row][column] != null)
+                                    {
+                                        Phone newPhone = new Phone();
+                                        newPhone.converProtoPhone(phoneManager.vowelPool[row][column]);
+                                        tem.Add(newPhone);
+                                    }
+                                }
 
                             }
                             // back up case, this should not be used
