@@ -580,6 +580,7 @@ public class Sandhi
                 int newIndex = newList.Count;
                 i = newIndex - 1;
                 newList.AddRange(tail);
+                list = newList;
             }
             else
             {
@@ -587,7 +588,29 @@ public class Sandhi
             }
         }
 
-        return null;
+        Word result = new Word();
+        result.Suffix = input.Suffix;
+        result.Prefix = input.Prefix;
+        result.Suffixed = input.Suffixed;
+        result.Prefixed = input.Prefixed;
+
+        result.Phonemes = new SpeechSound[list.Count];
+        for (i = 0; i < list.Count; i++)
+        {
+            SpeechSound ss = new SpeechSound();
+            ss.Phonemes = new Phone[1];
+            ss.Phonemes[0] = list[i];
+
+            ss.Glide = null;
+            ss.Preceded = false;
+            ss.Successed = false;
+            ss.Transliteration = list[i].IPA;
+            ss.Frequency = 0;
+
+            result.Phonemes[i] = ss;
+        }
+
+        return result;
     }
 
     [Serializable]
