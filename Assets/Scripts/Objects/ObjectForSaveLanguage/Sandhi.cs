@@ -10,6 +10,7 @@ public class Sandhi
 {
     public Description[] Target;
     public MetaBlock[] Result;
+    public bool IncludeAffix;
 
     public Word changeWord(Word input)
     {
@@ -18,6 +19,13 @@ public class Sandhi
             return null;
         }
         List<Phone> list = new List<Phone>();
+        if (IncludeAffix && input.Prefixed && input.Prefix != null)
+        {
+            if (input.Prefix.Phonemes != null)
+            {
+                list.AddRange(input.Prefix.Phonemes);
+            }
+        }
         foreach(SpeechSound ss in input.Phonemes)
         {
             if (ss.Preceded)
@@ -31,6 +39,13 @@ public class Sandhi
             if (ss.Successed)
             {
                 list.Add(ss.Glide);
+            }
+        }
+        if (IncludeAffix && input.Suffixed && input.Suffix != null)
+        {
+            if (input.Suffix.Phonemes != null)
+            {
+                list.AddRange(input.Suffix.Phonemes);
             }
         }
 
@@ -491,7 +506,7 @@ public class Sandhi
                                 // check out the column/openness of the vowel
                                 if (description.DimensionTwo && description.DimensionOne && description.MOA == description.POA) 
                                 {
-                                    tem.Add(founded[description.Roundness][0]);
+                                    tem.Add(founded[description.MOA][0]);
                                 }
                                 else if (description.DimensionOne)
                                 {
@@ -591,10 +606,20 @@ public class Sandhi
         }
 
         Word result = new Word();
-        result.Suffix = input.Suffix;
-        result.Prefix = input.Prefix;
-        result.Suffixed = input.Suffixed;
-        result.Prefixed = input.Prefixed;
+        if (IncludeAffix)
+        {
+            result.Suffix = null;
+            result.Prefix = null;
+            result.Suffixed = false;
+            result.Prefixed = false;
+        }
+        else
+        {
+            result.Suffix = input.Suffix;
+            result.Prefix = input.Prefix;
+            result.Suffixed = input.Suffixed;
+            result.Prefixed = input.Prefixed;
+        }
 
         result.Phonemes = new SpeechSound[list.Count];
 

@@ -412,4 +412,10 @@ public class LanguageFamily
         result.Phonemes = list.ToArray();
         return result;
     }
+
+    public void saveSelf() 
+    {
+        string langaugeData = JsonUtility.ToJson(this);
+        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/Languages/" + Name + ".languageFamily", langaugeData);
+    }
 }

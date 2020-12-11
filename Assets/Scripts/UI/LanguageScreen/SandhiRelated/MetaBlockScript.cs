@@ -78,7 +78,7 @@ public class MetaBlockScript : MonoBehaviour
             tem.parent = null;
             Destroy(tem.gameObject);
 
-            if (scrollView.transform.childCount == 1)
+            if (scrollView.transform.childCount == 0)
             {
                 removeButton.SetActive(false);
             }

@@ -9,6 +9,7 @@ public class AddSandhiPanelScript : MonoBehaviour
     public GameObject sandhiConent, sandhiEditor;
     public GameObject prefabedSandhiBanner;
     public GameObject prefabedButton;
+    public Toggle applyAffix;
     
     // public List<Sandhi> sandhis;
 
@@ -140,6 +141,16 @@ public class AddSandhiPanelScript : MonoBehaviour
         parentNode.addBranches(thisNode.Directory + ".soundChange");
         parentNode.Count++;
 
+        if (parentScript.parent == null)
+        {
+            Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
+            manager.currentLanguage.saveSelf();
+        }
+        else
+        {
+            parentNode.saveSelf();
+        }
+
         GameObject instanceButton = (GameObject)Instantiate(prefabedButton, parentScript.subdivisionView.transform);
         SubLanguageButton buttonScript = instanceButton.GetComponent<SubLanguageButton>();
         buttonScript.buttonText.text = thisNode.Name;
@@ -191,6 +202,7 @@ public class AddSandhiPanelScript : MonoBehaviour
         bannerScript.sandhi = new Sandhi();
         bannerScript.sandhi.Target = upperList.ToArray();
         bannerScript.sandhi.Result = lowerList.ToArray();
+        bannerScript.sandhi.IncludeAffix = applyAffix.isOn;
 
         editorCancelButton();
     }
@@ -222,6 +234,7 @@ public class AddSandhiPanelScript : MonoBehaviour
             tem.parent = null;
             Destroy(tem.gameObject);
         }
+        applyAffix.isOn = false; ;
 
         sandhiEditor.SetActive(false);
     }

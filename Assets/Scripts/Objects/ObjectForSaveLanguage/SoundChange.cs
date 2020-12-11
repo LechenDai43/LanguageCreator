@@ -33,4 +33,10 @@ public class SoundChange
         tem.Add(subPath);
         Branches = tem.ToArray();
     }
+
+    public void saveSelf()
+    {
+        string langaugeData = JsonUtility.ToJson(this);
+        System.IO.File.WriteAllText(Application.dataPath + "/Files/Customization/" + Directory + ".soundChange", langaugeData);
+    }
 }
