@@ -34,19 +34,17 @@ public class Sandhi
             }
         }
 
-        Debug.Log(list.Count);
+        // Debug.Log(list.Count);
         // TODO...
         // find the target pattern
         // change the target pattern to the desired pattern
         Manager manager = UnityEngine.Object.FindObjectOfType<Manager>();
         PhoneManager phoneManager = manager.phoneManager;
-
-            bool found_debug = false;
-
         int i = 0;
         while (i < list.Count - Target.Length + 1)
         {
-            if (list[i].Level == null || list[i].Level.Equals(""))
+
+            if (list[i].Level != null && !list[i].Level.Equals(""))
             {
                 i++;
                 continue;
@@ -57,6 +55,8 @@ public class Sandhi
 
             // Find the target parttern
             List<List<Phone>> founded = new List<List<Phone>>();
+                
+
             for (int j = 0; j < Target.Length; j++)
             {
                 // If this require an initial position
@@ -113,7 +113,7 @@ public class Sandhi
                     }
                 }
                 // If this is a single consonant
-                else if (Target[j].SingleHolder && Target[j].Type.Contains("c"))
+                else if (Target[j].SingleHolder && Target[j].Type.Contains("n"))
                 {
                     List<Phone> tem = new List<Phone>();
 
@@ -169,7 +169,7 @@ public class Sandhi
                     
                 }
                 // If this is a consonant cluster
-                else if (Target[j].MultipleHolder && Target[j].Type.Contains("c"))
+                else if (Target[j].MultipleHolder && Target[j].Type.Contains("n"))
                 {
                     List<Phone> tem = new List<Phone>();
                     int count = 0;
@@ -202,7 +202,7 @@ public class Sandhi
                     List<Phone> tem = new List<Phone>();
 
 
-                    if (i + length >= list.Count)
+                    if (i + length >= list.Count || list[i + length].Openness == null || list[i + length].Openness.Equals(""))
                     {
                         fullMatch = false;
                         break;
@@ -225,7 +225,10 @@ public class Sandhi
                             {
                                 if (list[i + length].Roundness.Equals(phoneManager.vowelPool[row][poolIndex].Roundness))
                                 {
-                                    isRound = true;
+                                    if (list[i + length].FCB.Equals(phoneManager.vowelPool[row][poolIndex].FCB))
+                                    {
+                                        isRound = true;
+                                    }
                                 }
                                 break;
                             }
@@ -246,10 +249,7 @@ public class Sandhi
                             {
                                 if (list[i + length].Openness.Equals(phoneManager.vowelPool[poolIndex][column].Openness))
                                 {
-                                    if (list[i + length].FCB.Equals(phoneManager.vowelPool[poolIndex][column].FCB))
-                                    {
-                                        isOpen = true;
-                                    }
+                                    isOpen = true;                                    
                                 }
                                 break;
                             }
@@ -275,12 +275,12 @@ public class Sandhi
                     }
                 }
                 // If this is a pecified consonant
-                else if (Target[j].Type.Contains("c"))
+                else if (Target[j].Type.Contains("n"))
                 {
                     List<Phone> tem = new List<Phone>();
 
 
-                    if (i + length >= list.Count)
+                    if (i + length >= list.Count || list[i + length].POA == null || list[i + length].POA.Equals(""))
                     {
                         fullMatch = false;
                         break;
@@ -290,7 +290,7 @@ public class Sandhi
 
                     bool isPOA = false, isMOA = false;
 
-                    if (row > phoneManager.consonantPool.Length)
+                    if (row >= phoneManager.consonantPool.Length)
                     {
                         isPOA = true;
                     }
@@ -301,7 +301,7 @@ public class Sandhi
                         {
                             if (phoneManager.consonantPool[row][poolIndex] != null)
                             {
-                                if (list[i + length].POA.Equals(phoneManager.vowelPool[row][poolIndex].POA))
+                                if (list[i + length].POA.Equals(phoneManager.consonantPool[row][poolIndex].POA))
                                 {
                                     isPOA = true;
                                 }
@@ -311,7 +311,7 @@ public class Sandhi
                         }
                     }
 
-                    if (column > phoneManager.consonantPool[0].Length)
+                    if (column >= phoneManager.consonantPool[0].Length)
                     {
                         isMOA = true;
                     }
@@ -358,11 +358,11 @@ public class Sandhi
                 }
             }
 
-                found_debug = found_debug || fullMatch;
 
             // If the pattern is found, then process it
             if (fullMatch)
             {
+                Debug.Log("matched");
                 // First, parse the original list to have the first part and the last part
                 List<Phone> head = new List<Phone>(), tail = new List<Phone>();
                 for (int j = 0; j < i; j++)
@@ -408,6 +408,7 @@ public class Sandhi
                                 if (description.DimensionTwo)
                                 {
                                     string roundedness = founded[description.Roundness][0].Roundness;
+                                    Debug.Log(founded[description.Roundness][0]);
                                     for (int k = 0; k < phoneManager.vowelPool.Length; k++)
                                     {
                                         if (roundedness.Equals(phoneManager.vowelPool[k][0].Roundness))
@@ -450,8 +451,9 @@ public class Sandhi
                                 {
                                     tem.Add(founded[description.Roundness][0]);
                                 }
-                                else if (row < 0 || column < 0 || row >= phoneManager.vowelPool.Length || column >= phoneManager.vowelPool[0].Length)
+                                else if (!(row < 0 || column < 0 || row >= phoneManager.vowelPool.Length || column >= phoneManager.vowelPool[0].Length))
                                 {
+                                    Debug.Log(phoneManager.vowelPool[row][column]);
                                     if (phoneManager.vowelPool[row][column] != null)
                                     {
                                         Phone newPhone = new Phone();
@@ -459,9 +461,10 @@ public class Sandhi
                                         tem.Add(newPhone);
                                     }
                                 }
+                                Debug.Log(tem.Count);
                             }
                             // if the description is a specified consonant
-                            else if (description.Type.Contains("c"))
+                            else if (description.Type.Contains("n"))
                             {
                                 int row = -1, column = -1;
 
@@ -490,8 +493,7 @@ public class Sandhi
                                 {
                                     tem.Add(founded[description.Roundness][0]);
                                 }
-                                else
-                                if (description.DimensionOne)
+                                else if (description.DimensionOne)
                                 {
                                     string moa = founded[description.MOA][0].MOA;
                                     for (int k = 0; k < phoneManager.consonantPool[0].Length; k++)
@@ -516,15 +518,16 @@ public class Sandhi
                                 }
 
                                 // check out the phone from phone pool
-                                if (row < 0 || column < 0 || row >= phoneManager.consonantPool.Length || column >= phoneManager.consonantPool[0].Length)
+                                if (!(row < 0 || column < 0 || row >= phoneManager.consonantPool.Length || column >= phoneManager.consonantPool[0].Length))
                                 {
-                                    if (phoneManager.vowelPool[row][column] != null)
+                                    if (phoneManager.consonantPool[row][column] != null)
                                     {
                                         Phone newPhone = new Phone();
-                                        newPhone.converProtoPhone(phoneManager.vowelPool[row][column]);
+                                        newPhone.converProtoPhone(phoneManager.consonantPool[row][column]);
                                         tem.Add(newPhone);
                                     }
                                 }
+                                Debug.Log(tem.Count);
 
                             }
                             // back up case, this should not be used
@@ -580,14 +583,11 @@ public class Sandhi
                     newList.AddRange(middle[j]);
                 }
                 int newIndex = newList.Count;
-                i = newIndex - 1;
+                i = newIndex - 1 > i + 1 ? newIndex - 1 : i + 1;
                 newList.AddRange(tail);
                 list = newList;
             }
-            else
-            {
-                i++;
-            }
+            i++;
         }
 
         Word result = new Word();
@@ -597,8 +597,6 @@ public class Sandhi
         result.Prefixed = input.Prefixed;
 
         result.Phonemes = new SpeechSound[list.Count];
-
-            Debug.Log(found_debug);
 
         for (i = 0; i < list.Count; i++)
         {
