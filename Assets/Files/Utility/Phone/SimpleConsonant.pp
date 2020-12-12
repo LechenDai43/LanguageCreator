@@ -397,7 +397,7 @@
         
         {
             "IPA": "ɸ",
-            "POA": "lilabial",
+            "POA": "bilabial",
             "MOA": "fricative",
             "FCB": "front",
             "Aspiration": "yes",

@@ -31,4 +31,12 @@ public class SpeechSound
         result.Frequency = other.Frequency;
         return result;
     }
+
+    public void addPhone (Phone newP)
+    {
+        List<Phone> list = new List<Phone>();
+        list.AddRange(Phonemes);
+        list.Add(newP);
+        Phonemes = list.ToArray();
+    }
 }

@@ -18,6 +18,7 @@ public class Sandhi
         {
             return null;
         }
+
         List<Phone> list = new List<Phone>();
         if (IncludeAffix && input.Prefixed && input.Prefix != null)
         {
@@ -48,6 +49,8 @@ public class Sandhi
                 list.AddRange(input.Suffix.Phonemes);
             }
         }
+
+        
 
         // Debug.Log(list.Count);
         // TODO...
@@ -622,6 +625,9 @@ public class Sandhi
                                     accent = p;
                                 }
                             }
+
+                            Debug.Log(originalHasAccent);
+                            Debug.Log(getAccent);
 
                             if (!getAccent && originalHasAccent)
                             {

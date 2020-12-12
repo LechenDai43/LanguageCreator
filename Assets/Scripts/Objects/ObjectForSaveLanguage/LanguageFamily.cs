@@ -245,13 +245,17 @@ public class LanguageFamily
                         continue;
                     }
 
-                    // Add accent if needed
+                    // Add accent if needed             
+
+
+                    
                     if (accented)
                     {
-                        string accentTrans = accents[rnd.Next(0, accents.Length)].IPA;
+                        Phone accp = accents[rnd.Next(0, accents.Length)];
+                        vowel.addPhone(accp);
+                        string accentTrans = accp.IPA;
                         vowel.Transliteration += accentTrans;
                     }
-
 
                     list.Add(chosenOnset);
                     list.Add(vowel);
