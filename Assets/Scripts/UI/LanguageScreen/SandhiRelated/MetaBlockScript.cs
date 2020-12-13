@@ -114,7 +114,9 @@ public class MetaBlockScript : MonoBehaviour
                 }
                 else
                 {
-                    desc.MOA = temp.mannerSelector.value - 21;
+                    string strKey = temp.mannerSelector.options[temp.mannerSelector.value].text;
+                    int intKey = int.Parse(strKey.Substring(strKey.LastIndexOf(" ") + 1));
+                    desc.MOA = intKey - 1;
                     desc.DimensionOne = true;
                 }
 
@@ -130,7 +132,10 @@ public class MetaBlockScript : MonoBehaviour
                 }
                 else
                 {
-                    desc.POA = temp.positionSelector.value - 1 - 11;
+                    string strKey = temp.positionSelector.options[temp.positionSelector.value].text;
+                    int intKey = int.Parse(strKey.Substring(strKey.LastIndexOf(" ") + 1));
+                    // desc.MOA = intKey - 1;
+                    desc.POA = intKey - 1;
                     desc.DimensionTwo = true;
                 }
             }
@@ -149,7 +154,10 @@ public class MetaBlockScript : MonoBehaviour
                 }
                 else
                 {
-                    desc.Openness = temp.opennessSelector.value - 1 - 7;
+                    string strKey = temp.opennessSelector.options[temp.opennessSelector.value].text;
+                    int intKey = int.Parse(strKey.Substring(strKey.LastIndexOf(" ") + 1));
+                    // desc.MOA = intKey - 1;
+                    desc.Openness = intKey - 1;
                     desc.DimensionOne = true;
                 }
 
@@ -165,7 +173,10 @@ public class MetaBlockScript : MonoBehaviour
                 }
                 else
                 {
-                    desc.Roundness = temp.roundednessSelector.value - 1 - 6;
+                    string strKey = temp.roundednessSelector.options[temp.roundednessSelector.value].text;
+                    int intKey = int.Parse(strKey.Substring(strKey.LastIndexOf(" ") + 1));
+                    // desc.MOA = intKey - 1;
+                    desc.Roundness = intKey - 1;
                     desc.DimensionTwo = true;
                 }
             }

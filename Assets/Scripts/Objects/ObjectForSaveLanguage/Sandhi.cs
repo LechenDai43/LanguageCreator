@@ -492,7 +492,7 @@ public class Sandhi
                                     string openness = founded[description.Openness][0].Openness;
                                     for (int k = 0; k < phoneManager.vowelPool[0].Length; k++)
                                     {
-                                        if (openness.Equals(phoneManager.vowelPool[0][k].Openness))
+                                        if (phoneManager.vowelPool[0][k] != null &&openness.Equals(phoneManager.vowelPool[0][k].Openness))
                                         {
                                             if (founded[description.Openness][0].FCB.Equals(phoneManager.vowelPool[0][k].FCB))
                                             {
@@ -560,7 +560,7 @@ public class Sandhi
                                     string moa = founded[description.MOA][0].MOA;
                                     for (int k = 0; k < phoneManager.consonantPool[0].Length; k++)
                                     {
-                                        if (moa.Equals(phoneManager.consonantPool[0][k].MOA))
+                                        if (phoneManager.consonantPool[0][k] != null && moa.Equals(phoneManager.consonantPool[0][k].MOA))
                                         {
                                             if (founded[description.MOA][0].Aspiration.Equals(phoneManager.consonantPool[0][k].Aspiration))
                                             {
